@@ -1,0 +1,39 @@
+version: '2'
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+  web:
+    build: .
+    tty: true
+    container_name: novato
+    environment:
+      - POSTGRESQL_HOST=postgres
+      - POSTGRESQL_PASSWORD=
+      - POSTGRESQL_USERNAME=postgres
+      - DEVISE_ADMIN_EMAIL=admin@example.com
+      - DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+      - EMAIL_SENDER=valmydeveloper@gmail.com
+      - PASSWORD_SEND=imdeveloper
+    links:
+      - postgres
+    volumes:
+      - .:/application
+    volumes_from:
+      - box
+    ports:
+      - 3000:3000 #rails port
+    # - 35729:35729 # livereload port
+    depends_on:
+      - postgres
+  box:
+    tty: true
+    image: busybox
+    volumes:
+      - /box
+volumes:
+  postgres: {}
+  box: {}

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -it novato bash -c "./bin/exec/live_guard"

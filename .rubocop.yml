@@ -1,0 +1,62 @@
+require: rubocop-rspec
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'Guardfile'
+    - 'spec/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'app/inputs/**/*'
+    - 'lib/tasks/*'
+    - 'lib/seeds/*'
+
+  TargetRubyVersion: 2.5
+
+  # Enabled by default
+  DisabledByDefault: false
+
+  # Get CopNames for easier fix.
+  DisplayCopNames: true
+
+  # Related style guide URL. )
+  DisplayStyleGuide: true
+
+Rails:
+  Enabled: true
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Style/AsciiComments:
+  Description: 'Use only ascii symbols in comments.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#english-comments'
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/*
+
+Metrics/LineLength:
+  Enabled: true
+  Max: 120
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 30
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 15

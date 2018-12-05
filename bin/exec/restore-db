@@ -1,0 +1,9 @@
+#!/bin/bash
+# Assumes the database container is named 'db'
+
+FILE=`find ./backups -type f -name "*.dump"`
+
+docker-compose up -d postgres
+docker exec -i $(docker-compose ps -q postgres) pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d novato_development < "${FILE}"
+# docker exec -i gamification_postgres_1 pg_restore --dbname=postgres --verbose --clean < "${LOCAL_DUMP_PATH}"
+docker-compose stop postgres

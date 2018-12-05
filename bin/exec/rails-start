@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -x
+
+
+
+rm /application/tmp/pids/server.pid
+
+bundle check || bundle install
+RAILS_ENV=development bundle exec rake db:create
+RAILS_ENV=development bundle exec rake db:migrate
+# RAILS_ENV=development bundle exec guard -i &
+RAILS_ENV=development bundle exec rails s -p 3000 -b '0.0.0.0'
