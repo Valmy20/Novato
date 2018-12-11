@@ -1,0 +1,8 @@
+<%= simple_form_for([:backoffice, @model]) do |f| %>
+  <%= f.input :name, label: 'Nome' %>
+  <%= f.input :email, label: 'E-mail' %>
+  <%= f.input :password, as: :password, label: 'Senha' %>
+  <%= f.input :password_confirmation, as: :password, label: 'Confirmar Senha' %>
+  <%= f.input :status, as: :boolean %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,8 @@
+<%= simple_form_for @model, url: backoffice_profile_path do |f| %>
+  <%= f.input :name, label:"Nome" %>
+  <%= f.input :email, label:"E-mail" %>
+  <%= f.input :password_current, as: :password, label:"Current password", label:"Senha Atual" %>
+  <%= f.input :new_password, as: :password, label:"New password", label: "Nova Senha" %>
+  <%= f.input :new_password_confirmation, as: :password, label:"Confirmar Nova Senha"%>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

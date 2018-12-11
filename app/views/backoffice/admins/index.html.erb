@@ -1,0 +1,51 @@
+<section class="backoffice">
+  <div>
+    <%= link_to new_backoffice_admin_path, class:"btn btn-primary" do %>
+    <div class="d-flex">
+      <span class="material-icons" style="">person_add</span>
+      <span style="margin-left: 5px">Novo</span>
+    </div>
+    <!-- <i class="material-icons" style="padding-top: 2px;">add</i> -->
+    <% end %>
+  </div>
+  <table class="table table_margin">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>
+          Active
+        </th>
+        <th class="d-flex justify-content-end">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @model.each do |admin| %>
+        <tr>
+          <td class="column_id" ><%= admin.id %></td>
+          <td><%= truncate(admin.name, length: 13) %></td>
+          <td><%= admin.email %></td>
+          <td><%= helper_status(admin.status) %></td>
+          <td class="d-flex justify-content-end btn-actions">
+            <%= link_to edit_backoffice_admin_path(admin), class:"btn btn-primary btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons">create</span>
+              </div>
+            <% end %>
+
+            <%= link_to backoffice_admin_path(admin), method: :delete,
+              data: { confirm: "Are you sure?" }, class:"btn btn-danger btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons" style="">delete_sweep</span>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%= paginate @model %>
+  </div>
+</section>
