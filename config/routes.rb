@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     root 'admins#index'
     resources :admins, except: %i[show]
     match 'profile', to: 'admins#profile', via: %i[get patch put], as: :profile
+    resources :categories, except: %i[show]
   end
 
   # session admin

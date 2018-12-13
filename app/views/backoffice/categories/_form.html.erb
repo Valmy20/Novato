@@ -1,0 +1,5 @@
+<%= simple_form_for([:backoffice, @model]) do |f| %>
+  <%= f.input :name, label: 'Nome' %>
+  <%= f.input :status, as: :boolean %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
