@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     resources :categories, except: %i[show]
   end
 
+  namespace 'frontend', path: 'novato' do
+    root '#index'
+    resources :users, only: %i[new create edit update destroy]
+    match 'user_profile', to: 'users#profile', via: %i[get patch put], as: :user_profile
+  end
+
   # session admin
   get 'admin/login', to: 'sessions#new', as: :new_session
   post 'admin/login', to: 'sessions#create', as: :sessions

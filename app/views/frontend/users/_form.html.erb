@@ -1,0 +1,5 @@
+<%= simple_form_for([:frontend, @model]) do |f| %>
+  <%= f.input :password, as: :password %>
+  <%= f.input :password_confirmation, as: :password %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

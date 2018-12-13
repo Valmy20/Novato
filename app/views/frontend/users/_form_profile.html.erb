@@ -1,0 +1,6 @@
+<%= simple_form_for @model, url: frontend_user_profile_path do |f| %>
+  <%= f.input :password_current, as: :password, label: "Current password" %>
+  <%= f.input :new_password, as: :password, label: "New password"%>
+  <%= f.input :new_password_confirmation, as: :password, label: "Confirm password"%>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
