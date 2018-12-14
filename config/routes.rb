@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   end
 
   namespace 'frontend', path: 'novato' do
-    root '#index'
     resources :users, only: %i[new create edit update destroy]
     match 'user_profile', to: 'users#profile', via: %i[get patch put], as: :user_profile
   end
+
+  # home
+  root 'frontend#index'
 
   # session admin
   get 'admin/login', to: 'sessions#new', as: :new_session
