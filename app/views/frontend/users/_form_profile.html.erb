@@ -1,8 +1,6 @@
 <%= simple_form_for @model, url: frontend_user_profile_path do |f| %>
-  <%= f.simple_fields_for :entity do |fi| %>
-    <%= fi.input :name, label: 'Nome' %>
-    <%= fi.input :email, label: 'Email' %>
-  <% end %>
+  <%= f.input :name, label: 'Nome' %>
+  <%= f.input :email, label: 'Email' %>
   <%= f.simple_fields_for :user_extra do |extra| %>
     <%= extra.input :bio %>
     <%= extra.input :skill, label: 'Habilidades' %>

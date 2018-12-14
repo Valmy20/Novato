@@ -5,6 +5,8 @@ RSpec.describe User, type: :model do
 
   it 'has colums user' do
       user = described_class.column_names
+      expect(user).to include('name')
+      expect(user).to include('email')
       expect(user).to include('password_digest')
       expect(user).to include('avatar')
       expect(user).to include('cover')
@@ -20,8 +22,8 @@ RSpec.describe User, type: :model do
   context 'when create user' do
     it 'has secure token' do
       expect(User.create(
-          # name: 'Valmy Ericles Nunes Machado',
-          # email: 'user@localhost.com',
+          name: 'Valmy Ericles Nunes Machado',
+          email: 'user@localhost.com',
           password: '123456',
           password_confirmation: '123456',
           status: true
@@ -29,15 +31,15 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # context 'validation presence' do
-  #   it { is_expected.to validate_presence_of(:email) }
-  # end
+  context 'validation presence' do
+    it { is_expected.to validate_presence_of(:email) }
+  end
 
   context 'when validation' do
 
-    # it 'allow_value email' do
-    #   is_expected.to allow_value('user@example.com').for(:email)
-    # end
+    it 'allow_value email' do
+      is_expected.to allow_value('user@example.com').for(:email)
+    end
 
     it 'validate password lenght' do
       is_expected.to validate_length_of(:password).

@@ -1,14 +1,17 @@
 class User < ApplicationRecord
   has_secure_password
   has_secure_token :token_reset
-  has_one :entity, as: :entityable, dependent: :destroy
   has_one :user_extra, dependent: :destroy
-  accepts_nested_attributes_for :entity, :user_extra
+  accepts_nested_attributes_for :user_extra
   attr_accessor :password_current, :require_password_current, :new_password, :new_password_confirmation
 
   default_scope { where(deleted: false) }
+  validates :name, presence: true, length: { in: 2..30 }
   validates :password, :password_confirmation, presence: true, on: :create
   validates :password, :password_confirmation, length: { in: 6..20 }, allow_blank: true
+  validates :email, presence: true, email: true, uniqueness: {
+    scope: :deleted, conditions: -> { where(deleted: false) }
+  }
 
   validates :password_current, presence: true, if: :require_password_current
   validate :password_current_verify, if: :require_password_current

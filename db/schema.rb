@@ -37,17 +37,6 @@ ActiveRecord::Schema.define(version: 2018_12_14_125138) do
     t.index ["admin_id"], name: "index_categories_on_admin_id"
   end
 
-  create_table "entities", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "entityable_type"
-    t.integer "entityable_id"
-    t.boolean "deleted", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["entityable_type", "entityable_id"], name: "index_entities_on_entityable_type_and_entityable_id"
-  end
-
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -70,17 +59,9 @@ ActiveRecord::Schema.define(version: 2018_12_14_125138) do
     t.index ["user_id"], name: "index_user_extras_on_user_id"
   end
 
-  create_table "user_profiles", force: :cascade do |t|
-    t.text "bio"
-    t.text "skill"
-    t.string "phone"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_profiles_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
     t.string "password_digest"
     t.string "avatar"
     t.string "cover"
@@ -97,5 +78,4 @@ ActiveRecord::Schema.define(version: 2018_12_14_125138) do
 
   add_foreign_key "categories", "admins"
   add_foreign_key "user_extras", "users"
-  add_foreign_key "user_profiles", "users"
 end
