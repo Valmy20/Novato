@@ -1,21 +1,28 @@
 module Frontend
   class UsersController < FrontendController
-    before_action :set_item, only: %i[edit update destroy]
+    before_action :set_item, only: %i[show edit update destroy]
+    before_action :authenticate_user, only: %i[show edit update profile destroy]
 
     def new
       @model = User.new
+      @model.build_user_extra if @model.user_extra.blank?
+    end
+
+    def show
     end
 
     def create
       @model = User.new(set_params)
       if @model.save
-        redirect_to frontend_user_profile_path, notice: 'User registered'
+        session[:user_id] = @model.id
+        redirect_to frontend_user_path(@model), notice: 'User registered'
       else
         render :new
       end
     end
 
     def edit
+      @model.build_user_extra if @model.user_extra.blank?
     end
 
     def update
@@ -27,7 +34,7 @@ module Frontend
     end
 
     def profile
-      @model = User.last
+      @model = current_user
       @model.build_user_extra if @model.user_extra.blank?
       @model.require_password_current = true
       (redirect_to frontend_user_profile_path, notice: 'Profile updated' if @model.update(set_params)) if request.patch?
@@ -35,13 +42,13 @@ module Frontend
 
     def destroy
       @model.deleted = true
-      redirect_to new_frontend_user_path, notice: 'User deleted' if @model.save
+      redirect_to root_path, notice: 'User deleted' if @model.save
     end
 
     private
 
     def set_item
-      @model = User.find(params[:id])
+      @model = User.friendly.find(params[:id])
     end
 
     def password_blank?
@@ -64,7 +71,8 @@ module Frontend
         :password_current,
         :new_password,
         :new_password_confirmation,
-        :status
+        :status,
+        user_extra_attributes: %i[bio skill phone]
       )
     end
 

@@ -1,13 +1,32 @@
-<%= simple_form_for @model, url: frontend_user_profile_path do |f| %>
-  <%= f.input :name, label: 'Nome' %>
-  <%= f.input :email, label: 'Email' %>
-  <%= f.simple_fields_for :user_extra do |extra| %>
-    <%= extra.input :bio %>
-    <%= extra.input :skill, label: 'Habilidades' %>
-    <%= extra.input :phone, input_html: {class: 'phone'}, label: 'Telefone' %>
-  <% end %>
-  <%= f.input :password_current, as: :password, label: "Senha atual" %>
-  <%= f.input :new_password, as: :password, label: "Nova senha"%>
-  <%= f.input :new_password_confirmation, as: :password, label: "Confirmar nova senha"%>
-  <%= f.button :submit, class: 'btn btn-primary' %>
+<section id="form_profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <%= simple_form_for @model, url: frontend_user_profile_path do |f| %>
+          <div class="fields">
+            <%= f.input :name, label: 'Nome' %>
+            <%= f.input :email, label: 'Email' %>
+            <%= f.simple_fields_for :user_extra do |extra| %>
+              <%= extra.input :bio %>
+              <%= extra.input :skill, label: 'Habilidades' %>
+              <%= extra.input :phone, input_html: {class: 'phone'}, label: 'Telefone' %>
+            <% end %>
+          </div>
+          <div class="profile_passwords">
+            <%= f.input :password_current, as: :password, label: "Senha atual" %>
+            <%= f.input :new_password, as: :password, label: "Nova senha"%>
+            <%= f.input :new_password_confirmation, as: :password, label: "Confirmar nova senha"%>
+            <%= f.button :submit, class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= link_to frontend_user_path(current_user) do %>
+  Mostrar Perfil
+<% end %>
+<%= link_to logout_session_user_path do %>
+  Sair
 <% end %>

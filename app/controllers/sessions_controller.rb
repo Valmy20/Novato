@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
   def authentication_admin(admin:, password:)
     if admin.present? && admin.authenticate(password)
       session[:admin_id] = admin.id
+      flash[:notice] = 'Login efetuado'
       redirect_to backoffice_admins_path
     else
       flash[:alert] = 'E-mail ou senha incorretas'

@@ -5,6 +5,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :user_extra
   attr_accessor :password_current, :require_password_current, :new_password, :new_password_confirmation
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   default_scope { where(deleted: false) }
   validates :name, presence: true, length: { in: 2..30 }
   validates :password, :password_confirmation, presence: true, on: :create

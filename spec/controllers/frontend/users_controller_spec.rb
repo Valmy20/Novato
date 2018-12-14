@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Frontend::UsersController, type: :controller do
 
 	before(:each) do |skip|
-		session[:admin_id] = create(:admin).id
+		session[:user_id] = create(:user).id
 		unless skip.metadata[:skip_before]
 			@user = create(:user)
 		end
@@ -39,7 +39,7 @@ RSpec.describe Frontend::UsersController, type: :controller do
 	context "#destroy" do
 		it "#destroy is deleted and redirect_to" do
 				delete :destroy, params: {id: @user.id}
-				expect(response).to redirect_to(new_frontend_user_path)
+				expect(response).to redirect_to(root_path)
 				expect(controller).to set_flash[:notice]
 		end
 		it "#destroy is deleted to true" do

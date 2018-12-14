@@ -1,0 +1,27 @@
+<section class="bg-dark" id="login_admin">
+
+	<div class="container d-flex justify-content-center align-items-center">
+		<div class="card card-login">
+			<%= render partial: "layouts/frontend/flash_messages" %>
+			<div class="card-header">Login</div>
+
+			<div class="card-body">
+				<%= simple_form_for(:login, url: :sessions_user, method: :post) do |f| %>
+					<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
+					<%= f.input :password, as: :password, label: false, class:"form-control", placeholder:"Password" %>
+					<div class="d-flex justify-content-center">
+						<%= f.button :button, class:"btn btn-primary", style:"width: 100%;" do %>
+							Login
+						<% end %>
+					</div>
+				<% end %>
+				<%= link_to new_frontend_user_path, class:"d-block small", style:"text-align: left" do %>
+					Criar conta
+				<% end %>
+
+			</div>
+
+		</div>
+	</div>
+
+</section>
