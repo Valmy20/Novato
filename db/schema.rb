@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_173417) do
+ActiveRecord::Schema.define(version: 2018_12_14_111257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 2018_12_13_173417) do
     t.index ["admin_id"], name: "index_categories_on_admin_id"
   end
 
+  create_table "entities", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "entityable_type"
+    t.integer "entityable_id"
+    t.boolean "deleted", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entityable_type", "entityable_id"], name: "index_entities_on_entityable_type_and_entityable_id"
+  end
+
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -59,7 +70,7 @@ ActiveRecord::Schema.define(version: 2018_12_13_173417) do
     t.string "token_reset"
     t.json "credentials"
     t.string "slug"
-    t.boolean "deleted"
+    t.boolean "deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

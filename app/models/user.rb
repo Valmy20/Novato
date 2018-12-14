@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
   has_secure_token :token_reset
-
+  has_one :entity, as: :entityable, dependent: :destroy
+  accepts_nested_attributes_for :entity
   attr_accessor :password_current, :require_password_current, :new_password, :new_password_confirmation
 
   default_scope { where(deleted: false) }
@@ -24,10 +25,6 @@ class User < ApplicationRecord
     errors.add(:new_password_confirmation, 'Password is different') if new_password != new_password_confirmation
     self.password = new_password if new_password.present?
   end
-
-  # def save_email_downcase
-  #   self.email = email.downcase
-  # end
 
   def generate_token
     self.token_reset = loop do

@@ -4,6 +4,7 @@ module Frontend
 
     def new
       @model = User.new
+      @model.build_entity if @model.entity.blank?
     end
 
     def create
@@ -61,7 +62,8 @@ module Frontend
         :password_current,
         :new_password,
         :new_password_confirmation,
-        :status
+        :status,
+        entity_attributes: [:name, :email]
       )
     end
 
