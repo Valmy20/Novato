@@ -3,8 +3,13 @@
     <%= fi.input :name, label: 'Nome' %>
     <%= fi.input :email, label: 'Email' %>
   <% end %>
-  <%= f.input :password_current, as: :password, label: "Current password" %>
-  <%= f.input :new_password, as: :password, label: "New password"%>
-  <%= f.input :new_password_confirmation, as: :password, label: "Confirm password"%>
+  <%= f.simple_fields_for :user_extra do |extra| %>
+    <%= extra.input :bio %>
+    <%= extra.input :skill, label: 'Habilidades' %>
+    <%= extra.input :phone, input_html: {class: 'phone'}, label: 'Telefone' %>
+  <% end %>
+  <%= f.input :password_current, as: :password, label: "Senha atual" %>
+  <%= f.input :new_password, as: :password, label: "Nova senha"%>
+  <%= f.input :new_password_confirmation, as: :password, label: "Confirmar nova senha"%>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>

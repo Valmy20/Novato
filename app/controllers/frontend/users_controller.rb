@@ -29,6 +29,7 @@ module Frontend
 
     def profile
       @model = User.last
+      @model.build_user_extra if @model.user_extra.blank?
       @model.require_password_current = true
       (redirect_to frontend_user_profile_path, notice: 'Profile updated' if @model.update(set_params)) if request.patch?
     end
@@ -63,7 +64,8 @@ module Frontend
         :new_password,
         :new_password_confirmation,
         :status,
-        entity_attributes: [:name, :email]
+        entity_attributes: %i[name email],
+        user_extra_attributes: %i[bio skill phone]
       )
     end
 

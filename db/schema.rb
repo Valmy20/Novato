@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_111257) do
+ActiveRecord::Schema.define(version: 2018_12_14_125138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,26 @@ ActiveRecord::Schema.define(version: 2018_12_14_111257) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "user_extras", force: :cascade do |t|
+    t.text "bio"
+    t.text "skill"
+    t.string "phone"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_extras_on_user_id"
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.text "bio"
+    t.text "skill"
+    t.string "phone"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "password_digest"
     t.string "avatar"
@@ -76,4 +96,6 @@ ActiveRecord::Schema.define(version: 2018_12_14_111257) do
   end
 
   add_foreign_key "categories", "admins"
+  add_foreign_key "user_extras", "users"
+  add_foreign_key "user_profiles", "users"
 end

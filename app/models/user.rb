@@ -2,7 +2,8 @@ class User < ApplicationRecord
   has_secure_password
   has_secure_token :token_reset
   has_one :entity, as: :entityable, dependent: :destroy
-  accepts_nested_attributes_for :entity
+  has_one :user_extra, dependent: :destroy
+  accepts_nested_attributes_for :entity, :user_extra
   attr_accessor :password_current, :require_password_current, :new_password, :new_password_confirmation
 
   default_scope { where(deleted: false) }
