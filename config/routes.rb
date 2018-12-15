@@ -27,4 +27,8 @@ Rails.application.routes.draw do
   #reset admin password
   match 'reset_password', to: 'frontend/admins#reset_password', as: :reset_password, via:[:get, :post]
   get 'verify_token_reset/:token', to: 'frontend/admins#verify_token_reset', as: :verify_token_reset
+
+  #reset user password
+  match 'user_reset_password', to: 'frontend/users#reset_password', as: :user_reset_password, via:[:get, :post]
+  get 'user_verify_token_reset/:token', to: 'frontend/users#verify_token_reset', as: :user_verify_token_reset
 end
