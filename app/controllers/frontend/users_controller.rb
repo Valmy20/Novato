@@ -36,7 +36,7 @@ module Frontend
     def profile
       @model = current_user
       @model.build_user_extra if @model.user_extra.blank?
-      @model.require_password_current = true
+      (@model.require_password_current = true) if @model.provider.blank?
       (redirect_to frontend_user_profile_path, notice: 'Profile updated' if @model.update(set_params)) if request.patch?
     end
 

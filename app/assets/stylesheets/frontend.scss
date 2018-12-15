@@ -50,6 +50,7 @@ section#user_profile {
   }
 
 }
+
 section#form_profile {
   div.profile_passwords {
     width: 50vw;
@@ -58,5 +59,24 @@ section#form_profile {
   div.fields {
     width: 70vw;
     padding: 20px;
+  }
+}
+
+section#login_user {
+  height: 100vh;
+  .container {
+    height: 100vh;
+
+    .card-login {
+      width: 25rem;
+    }
+  }
+  .btn_login_face {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 10px;
   }
 }

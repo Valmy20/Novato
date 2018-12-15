@@ -6,4 +6,8 @@ module ApplicationHelper
       content_tag(:span, 'Inactive', class: 'badge badge-pill badge-danger')
     end
   end
+
+  def logged_facebook(user)
+    user.provider.blank?
+  end
 end

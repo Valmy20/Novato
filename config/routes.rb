@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   #reset user password
   match 'user_reset_password', to: 'frontend/users#reset_password', as: :user_reset_password, via:[:get, :post]
   get 'user_verify_token_reset/:token', to: 'frontend/users#verify_token_reset', as: :user_verify_token_reset
+
+  #user login facebook
+  post 'login/:provider', to: redirect('/auth/%{provider}'), as: :login_facebook
+  get 'auth/:provider/callback', to: 'sessions_users#create', as: :login_with_provider
 end

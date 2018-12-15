@@ -6,9 +6,13 @@ class SessionsUsersController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: email_downcase)
-    password = params[:login][:password]
-    authentication_user(user: user, password: password)
+    if params[:provider].present?
+      provider
+    else
+      user = User.find_by(email: email_downcase)
+      password = params[:login][:password]
+      authentication_user(user: user, password: password)
+    end
   end
 
   def destroy
@@ -27,6 +31,21 @@ class SessionsUsersController < ApplicationController
       flash[:alert] = 'E-mail ou senha incorretas'
       render :new
     end
+  end
+
+  def provider
+    @user = User.create_from_auth_hash(auth: auth_hash)
+    User.update_user(user: @user.id, code: cookies[:code]) if cookies[:code].present?
+    if @user.id.nil?
+      redirect_to new_session_user_path, alert: 'O email desse Facebook já possui cadastro !'
+    else
+      session[:user_id] = @user.id
+      redirect_to frontend_user_path(@user), notice: 'Logado com Facebook'
+    end
+  end
+
+  def auth_hash
+    request.env['omniauth.auth']
   end
 
   def email_downcase

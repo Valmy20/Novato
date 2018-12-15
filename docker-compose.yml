@@ -18,6 +18,8 @@ services:
       - DISABLE_DATABASE_ENVIRONMENT_CHECK=1
       - EMAIL_SENDER=valmydeveloper@gmail.com
       - PASSWORD_SEND=imdeveloper
+      - FACEBOOK_CLIENT=395939817613453
+      - FACEBOOK_SECRET=561c97ea58a111d7aabba00c1ef00978
     links:
       - postgres
     volumes:
