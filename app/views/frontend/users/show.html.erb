@@ -10,10 +10,9 @@
                     Editar
                   <% end %>
           		</div>
-
-          		<a href="#" class="avatar-img">
-          			<%= (image_tag @model.avatar, style:"width: 200px") unless @model.avatar.blank? %>
-          		</a>
+          		<span class="avatar-img">
+          			<%= (image_tag @model.avatar.url(:thumb), class:"img-fluid") unless @model.avatar.blank? %>
+          		</span>
 
           		<div class="divUser">
           			<div class="divName">

@@ -27,7 +27,7 @@ module Frontend
 
     def update
       if @model.update(set_params)
-        redirect_to frontend_users_path, notice: 'User updated'
+        redirect_to frontend_user_path(current_user), notice: 'User updated'
       else
         render :edit
       end
@@ -35,9 +35,17 @@ module Frontend
 
     def profile
       @model = current_user
-      @model.build_user_extra if @model.user_extra.blank?
       (@model.require_password_current = true) if @model.provider.blank?
-      (redirect_to frontend_user_profile_path, notice: 'Profile updated' if @model.update(set_params)) if request.patch?
+
+      return nil unless request.patch?
+
+      return nil unless @model.update(set_params)
+
+      if params[:user][:avatar].present?
+        render :crop
+      else
+        redirect_to frontend_user_path(current_user), notice: 'User updated'
+      end
     end
 
     def destroy
@@ -95,7 +103,7 @@ module Frontend
         :password_current,
         :new_password,
         :new_password_confirmation,
-        :status,
+        :status, :avatar, :crop_x, :crop_y, :crop_w, :crop_h,
         user_extra_attributes: %i[bio skill phone]
       )
     end

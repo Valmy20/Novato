@@ -5,6 +5,7 @@
         <%= simple_form_for @model, url: frontend_user_profile_path do |f| %>
           <div class="fields">
             <%= f.input :name, label: 'Nome' %>
+            <%= f.input :avatar, as: :file %>
             <%= f.simple_fields_for :user_extra do |extra| %>
               <%= extra.input :bio %>
               <%= extra.input :skill, label: 'Habilidades' %>

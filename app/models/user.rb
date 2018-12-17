@@ -6,6 +6,10 @@ class User < ApplicationRecord
   attr_accessor :password_current, :require_password_current, :new_password,
                 :new_password_confirmation, :skip_password
 
+  mount_uploader :avatar, AvatarUploader
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  after_update :crop_avatar
+
   extend FriendlyId
   friendly_id :name, use: :slugged
   default_scope { where(deleted: false) }
@@ -38,6 +42,10 @@ class User < ApplicationRecord
       user.save
     end
     user
+  end
+
+  def crop_avatar
+    avatar.recreate_versions! if crop_x.present?
   end
 
   private

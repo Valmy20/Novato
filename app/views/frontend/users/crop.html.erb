@@ -1,0 +1,12 @@
+<h1>Recortar Imagem</h1>
+<div class="row">
+  <div class="col-md-8">
+    <%= image_tag @model.avatar.url(:large), id: "user_cropbox" %>
+    <%= simple_form_for([:frontend, @model]) do |f| %>
+      <% %w[x y w h].each do |attribute| %>
+        <%= f.input "crop_#{attribute}", as: :hidden %>
+      <% end %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
