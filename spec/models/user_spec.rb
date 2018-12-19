@@ -41,6 +41,12 @@ RSpec.describe User, type: :model do
       is_expected.to allow_value('user@example.com').for(:email)
     end
 
+    it 'validate name lenght' do
+      is_expected.to validate_length_of(:name).
+          is_at_least(2).
+          is_at_most(50)
+    end
+
     it 'validate password lenght' do
       is_expected.to validate_length_of(:password).
           is_at_least(6).

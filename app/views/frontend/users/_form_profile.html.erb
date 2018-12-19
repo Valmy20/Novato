@@ -4,22 +4,41 @@
       <div class="col-md-10">
         <%= simple_form_for @model, url: frontend_user_profile_path do |f| %>
           <div class="fields">
-            <%= f.input :name, label: 'Nome' %>
-            <%= f.input :avatar, as: :file %>
+            <div class="name">
+              <%= f.input :name, label: 'Nome' %>
+            </div>
+            <%= f.input :avatar, as: :file, label: 'Foto do Perfil' %>
+            <%= f.hidden_field :avatar_cache %>
             <%= f.simple_fields_for :user_extra do |extra| %>
-              <%= extra.input :bio %>
-              <%= extra.input :skill, label: 'Habilidades' %>
-              <%= extra.input :phone, input_html: {class: 'phone'}, label: 'Telefone' %>
+              <div class="phone">
+                <%= extra.input :phone, input_html: {class: 'phone'}, label: 'Telefone' %>
+              </div>
+              <%= extra.input :bio, input_html: { rows: 7 }%>
+              <%= extra.input :skill, label: 'Habilidades', input_html: { rows: 5 } %>
             <% end %>
           </div>
-          <% unless !logged_facebook(@model) %>
-            <div class="profile_passwords">
-              <%= f.input :password_current, as: :password, label: "Senha atual" %>
-              <%= f.input :new_password, as: :password, label: "Nova senha"%>
-              <%= f.input :new_password_confirmation, as: :password, label: "Confirmar nova senha"%>
+          <%= button_tag(class: "btn btn-success") do %>
+            <div class="d-flex">
+              <span class="material-icons" style="">check</span>
+              <span style="margin-left: 5px">Salvar</span>
             </div>
           <% end %>
-          <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+      <div class="col-md-2 btns">
+        <%= link_to frontend_update_user_cover_path, class:"btn btn-primary custom_btn" do %>
+          <div class="d-flex contact">
+            <span class="material-icons" style="">insert_photo</span>
+            <span style="margin-left: 5px">Foto de capa</span>
+          </div>
+        <% end %>
+        <% unless !logged_facebook(@model) %>
+          <%= link_to frontend_update_user_password_path, class:"btn btn-primary custom_btn" do %>
+            <div class="d-flex contact">
+              <span class="material-icons" style="">lock</span>
+              <span style="margin-left: 5px">Password</span>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

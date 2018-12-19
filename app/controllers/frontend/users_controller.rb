@@ -17,7 +17,7 @@ module Frontend
         session[:user_id] = @model.id
         redirect_to frontend_user_path(@model), notice: 'User registered'
       else
-        render :new
+        redirect_to new_frontend_user_path, alert: 'Verifique as informações'
       end
     end
 
@@ -26,26 +26,7 @@ module Frontend
     end
 
     def update
-      if @model.update(set_params)
-        redirect_to frontend_user_path(current_user), notice: 'User updated'
-      else
-        render :edit
-      end
-    end
-
-    def profile
-      @model = current_user
-      (@model.require_password_current = true) if @model.provider.blank?
-
-      return nil unless request.patch?
-
-      return nil unless @model.update(set_params)
-
-      if params[:user][:avatar].present?
-        render :crop
-      else
-        redirect_to frontend_user_path(current_user), notice: 'User updated'
-      end
+      render :edit unless (redirect_to frontend_user_path(current_user) if @model.update(set_params))
     end
 
     def destroy
@@ -53,8 +34,38 @@ module Frontend
       redirect_to root_path, notice: 'User deleted' if @model.save
     end
 
+    def profile
+      @model = current_user
+      @model.build_user_extra if @model.user_extra.blank?
+      return unless request.patch?
+      return unless @model.update(set_params)
+
+      avatar = params[:user][:avatar]
+      msg = 'Aterações realizadas'
+      (redirect_to frontend_user_path(current_user), notice: msg) unless (render :crop if avatar.present?)
+    end
+
+    def update_user_password
+      @model = current_user
+      @model.require_password_current = true
+      return unless request.patch?
+
+      render :update_user_password unless ((redirect_to frontend_user_path(current_user)) if @model.update(set_params))
+    end
+
+    def update_user_cover
+      @model = current_user
+      @model.require_password_current = false
+      @model.require_user_cover = true
+      return unless request.patch?
+
+      return unless @model.update(set_params)
+
+      render :update_user_cover unless (render :crop_cover if params[:user][:cover].present?)
+    end
+
     def reset_password
-      return nil unless request.post?
+      return unless request.post?
 
       @model = User.where(email: params[:user][:email]).last
       if @model
@@ -96,15 +107,9 @@ module Frontend
     def set_params
       if_is_blank
       params.require(:user).permit(
-        :name,
-        :email,
-        :password,
-        :password_confirmation,
-        :password_current,
-        :new_password,
-        :new_password_confirmation,
-        :status, :avatar, :crop_x, :crop_y, :crop_w, :crop_h,
-        user_extra_attributes: %i[bio skill phone]
+        :name, :email, :password, :password_confirmation, :password_current, :new_password,
+        :new_password_confirmation, :status, :avatar, :crop_x, :crop_y, :crop_w, :crop_h, :cover, :cropc_x,
+        :cropc_y, :cropc_w, :cropc_h, user_extra_attributes: %i[bio skill phone]
       )
     end
 

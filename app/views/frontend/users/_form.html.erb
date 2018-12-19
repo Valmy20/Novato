@@ -1,7 +1,41 @@
-<%= simple_form_for([:frontend, @model]) do |f| %>
-  <%= f.input :name, label: 'Nome' %>
-  <%= f.input :email, label: 'Email' %>
-  <%= f.input :password, as: :password %>
-  <%= f.input :password_confirmation, as: :password %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
+<section class="d-flex justify-content-center align-items-center" id="form_create_user" style="border: 1px solid black;">
+  <div style="border: 5px solid #64B5F6; padding: 10px;" >
+    <%= simple_form_for([:frontend, @model]) do |f| %>
+
+      <div class="custon_field left-addon" style="margin-top: 30px">
+        <div class="icon">
+          <i class="material-icons" style="color: white;">person</i>
+        </div>
+        <%= f.input :name, label: false, placeholder:"nome", class:"form-control" %>
+      </div>
+
+      <div class="custon_field left-addon" style="margin-top: 30px">
+        <div class="icon">
+          <i class="material-icons" style="color: white;">email</i>
+        </div>
+        <%= f.input :email, label: false, placeholder:"e-mail", class:"form-control" %>
+      </div>
+
+      <div class="custon_field left-addon" style="margin-top: 30px">
+        <div class="icon">
+          <i class="material-icons" style="color: white;">lock</i>
+        </div>
+        <%= f.input :password, label: false, placeholder:"senha", class:"form-control" %>
+      </div>
+
+      <div class="custon_field left-addon" style="margin-top: 30px">
+        <div class="icon">
+          <i class="material-icons" style="color: white;">lock</i>
+        </div>
+        <%= f.input :password_confirmation, label: false, placeholder:"confirmar senha", class:"form-control" %>
+      </div>
+
+      <%= button_tag(class: "btn btn-success") do %>
+        <div class="d-flex">
+          <span class="material-icons" style="">check</span>
+          <span style="margin-left: 5px">Cadastrar</span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>

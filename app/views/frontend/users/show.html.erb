@@ -1,55 +1,72 @@
-<section id="user_profile">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-10">
-          <div>
-            <a class="bg"></a>
-          	<div>
-          		<div class="edit-button">
-                  <%= link_to frontend_user_profile_path, class:"btn btn-info" do %>
-                    Editar
-                  <% end %>
-          		</div>
-          		<span class="avatar-img">
-          			<%= (image_tag @model.avatar.url(:thumb), class:"img-fluid") unless @model.avatar.blank? %>
-          		</span>
-
-          		<div class="divUser">
-          			<div class="divName">
-          				<%= @model.name unless @model.name.blank?%>
-          			</div>
-          			<div class="info">
-                  <div class="email">
-                    e-mail
-                    <p><%= @model.email unless @model.email.blank?%></p>
-                  </div>
-                  <div class="contact">
-                    telefone
-                    <p><%= @model.user_extra.phone unless @model.user_extra.blank?%></p>
-                  </div>
-          			</div>
-          		</div>
-          	</div>
-          </div>
+<section  id="show_profile">
+  <section id="top">
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-11">
+            <div>
+              <%= (image_tag @model.cover.url(:thumb), class:"img-fluid image_cover") unless @model.cover.blank? %>
+              <%= (image_tag 'default_cover.jpg', class:"img-fluid image_cover") if @model.cover.blank? %>
+              <div>
+                <div class="edit-button">
+                    <%= link_to frontend_user_profile_path, class:"btn btn-info" do %>
+                      <div class="d-flex">
+                        <span class="material-icons" style="">create</span>
+                        <span style="margin-left: 5px">Editar</span>
+                      </div>
+                    <% end %>
+            		</div>
+              </div>
+            </div>
+        </div>
       </div>
     </div>
-    <section class="skills-info">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-9">
-            <div class="row">
-              <div class="col-md-6">
-                <h3>Sobre mim</h3>
-                  <%= @model.user_extra.bio unless @model.user_extra.blank?%>
+  </section>
+
+  <section id="user_info">
+    <div class="container-fluid padding_10">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-11">
+          <div class="row">
+            <div class="col-md-3 avatar">
+              <%= (image_tag @model.avatar.url(:thumb), class:"img-fluid img_avatar") unless @model.avatar.blank? %>
+              <%= (image_tag 'default_user.jpeg', class:"img-fluid img_avatar") if @model.avatar.blank? %>
+            </div>
+            <div class="col-md-6 personal_info">
+              <p class="info"><%= @model.name unless @model.name.blank?%></p>
+            </div>
+            <div class="col-md-3 contact_info">
+              <div class="d-flex">
+                <span class="material-icons">email</span>
+                <span style="margin-left: 5px"><%= @model.email unless @model.email.blank?%></span>
               </div>
-              <div class="col-md-6">
-                <h3>Habilidades</h3>
-                  <%= @model.user_extra.skill unless @model.user_extra.blank?%>
+              <div class="d-flex">
+                <span class="material-icons">phone</span>
+                <span style="margin-left: 5px"><%= @model.user_extra.phone unless @model.user_extra.blank?%></span>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
+  <section id="bio_skill">
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-11">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-6 info">
+              <h3>Bio</h3>
+              <%= @model.user_extra.bio unless @model.user_extra.blank?%>
+            </div>
+            <div class="col-md-5 info">
+              <h3>Skills</h3>
+              <%= @model.user_extra.skill unless @model.user_extra.blank?%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </section>

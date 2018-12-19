@@ -4,16 +4,22 @@ class User < ApplicationRecord
   has_one :user_extra, dependent: :destroy
   accepts_nested_attributes_for :user_extra
   attr_accessor :password_current, :require_password_current, :new_password,
-                :new_password_confirmation, :skip_password
+                :new_password_confirmation, :skip_password, :require_user_cover
 
-  mount_uploader :avatar, AvatarUploader
+  attr_accessor :cropc_x, :cropc_y, :cropc_w, :cropc_h
+  mount_uploader :cover, CoverUploader
+  after_update :crop_cover
+
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  mount_uploader :avatar, AvatarUploader
   after_update :crop_avatar
 
   extend FriendlyId
   friendly_id :name, use: :slugged
   default_scope { where(deleted: false) }
-  validates :name, presence: true, length: { in: 2..30 }
+
+  validates :cover, presence: true, if: :require_user_cover
+  validates :name, presence: true, length: { in: 2..50 }
   validates :password, :password_confirmation, presence: true, on: :create, unless: :skip_password
   validates :password, :password_confirmation, length: { in: 6..20 }, allow_blank: true
   validates :email, presence: true, email: true, uniqueness: {
@@ -46,6 +52,10 @@ class User < ApplicationRecord
 
   def crop_avatar
     avatar.recreate_versions! if crop_x.present?
+  end
+
+  def crop_cover
+    cover.recreate_versions! if cropc_x.present?
   end
 
   private

@@ -1,0 +1,15 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <%= simple_form_for @model, url: frontend_update_user_cover_path do |f| %>
+          <div>
+            <%= f.input :cover, as: :file, label:'Selecione a fato' %>
+            <%= f.hidden_field :cover_cache %>
+          </div>
+          <%= f.submit 'Submeter', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

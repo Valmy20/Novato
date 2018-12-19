@@ -15,7 +15,7 @@ RSpec.describe UserExtra, type: :model do
     it 'validate bio lenght' do
       is_expected.to validate_length_of(:bio).
           is_at_least(10).
-          is_at_most(200)
+          is_at_most(500)
     end
   end
 

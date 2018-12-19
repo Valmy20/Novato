@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   namespace 'frontend', path: 'novato' do
     resources :users, only: %i[show new create edit update destroy]
     match 'user_profile', to: 'users#profile', via: %i[get patch put], as: :user_profile
+    match 'update_user_cover', to: 'users#update_user_cover', via: %i[get patch put], as: :update_user_cover
+    match 'update_user_password', to: 'users#update_user_password', via: %i[get patch put], as: :update_user_password
   end
 
   # home
