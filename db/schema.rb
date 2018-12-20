@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_125138) do
     t.string "avatar"
     t.string "cover"
     t.string "uid"
-    t.integer "status"
+    t.integer "status", default: 0
     t.string "provider"
     t.string "token_reset"
     t.json "credentials"
