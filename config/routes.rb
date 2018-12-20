@@ -15,6 +15,11 @@ Rails.application.routes.draw do
     match 'update_user_password', to: 'users#update_user_password', via: %i[get patch put], as: :update_user_password
   end
 
+  namespace 'company', path: 'empregador' do
+    resources :employers, only: %i[show new create edit update destroy]
+    match 'employer_profile', to: 'employers#profile', via: %i[get patch put], as: :employer_profile
+  end
+
   # home
   root 'frontend#index'
 

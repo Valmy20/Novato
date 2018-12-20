@@ -4,7 +4,6 @@ RSpec.describe Frontend::UsersController, type: :routing do
 
   describe "routing" do
 
-
 		it "routes to #new" do
       expect(:get => new_frontend_user_path).to route_to("frontend/users#new")
     end
