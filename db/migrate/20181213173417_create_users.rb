@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :avatar
       t.string :cover
       t.string :uid
-      t.integer :status
+      t.integer :status, default: 0
       t.string :provider
       t.string :token_reset
       t.json :credentials

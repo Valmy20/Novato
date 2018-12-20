@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
           email: 'user@localhost.com',
           password: '123456',
           password_confirmation: '123456',
-          status: true
+          status: :disapproved
         ).token_reset).to be_present
     end
   end

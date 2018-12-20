@@ -15,7 +15,7 @@ RSpec.describe Frontend::UsersController, type: :controller do
 			email: 'valmyericles@gmail.com',
       password: '123456',
       password_confirmation: '123456',
-			status: true
+			status: :disapproved
 		}
 	}
 	context "actions" do

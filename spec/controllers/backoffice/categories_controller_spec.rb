@@ -65,7 +65,7 @@ RSpec.describe Backoffice::CategoriesController, type: :controller do
 	end
 
 	context "PUT #update", :skip_before do
-		name = Faker::Name.name
+		name = "recém-formado"
 		let(:new_attributes) {
 			{
 					name: name

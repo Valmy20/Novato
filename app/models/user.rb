@@ -18,6 +18,7 @@ class User < ApplicationRecord
   friendly_id :name, use: :slugged
   default_scope { where(deleted: false) }
 
+  enum status: %i[disapproved approved]
   validates :cover, presence: true, if: :require_user_cover
   validates :name, presence: true, length: { in: 2..50 }
   validates :password, :password_confirmation, presence: true, on: :create, unless: :skip_password
