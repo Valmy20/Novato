@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_125138) do
+ActiveRecord::Schema.define(version: 2018_12_20_205642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,28 @@ ActiveRecord::Schema.define(version: 2018_12_14_125138) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_categories_on_admin_id"
+  end
+
+  create_table "employer_extras", force: :cascade do |t|
+    t.text "about"
+    t.string "phone"
+    t.bigint "employer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employer_id"], name: "index_employer_extras_on_employer_id"
+  end
+
+  create_table "employers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.string "logo"
+    t.string "token_reset"
+    t.string "slug"
+    t.integer "status"
+    t.boolean "deleted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
@@ -77,5 +99,6 @@ ActiveRecord::Schema.define(version: 2018_12_14_125138) do
   end
 
   add_foreign_key "categories", "admins"
+  add_foreign_key "employer_extras", "employers"
   add_foreign_key "user_extras", "users"
 end
