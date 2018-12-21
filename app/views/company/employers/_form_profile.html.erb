@@ -1,0 +1,10 @@
+<%= simple_form_for @model, url: company_employer_profile_path do |f| %>
+  <%= f.input :name, label: 'Nome' %>
+
+  <%= button_tag(class: "btn btn-success") do %>
+    <div class="d-flex">
+      <span class="material-icons" style="">check</span>
+      <span style="margin-left: 5px">Salvar</span>
+    </div>
+  <% end %>
+<% end %>

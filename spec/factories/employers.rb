@@ -1,11 +1,9 @@
 FactoryBot.define do
   factory :employer do
-    name { "MyString" }
-    email { "MyString" }
-    password_digest { "MyString" }
-    logo { "MyString" }
-    token_reset { "MyString" }
-    slug { "MyString" }
+    name { Faker::Name.name }
+    email { "employer@gmail.com" }
+    password { "123456" }
+    password_confirmation { "123456" }
     status { 1 }
     deleted { false }
   end

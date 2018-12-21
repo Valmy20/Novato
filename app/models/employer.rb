@@ -4,6 +4,10 @@ class Employer < ApplicationRecord
   attr_accessor :password_current, :require_password_current, :new_password,
                 :new_password_confirmation
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
+  default_scope { where(deleted: false) }
   enum status: %i[disapproved approved]
   validates :name, presence: true, length: { in: 2..50 }
   validates :password, :password_confirmation, presence: true, on: :create
