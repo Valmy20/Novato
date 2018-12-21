@@ -33,6 +33,11 @@ Rails.application.routes.draw do
   post 'user/login', to: 'sessions_users#create', as: :sessions_user
   get 'logout_user', to: 'sessions_users#destroy', as: :logout_session_user
 
+  # session employer
+  get 'employer/login', to: 'sessions_employers#new', as: :new_session_employer
+  post 'employer/login', to: 'sessions_employers#create', as: :sessions_employer
+  get 'logout_employer', to: 'sessions_employers#destroy', as: :logout_session_employer
+
   #reset admin password
   match 'reset_password', to: 'frontend/admins#reset_password', as: :reset_password, via:[:get, :post]
   get 'verify_token_reset/:token', to: 'frontend/admins#verify_token_reset', as: :verify_token_reset

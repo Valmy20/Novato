@@ -1,7 +1,7 @@
 module Company
   class EmployersController < CompanyController
     before_action :set_item, only: %i[show edit update destroy]
-    # before_action :authenticate_employer, only: %i[show edit update profile destroy]
+    before_action :authenticate_employer, only: %i[show edit update profile destroy]
 
     def new
       @model = Employer.new
@@ -57,15 +57,8 @@ module Company
 
     def set_params
       if_is_blank
-      params.require(:employer).permit(
-        :name,
-        :email,
-        :password,
-        :password_confirmation,
-        :password_current,
-        :new_password,
-        :new_password_confirmation,
-        :status
+      params.require(:employer).permit(:name, :email, :password, :password_confirmation,
+        :password_current, :new_password, :new_password_confirmation, :status
       )
     end
 

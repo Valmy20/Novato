@@ -1,0 +1,9 @@
+<%= simple_form_for(:login, url: :sessions_employer, method: :post) do |f| %>
+	<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
+	<%= f.input :password, as: :password, label: false, class:"form-control", placeholder:"Password" %>
+	<div class="d-flex justify-content-center">
+		<%= f.button :button, class:"btn", style:"width: 100%;" do %>
+			Login
+		<% end %>
+	</div>
+<% end %>
