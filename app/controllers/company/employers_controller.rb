@@ -39,6 +39,30 @@ module Company
       render :profile
     end
 
+    def reset_password
+      return unless request.post?
+
+      @model = Employer.where(email: params[:employer][:email]).last
+      if @model
+        EmployerMailer.reset_password(@model).deliver_now
+        redirect_to new_session_employer_path, notice: 'Pedido de nova senha enviado, vefirique seu email.'
+      else
+        flash[:alert] = 'Email não cadastrado !'
+      end
+    end
+
+    def verify_token_reset
+      @model = Employer.where(token_reset: params[:token]).last
+      return nil if @model.blank?
+
+      reset = @model
+      password = SecureRandom.hex(8)
+      reset.regenerate_token_reset
+      reset.update(password: password)
+      EmployerMailer.send_new_password(reset, password).deliver_now
+      redirect_to new_session_employer_path, notice: 'A nova senha foi enviada para o seu email !'
+    end
+
     private
 
     def set_item
@@ -57,7 +81,8 @@ module Company
 
     def set_params
       if_is_blank
-      params.require(:employer).permit(:name, :email, :password, :password_confirmation,
+      params.require(:employer).permit(
+        :name, :email, :password, :password_confirmation,
         :password_current, :new_password, :new_password_confirmation, :status
       )
     end

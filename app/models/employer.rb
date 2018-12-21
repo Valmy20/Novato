@@ -36,7 +36,7 @@ class Employer < ApplicationRecord
   def generate_token
     self.token_reset = loop do
       random_token = SecureRandom.urlsafe_base64(nil, false)
-      break random_token unless Admin.exists?(token_reset: random_token)
+      break random_token unless Employer.exists?(token_reset: random_token)
     end
   end
 end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Company::EmployersController, type: :controller do
 
 	before(:each) do |skip|
-		# session[:employer_id] = create(:employer).id
+		session[:employer_id] = create(:employer).id
 		unless skip.metadata[:skip_before]
 			@employer = create(:employer)
 		end
