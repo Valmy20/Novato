@@ -1,0 +1,12 @@
+<h1>Recortar Logo</h1>
+<div class="row">
+  <div class="col-md-8">
+    <%= image_tag @model.logo.url(:large), id: "employer_cropbox" %>
+    <%= simple_form_for @model, url: company_employer_profile_path do |f| %>
+      <% %w[x y w h].each do |attribute| %>
+        <%= f.input "crop_#{attribute}", as: :hidden %>
+      <% end %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

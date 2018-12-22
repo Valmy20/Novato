@@ -1,13 +1,10 @@
 module Company
   class EmployersController < CompanyController
-    before_action :set_item, only: %i[show edit update destroy]
-    before_action :authenticate_employer, only: %i[show edit update profile destroy]
+    before_action :set_item, only: %i[edit update destroy]
+    before_action :authenticate_employer, only: %i[edit update profile destroy]
 
     def new
       @model = Employer.new
-    end
-
-    def show
     end
 
     def create
@@ -37,7 +34,9 @@ module Company
       return unless request.patch?
       return unless @model.update(set_params)
 
-      render :profile
+      logo = params[:employer][:logo]
+      msg = 'Aterações realizadas'
+      (redirect_to company_employer_profile_path, notice: msg) unless (render :crop if logo.present?)
     end
 
     def reset_password
@@ -96,7 +95,8 @@ module Company
       if_is_blank
       params.require(:employer).permit(
         :name, :email, :password, :password_confirmation,
-        :password_current, :new_password, :new_password_confirmation, :status
+        :password_current, :new_password, :new_password_confirmation, :status,
+        :logo, :crop_x, :crop_y, :crop_w, :crop_h
       )
     end
 
