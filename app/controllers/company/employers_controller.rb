@@ -13,6 +13,7 @@ module Company
     def create
       @model = Employer.new(set_params)
       if @model.save
+        session[:employer_id] = @model.id
         redirect_to company_employer_profile_path, notice: 'Employer registered'
       else
         render :new
@@ -32,7 +33,7 @@ module Company
     end
 
     def profile
-      @model = Employer.last
+      @model = current_employer
       return unless request.patch?
       return unless @model.update(set_params)
 
@@ -48,6 +49,18 @@ module Company
         redirect_to new_session_employer_path, notice: 'Pedido de nova senha enviado, vefirique seu email.'
       else
         flash[:alert] = 'Email não cadastrado !'
+      end
+    end
+
+    def update_employer_password
+      @model = current_employer
+      @model.require_password_current = true
+      return unless request.patch?
+
+      if @model.update(set_params)
+        redirect_to company_employer_profile_path, notice: 'Senha atualizada'
+      else
+        render :update_employer_password
       end
     end
 

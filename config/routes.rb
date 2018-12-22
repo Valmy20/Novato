@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace 'company', path: 'novato' do
     resources :employers, only: %i[show new create edit update destroy]
     match 'employer_profile', to: 'employers#profile', via: %i[get patch put], as: :employer_profile
+    match 'update_employer_password', to: 'employers#update_employer_password', via: %i[get patch put], as: :update_employer_password
   end
 
   # home
