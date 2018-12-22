@@ -4,6 +4,10 @@ class Employer < ApplicationRecord
   attr_accessor :password_current, :require_password_current, :new_password,
                 :new_password_confirmation
 
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  mount_uploader :logo, LogoUploader
+  after_update :crop_logo
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -21,6 +25,10 @@ class Employer < ApplicationRecord
   after_validation :update_passowrd, if: :require_password_current
 
   before_create :generate_token
+
+  def crop_logo
+    logo.recreate_versions! if crop_x.present?
+  end
 
   private
 

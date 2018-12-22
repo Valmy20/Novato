@@ -1,6 +1,8 @@
 <%= simple_form_for @model, url: company_employer_profile_path do |f| %>
   <%= f.input :name, label: 'Nome' %>
-
+  <%= f.input :logo, as: :file, label: 'Logo da empresa' %>
+  <%= f.hidden_field :logo_cache %>
+  <%= (image_tag @model.logo.url(:thumb), class:"img-fluid") unless @model.logo.blank? %>
   <%= button_tag(class: "btn btn-success") do %>
     <div class="d-flex">
       <span class="material-icons" style="">check</span>
@@ -10,4 +12,7 @@
 <% end %>
 <%= link_to logout_session_employer_path do %>
   Sair
+<% end %>
+<%= link_to company_update_employer_password_path	 do %>
+  Atualiar senha
 <% end %>

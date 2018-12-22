@@ -1,18 +1,16 @@
 module Company
   class EmployersController < CompanyController
-    before_action :set_item, only: %i[show edit update destroy]
-    before_action :authenticate_employer, only: %i[show edit update profile destroy]
+    before_action :set_item, only: %i[edit update destroy]
+    before_action :authenticate_employer, only: %i[edit update profile destroy]
 
     def new
       @model = Employer.new
     end
 
-    def show
-    end
-
     def create
       @model = Employer.new(set_params)
       if @model.save
+        session[:employer_id] = @model.id
         redirect_to company_employer_profile_path, notice: 'Employer registered'
       else
         render :new
@@ -32,11 +30,13 @@ module Company
     end
 
     def profile
-      @model = Employer.last
+      @model = current_employer
       return unless request.patch?
       return unless @model.update(set_params)
 
-      render :profile
+      logo = params[:employer][:logo]
+      msg = 'Aterações realizadas'
+      (redirect_to company_employer_profile_path, notice: msg) unless (render :crop if logo.present?)
     end
 
     def reset_password
@@ -48,6 +48,18 @@ module Company
         redirect_to new_session_employer_path, notice: 'Pedido de nova senha enviado, vefirique seu email.'
       else
         flash[:alert] = 'Email não cadastrado !'
+      end
+    end
+
+    def update_employer_password
+      @model = current_employer
+      @model.require_password_current = true
+      return unless request.patch?
+
+      if @model.update(set_params)
+        redirect_to company_employer_profile_path, notice: 'Senha atualizada'
+      else
+        render :update_employer_password
       end
     end
 
@@ -83,7 +95,8 @@ module Company
       if_is_blank
       params.require(:employer).permit(
         :name, :email, :password, :password_confirmation,
-        :password_current, :new_password, :new_password_confirmation, :status
+        :password_current, :new_password, :new_password_confirmation, :status,
+        :logo, :crop_x, :crop_y, :crop_w, :crop_h
       )
     end
 
