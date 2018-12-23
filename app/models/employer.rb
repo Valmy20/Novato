@@ -1,6 +1,8 @@
 class Employer < ApplicationRecord
   has_secure_password
   has_secure_token :token_reset
+  has_one :employer_extra, dependent: :destroy
+  accepts_nested_attributes_for :employer_extra
   attr_accessor :password_current, :require_password_current, :new_password,
                 :new_password_confirmation
 

@@ -3,6 +3,12 @@
   <%= f.input :logo, as: :file, label: 'Logo da empresa' %>
   <%= f.hidden_field :logo_cache %>
   <%= (image_tag @model.logo.url(:thumb), class:"img-fluid") unless @model.logo.blank? %>
+
+  <%= f.simple_fields_for :employer_extra do |extra| %>
+    <%= extra.input :phone, input_html: {class: 'phone'}, label: 'Telefone' %>
+    <%= extra.input :about, input_html: { rows: 7 } %>
+  <% end %>
+
   <%= button_tag(class: "btn btn-success") do %>
     <div class="d-flex">
       <span class="material-icons" style="">check</span>

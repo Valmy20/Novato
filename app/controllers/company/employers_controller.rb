@@ -5,6 +5,7 @@ module Company
 
     def new
       @model = Employer.new
+      @model.build_employer_extra if @model.employer_extra.blank?
     end
 
     def create
@@ -31,6 +32,7 @@ module Company
 
     def profile
       @model = current_employer
+      @model.build_employer_extra if @model.employer_extra.blank?
       return unless request.patch?
       return unless @model.update(set_params)
 
@@ -96,7 +98,7 @@ module Company
       params.require(:employer).permit(
         :name, :email, :password, :password_confirmation,
         :password_current, :new_password, :new_password_confirmation, :status,
-        :logo, :crop_x, :crop_y, :crop_w, :crop_h
+        :logo, :crop_x, :crop_y, :crop_w, :crop_h, employer_extra_attributes: %i[about phone]
       )
     end
 
