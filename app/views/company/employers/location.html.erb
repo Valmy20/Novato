@@ -1,0 +1,51 @@
+<%= simple_form_for @model, url: company_employer_location_path do |f| %>
+  <%= f.simple_fields_for :employer_extra do |extra| %>
+    <%= extra.input :location, as: :hidden, input_html: {id: 'input_id'} %>
+    <div id="map" style="height: 300px; width: 100%"></div>
+  <% end %>
+
+  <%= button_tag(class: "btn btn-success") do %>
+    <div class="d-flex">
+      <span class="material-icons" style="">check</span>
+      <span style="margin-left: 5px">Salvar</span>
+    </div>
+  <% end %>
+<% end %>
+
+<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB70Hu6l9Ekf1hnbPKJy2sCgsxrYFfTTO4'></script>
+ <script type='text/javascript'>
+
+  function initialize() {
+
+    navigator.geolocation.getCurrentPosition(function(location) {
+      var lat = location.coords.latitude;
+      var lng = location.coords.longitude;
+
+      "<% if @model.employer_extra.location.present? %>"
+        var my_position = new google.maps.LatLng(<%= @model.employer_extra.place_pin %>);
+      "<% else %>"
+        var my_position = new google.maps.LatLng(lat,lng);
+        var input = document.getElementById('input_id');
+        input.value =  lat + ", " + lng;
+      "<% end %>"
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+          center: my_position,
+          zoom: 15
+      });
+      var marker = new google.maps.Marker({
+          position: my_position,
+          map: map
+      });
+
+      google.maps.event.addListener(map, 'click', function(e) {
+        var positionDoubleclick = e.latLng;
+        marker.setPosition(positionDoubleclick);
+        var input = document.getElementById('input_id');
+        input.value = positionDoubleclick;
+      });
+    });
+
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+ </script>

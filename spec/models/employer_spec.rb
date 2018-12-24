@@ -14,6 +14,10 @@ RSpec.describe Employer, type: :model do
       expect(user).to include('deleted')
   end
 
+  it do
+    should accept_nested_attributes_for(:employer_extra)
+  end
+
   context 'when create employer' do
     it 'has secure token' do
       expect(Employer.create(

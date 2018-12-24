@@ -53,6 +53,16 @@ module Company
       end
     end
 
+    def location
+      @model = current_employer
+      @model.build_employer_extra if @model.employer_extra.blank?
+      return unless request.patch?
+      return unless @model.update(set_params)
+
+      flash[:notice] = 'Local adicionado'
+      render :location, notice: 'Local adicionado'
+    end
+
     def update_employer_password
       @model = current_employer
       @model.require_password_current = true
@@ -98,7 +108,7 @@ module Company
       params.require(:employer).permit(
         :name, :email, :password, :password_confirmation,
         :password_current, :new_password, :new_password_confirmation, :status,
-        :logo, :crop_x, :crop_y, :crop_w, :crop_h, employer_extra_attributes: %i[about phone]
+        :logo, :crop_x, :crop_y, :crop_w, :crop_h, employer_extra_attributes: %i[about phone location]
       )
     end
 

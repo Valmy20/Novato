@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UserExtra, type: :model do
   subject(:model) { described_class.new }
 
-  it 'has colums admin' do
+  it 'has colums user extra' do
       user = described_class.column_names
       expect(user).to include('bio')
       expect(user).to include('skill')

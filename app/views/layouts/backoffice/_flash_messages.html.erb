@@ -1,9 +1,0 @@
-<% if flash[:alert] %>
-  <script>
-    $.notify("<%= flash[:alert] %>", "error")
-  </script>
-<% elsif flash[:notice] %>
-  <script>
-    $.notify("<%= flash[:notice] %>", "success")
-  </script>
-<% end %>

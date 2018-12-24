@@ -7,6 +7,7 @@ RSpec.describe EmployerExtra, type: :model do
       employer = described_class.column_names
       expect(employer).to include('about')
       expect(employer).to include('phone')
+      expect(employer).to include('location')
       expect(employer).to include('employer_id')
   end
 
