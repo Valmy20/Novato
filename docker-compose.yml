@@ -20,6 +20,7 @@ services:
       - PASSWORD_SEND=imdeveloper
       - FACEBOOK_CLIENT=395939817613453
       - FACEBOOK_SECRET=561c97ea58a111d7aabba00c1ef00978
+      - GOOGLE_MAPS_KEY=AIzaSyB70Hu6l9Ekf1hnbPKJy2sCgsxrYFfTTO4
     links:
       - postgres
     volumes:

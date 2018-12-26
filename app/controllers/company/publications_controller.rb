@@ -44,7 +44,7 @@ module Company
     end
 
     def location
-      @model = Publication.friendly.find(params[:publication])
+      @model = Publication.find_by(id: params[:id])
       return unless request.patch?
       return unless @model.update(set_params)
 
