@@ -1,7 +1,7 @@
 <section class="bg-dark" id="login_admin">
 	<div class="container d-flex justify-content-center align-items-center">
 		<div class="card card-login">
-			<%= render partial: "layouts/frontend/flash_messages" %>
+			<%= render partial: "layouts/notification/flash_messages" %>
 			<div class="card-header">Login</div>
 			<div class="card-body">
 				<%= simple_form_for(:login, url: :sessions_employer, method: :post) do |f| %>

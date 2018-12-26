@@ -1,0 +1,8 @@
+<%= simple_form_for([:company, @model]) do |f|%>
+  <%= f.input :title, label:"Título" %>
+  <%= f.input :_type, collection: Publication._types.keys %>
+  <%= f.input :vacancies, label:"Vagas" %>
+  <%= f.input :remunaration, label:"Remuneração (se houver)" %>
+  <%= f.input :information, as: :ckeditor, input_html: { ckeditor: { height: 300 } } %>
+  <%= f.button :submit %>
+<% end %>

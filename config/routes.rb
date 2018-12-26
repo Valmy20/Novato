@@ -17,7 +17,8 @@ Rails.application.routes.draw do
 
   namespace 'company', path: 'novato' do
     resources :employers, only: %i[new create edit update destroy]
-    resources :publications, as: :employer_publication
+    resources :publications
+    match 'job_location/:publication', to: 'publications#location', via: %i[get patch put], as: :job_location
     match 'employer_profile', to: 'employers#profile', via: %i[get patch put], as: :employer_profile
     match 'update_employer_password', to: 'employers#update_employer_password', via: %i[get patch put], as: :update_employer_password
     match 'location', to: 'employers#location', via: %i[get patch put], as: :employer_location
@@ -56,4 +57,5 @@ Rails.application.routes.draw do
   #user login facebook
   post 'login/:provider', to: redirect('/auth/%{provider}'), as: :login_facebook
   get 'auth/:provider/callback', to: 'sessions_users#create', as: :login_with_provider
+  mount Ckeditor::Engine => '/ckeditor'
 end

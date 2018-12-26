@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_24_141638) do
+ActiveRecord::Schema.define(version: 2018_12_25_155543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 2018_12_24_141638) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_categories_on_admin_id"
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "employer_extras", force: :cascade do |t|
@@ -74,11 +86,12 @@ ActiveRecord::Schema.define(version: 2018_12_24_141638) do
 
   create_table "publications", force: :cascade do |t|
     t.string "title"
-    t.integer "type"
+    t.integer "_type"
     t.text "information"
     t.integer "remunaration"
     t.integer "vacancies"
     t.string "location"
+    t.string "slug"
     t.boolean "deleted", default: false
     t.string "publicationable_type"
     t.integer "publicationable_id"

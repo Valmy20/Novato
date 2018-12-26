@@ -1,0 +1,49 @@
+<section class="company">
+  <div>
+    <%= link_to new_company_publication_path, class:"btn btn-primary" do %>
+    <div class="d-flex">
+      <span class="material-icons" style="">add</span>
+      <span style="margin-left: 5px">Novo</span>
+    </div>
+    <% end %>
+  </div>
+  <table class="table table_margin">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Tipo</th>
+        <th class="d-flex justify-content-end">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @model.each do |publication| %>
+        <tr>
+          <td class="column_id" ><%= publication.id %></td>
+          <td><%= truncate(publication.title, length: 13) %></td>
+          <td><%= publication._type %></td>
+          <td class="d-flex justify-content-end">
+            <%= link_to company_publication_path(publication), class:"btn btn-primary btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons">remove_red_eye</span>
+              </div>
+            <% end %>
+            <%= link_to edit_company_publication_path(publication), class:"btn btn-success btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons">create</span>
+              </div>
+            <% end %>
+            <%= link_to company_job_location_path(publication), method:'get', class:"btn btn-secondary btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons">add_location</span>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%= paginate @model %>
+  </div>
+</section>

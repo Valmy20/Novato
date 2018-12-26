@@ -5,7 +5,8 @@ RSpec.describe Publication, type: :model do
   it 'has colums publication' do
     publication = described_class.column_names
     expect(publication).to include('title')
-    expect(publication).to include('type')
+    expect(publication).to include('_type')
+    expect(publication).to include('slug')
     expect(publication).to include('information')
     expect(publication).to include('remunaration')
     expect(publication).to include('vacancies')
@@ -15,7 +16,8 @@ RSpec.describe Publication, type: :model do
   end
 
   context 'validation presence' do
-    it { is_expected.to validate_presence_of(:title, :type, :information, :vacancies) }
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:vacancies) }
   end
 
    context 'when validation' do
