@@ -1,12 +1,19 @@
 <%= simple_form_for @model, url: company_employer_profile_path do |f| %>
-  <%= f.input :name, label: 'Nome' %>
+  <div class="input_title">
+    <%= f.input :name, label: 'Nome' %>
+  </div>
   <%= f.input :logo, as: :file, label: 'Logo da empresa' %>
   <%= f.hidden_field :logo_cache %>
   <%= (image_tag @model.logo.url(:thumb), class:"img-fluid") unless @model.logo.blank? %>
 
   <%= f.simple_fields_for :employer_extra do |extra| %>
-    <%= extra.input :phone, input_html: {class: 'phone'}, label: 'Telefone' %>
-    <%= extra.input :about, input_html: { rows: 7 } %>
+    <div class="custon_field left-addon input_small" style="margin-top: 30px">
+      <div class="icon">
+        <i class="material-icons" style="color: white;">call</i>
+      </div>
+      <%= extra.input :phone, label: false, placeholder:"telefone", class:"form-control" %>
+    </div>
+    <%= extra.input :about, label:"Sobre a empresa", input_html: { rows: 7 } %>
   <% end %>
 
   <%= button_tag(class: "btn btn-success") do %>

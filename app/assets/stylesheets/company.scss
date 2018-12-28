@@ -11,6 +11,7 @@ body#company {
     margin: 3px;
     border-radius: 4px;
   }
+
   div.page {
     li.name_employer {
       padding: 5px;
@@ -21,6 +22,8 @@ body#company {
       }
       .logo-tiny-employer {
         border-radius: 5px;
+        width: 40px;
+        height: 40px;
         border: 2px solid #546E7A;
       }
       .navbar-header {
@@ -28,7 +31,7 @@ body#company {
         border-radius: 5px;
         padding: 5px;
       }
-      .input_type, .input_vacancies, .input_title, .input_remunaration{
+      .input_type, .input_vacancies, .input_title, .input_remunaration, .input_small{
         width: 90vw;
       }
     }
@@ -45,7 +48,7 @@ body#company {
       .input_title{
         width: 50vw;
       }
-      .input_type, .input_vacancies, .input_remunaration{
+      .input_type, .input_vacancies, .input_remunaration, .input_small{
         width: 20vw;
       }
     }
@@ -62,7 +65,7 @@ body#company {
       .input_title{
         width: 40vw;
       }
-      .input_type, .input_vacancies, .input_remunaration{
+      .input_type, .input_vacancies, .input_remunaration, .input_small{
         width: 20vw;
       }
     }

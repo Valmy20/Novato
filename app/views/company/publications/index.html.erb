@@ -23,7 +23,7 @@
           <td><%= truncate(publication.title, length: 13) %></td>
           <td class="hide_mobile"><%= publication._type %></td>
           <td class="d-flex justify-content-end">
-            <%= link_to company_publication_path(publication), title:"Ver", class:"btn btn-primary btn_custom" do %>
+            <%= link_to company_publication_path(publication), title:"Ver", method:"get", class:"btn btn-primary btn_custom" do %>
               <div class="d-flex">
                 <span class="material-icons">remove_red_eye</span>
               </div>
