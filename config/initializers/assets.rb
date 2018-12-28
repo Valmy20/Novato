@@ -12,6 +12,9 @@ Rails.application.config.assets.precompile += %w( *.js, *.erb frontend/*.js back
 Rails.application.config.assets.precompile += %w( company/style.scss )
 Rails.application.config.assets.precompile += %w( company/_variables.scss )
 
+Rails.application.config.assets.precompile += %w( user/style.scss )
+Rails.application.config.assets.precompile += %w( user/_variables.scss )
+
 Rails.application.config.assets.precompile += %w( ckeditor/*)
 Rails.application.config.assets.precompile += %w(ckeditor/config.js)
 

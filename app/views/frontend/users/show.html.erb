@@ -2,7 +2,7 @@
   <section id="top">
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
-        <div class="col-md-11">
+        <div class="col-md-12">
             <div>
               <%= (image_tag @model.cover.url(:thumb), class:"img-fluid image_cover") unless @model.cover.blank? %>
               <%= (image_tag 'default_cover.jpg', class:"img-fluid image_cover") if @model.cover.blank? %>
@@ -25,7 +25,7 @@
   <section id="user_info">
     <div class="container-fluid padding_10">
       <div class="row d-flex justify-content-center">
-        <div class="col-md-11">
+        <div class="col-md-12">
           <div class="row">
             <div class="col-md-3 avatar">
               <%= (image_tag @model.avatar.url(:thumb), class:"img-fluid img_avatar") unless @model.avatar.blank? %>

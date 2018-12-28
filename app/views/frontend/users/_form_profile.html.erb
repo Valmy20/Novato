@@ -1,7 +1,7 @@
 <section id="form_profile">
   <div class="container">
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-12">
         <%= simple_form_for @model, url: frontend_user_profile_path do |f| %>
           <div class="fields">
             <div class="name">
@@ -25,29 +25,6 @@
           <% end %>
         <% end %>
       </div>
-      <div class="col-md-2 btns">
-        <%= link_to frontend_update_user_cover_path, class:"btn btn-primary custom_btn" do %>
-          <div class="d-flex contact">
-            <span class="material-icons" style="">insert_photo</span>
-            <span style="margin-left: 5px">Foto de capa</span>
-          </div>
-        <% end %>
-        <% unless !logged_facebook(@model) %>
-          <%= link_to frontend_update_user_password_path, class:"btn btn-primary custom_btn" do %>
-            <div class="d-flex contact">
-              <span class="material-icons" style="">lock</span>
-              <span style="margin-left: 5px">Password</span>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
     </div>
   </div>
 </section>
-
-<%= link_to frontend_user_path(current_user) do %>
-  Mostrar Perfil
-<% end %>
-<%= link_to logout_session_user_path do %>
-  Sair
-<% end %>

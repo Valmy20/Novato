@@ -9,15 +9,85 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag 'frontend', media: 'all' %>
+    <%= stylesheet_link_tag 'user/_variables', media: 'all' %>
+    <%= stylesheet_link_tag 'user/style', media: 'all' %>
     <%= javascript_include_tag 'frontend' %>
   </head>
 
   <body>
     <div class="page">
-      <%= render partial: "layouts/notification/flash_messages" %>
-      <%= yield %>
+      <!-- Left Panel -->
+      <aside id="left-panel" class="left-panel">
+          <nav class="navbar navbar-expand-sm navbar-default">
+            <div class="navbar-header d-flex justify-content-left">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+
+              <div id="main-menu" class="main-menu collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <div class="row" style="padding: 4px;">
+                      <div class="col-md-2" style="padding: 0px 3px 0px;">
+                        <%= (image_tag current_user.avatar.url(:tiny), class:"img-fluid logo-tiny-employer") unless current_user.avatar.blank? %>
+                      </div>
+                      <div class="col-md-10" style="padding: 0px;">
+                        <li class="name_user">
+                          <p style="font-size: 0.9em;"><%= current_user.name %></p>
+                        </li>
+                      </div>
+                    </div>
+                      <h3 class="menu-title">Ações</h3><!-- /.menu-title -->
+                      <li class="menu-item-has-children">
+                          <%= link_to frontend_update_user_cover_path, method: "get" do %>
+                            <i class="menu-icon material-icons md-18">insert_photo</i>Foto de capa
+                          <% end %>
+                      </li>
+
+                      <h3 class="menu-title">Informações</h3><!-- /.menu-title -->
+
+                      <li class="menu-item-has-children dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon material-icons md-18">person</i>Usuário</a>
+                          <ul class="sub-menu children dropdown-menu">
+                            <li class="menu-icon">
+                              <i class="menu-icon material-icons md-18">chrome_reader_mode</i>
+                              <%= link_to frontend_user_path(current_user) do %>
+                                <i></i>Perfil
+                              <% end %>
+                            </li>
+                            <li class="menu-icon">
+                              <i class="menu-icon material-icons md-18">chrome_reader_mode</i>
+                              <%= link_to frontend_user_profile_path do %>
+                                <i></i>Editar perfil
+                              <% end %>
+                            </li>
+                          </ul>
+                      </li>
+                      <h3 class="menu-title">Segurança</h3><!-- /.menu-title -->
+                      <li class="menu-item-has-children dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon material-icons md-18">lock</i>Senha</a>
+                          <ul class="sub-menu children dropdown-menu">
+                            <li class="menu-icon">
+                              <i class="menu-icon material-icons md-18">lock_open</i>
+                              <%= link_to frontend_update_user_password_path do %>
+                                <i></i>Alterar senha
+                              <% end %>
+                            </li>
+                          </ul>
+                      </li>
+                  </ul>
+              </div><!-- /.navbar-collapse -->
+          </nav>
+      </aside><!-- /#left-panel -->
+      <!-- Left Panel -->
+
+
+      <!-- Right Panel -->
+      <div id="right-panel" class="right-panel">
+        <%= yield %>
+      </div><!-- /#right-panel -->
     </div>
   </body>
 </html>

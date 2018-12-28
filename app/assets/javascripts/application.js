@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require ckeditor/init
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
