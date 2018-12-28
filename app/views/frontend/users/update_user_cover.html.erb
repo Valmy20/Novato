@@ -7,7 +7,12 @@
             <%= f.input :cover, as: :file, label:'Selecione a fato' %>
             <%= f.hidden_field :cover_cache %>
           </div>
-          <%= f.submit 'Submeter', class: 'btn btn-primary' %>
+          <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Carregando..."}) do %>
+            <div class="d-flex">
+              <span class="material-icons" style="">check</span>
+              <span style="margin-left: 5px">Enviar</span>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
