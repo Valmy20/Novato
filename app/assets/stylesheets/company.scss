@@ -2,12 +2,69 @@
  *= require_tree .
  *= require_self
  */
-section.company {
+ $smartphone: "(max-width: 767px)";
+ $tablet: "(min-width: 768px) and (max-width: 1023px)";
+ $desktop: "(min-width: 1024px)";
+body#company {
   .btn_custom {
     padding: 2px 20px 2px;
     margin: 3px;
+    border-radius: 4px;
   }
-  span.material-icons {
-    color: #ECEFF1;
+  div.page {
+    li.name_employer {
+      padding: 5px;
+    }
+    @media #{$smartphone} {
+      .hide_mobile {
+        display: none;
+      }
+      .logo-tiny-employer {
+        border-radius: 5px;
+        border: 2px solid #546E7A;
+      }
+      .navbar-header {
+        background-color: #263238;
+        border-radius: 5px;
+        padding: 5px;
+      }
+      .input_type, .input_vacancies, .input_title, .input_remunaration{
+        width: 90vw;
+      }
+    }
+    @media #{$tablet} {
+      .logo-tiny-employer {
+        border-radius: 80px;
+        border: 2px solid #546E7A;
+      }
+      .navbar-header {
+        background-color: #263238;
+        border-radius: 30px;
+        padding: 5px;
+      }
+      .input_title{
+        width: 50vw;
+      }
+      .input_type, .input_vacancies, .input_remunaration{
+        width: 20vw;
+      }
+    }
+    @media #{$desktop} {
+      .logo-tiny-employer {
+        border-radius: 80px;
+        border: 2px solid #546E7A;
+      }
+      .navbar-header {
+        background-color: #263238;
+        border-radius: 30px;
+        padding: 5px;
+      }
+      .input_title{
+        width: 40vw;
+      }
+      .input_type, .input_vacancies, .input_remunaration{
+        width: 20vw;
+      }
+    }
   }
 }

@@ -1,8 +1,31 @@
 <%= simple_form_for([:company, @model]) do |f|%>
-  <%= f.input :title, label:"Título" %>
-  <%= f.input :_type, collection: Publication._types.keys %>
-  <%= f.input :vacancies, label:"Vagas" %>
-  <%= f.input :remunaration, label:"Remuneração (se houver)" %>
-  <%= f.input :information, as: :ckeditor, input_html: { ckeditor: { height: 300 } } %>
-  <%= f.button :submit %>
+  <div class="input_title">
+    <%= f.input :title, label:"Título da vaga" %>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input_type">
+        <%= f.input :_type, collection: Publication._types.keys, label:"Tipo da vaga" %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input_vacancies">
+        <%= f.input :vacancies, label:"Quantidade de vagas" %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input_remunaration">
+        <%= f.input :remunaration, label:"Remuneração" %>
+      </div>
+    </div>
+  </div>
+  <%= f.input :information, label:"Informações adicionais", as: :ckeditor, input_html: { ckeditor: { height: 150 } } %>
+
+  <%= button_tag(class: "btn btn-success") do %>
+    <div class="d-flex">
+      <span class="material-icons" style="">check</span>
+      <span style="margin-left: 5px">Salvar</span>
+    </div>
+  <% end %>
+
 <% end %>
