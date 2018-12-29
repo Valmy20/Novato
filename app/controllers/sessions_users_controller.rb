@@ -1,5 +1,5 @@
 class SessionsUsersController < ApplicationController
-  layout 'application'
+  layout 'frontend'
 
   def new
     redirect_to frontend_user_path(current_user) if current_user.present?

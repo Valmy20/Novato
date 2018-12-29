@@ -4,6 +4,7 @@ module Frontend
     before_action :authenticate_user, only: %i[show edit update profile destroy]
 
     def new
+      redirect_to frontend_user_path(current_user) if current_user
       @model = User.new
       @model.build_user_extra if @model.user_extra.blank?
     end

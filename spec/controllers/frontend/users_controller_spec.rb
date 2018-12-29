@@ -24,7 +24,7 @@ RSpec.describe Frontend::UsersController, type: :controller do
 	  describe "GET #new" do
 	    it "returns http success" do
 	      get :new
-	      expect(response).to be_success
+	      expect(response).to be_success if current_user.blank?
 	    end
 	  end
 
