@@ -1,4 +1,4 @@
-<section class="bg-dark" id="login_user">
+<section id="login_user">
 
 	<div class="container d-flex justify-content-center align-items-center">
 		<div class="card card-login">
@@ -10,12 +10,16 @@
 					<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
 					<%= f.input :password, as: :password, label: false, class:"form-control", placeholder:"Password" %>
 					<div class="d-flex justify-content-center">
-						<%= f.button :button, class:"btn", style:"width: 100%;" do %>
-							Login
-						<% end %>
+						<%= button_tag(class: "btn", style:"width: 100%;", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Aguarde..."}) do %>
+		         	Login
+		        <% end %>
 					</div>
-					<%= link_to login_facebook_path(provider:'facebook'), method: :post, class:"btn btn_login_face" do %>
-						Continuar com Facebook
+					<div class="d-flex justify-content-center" style="margin-top: 10px;">
+							<p>_______ ou _______</p>
+					</div>
+
+					<%= link_to login_facebook_path(provider:'facebook'), method: :post, class:"btn btn_login_face", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Aguarde..."} do %>
+						<i class="fa fa-facebook" style="position: relative; left: -10%;"></i>Continuar com Facebook
 					<% end %>
 				<% end %>
 				<%= link_to new_frontend_user_path, class:"d-block small", style:"text-align: left" do %>

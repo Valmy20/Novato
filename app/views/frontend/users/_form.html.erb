@@ -1,5 +1,6 @@
 <section class="d-flex justify-content-center align-items-center" id="form_create_user">
   <div class="form">
+    <p>Cadastrar</p>
     <%= simple_form_for([:frontend, @model]) do |f| %>
 
       <div class="custon_field left-addon" style="margin-top: 30px">
@@ -29,13 +30,19 @@
         </div>
         <%= f.input :password_confirmation, label: false, placeholder:"confirmar senha", class:"form-control" %>
       </div>
-
-      <%= button_tag(class: "btn btn-success") do %>
-        <div class="d-flex">
-          <span class="material-icons" style="">check</span>
-          <span style="margin-left: 5px">Cadastrar</span>
-        </div>
-      <% end %>
+      <div class="d-flex justify-content-center">
+        <%= button_tag(class: "btn", style:"width: 100%;", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Cadastrando..."}) do %>
+          Cadastrar
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-center" style="margin-top: 10px;">
+          _______ ou _______
+      </div>
+      <div class="d-flex justify-content-center">
+        <%= link_to login_facebook_path(provider:'facebook'), method: :post, class:"btn btn_login_face", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Aguarde..."} do %>
+          <i class="fa fa-facebook" style="position: relative; left: -10%;"></i>Continuar com Facebook
+        <% end %>
+      </div>
     <% end %>
   </div>
 </section>

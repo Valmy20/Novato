@@ -1,5 +1,5 @@
 <nav id="nav-novato" class="navbar navbar-expand-lg navbar-light" style="margin: 0px; background-color: #1E88E5;
-  border-bottom: 2px solid #90CAF9;">
+ border-bottom: 1px solid white;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="material-icons" style="color: #BBDEFB;">school</i>
   </button>
@@ -33,9 +33,18 @@
           Usuário
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Login</a>
-          <a class="dropdown-item" href="#">Criar conta</a>
-          <a class="dropdown-item" href="#">Sair</a>
+          <% if current_user %>
+            <%= link_to logout_session_user_path, class:"dropdown-item" do %>
+              Sair
+            <% end %>
+          <% else %>
+            <%= link_to new_session_user_path, class:"dropdown-item" do %>
+              Login
+            <% end %>
+            <%= link_to new_frontend_user_path, class:"dropdown-item" do %>
+              Cadastrar
+            <% end %>
+          <% end %>
         </div>
       </li>
       <li class="nav-item dropdown">

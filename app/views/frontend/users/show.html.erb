@@ -36,11 +36,11 @@
             </div>
             <div class="col-md-3 contact_info">
               <div class="d-flex">
-                <span class="material-icons">email</span>
+                <span class="material-icons" style="color: #607D8B">email</span>
                 <span style="margin-left: 5px"><%= @model.email unless @model.email.blank?%></span>
               </div>
               <div class="d-flex">
-                <span class="material-icons">phone</span>
+                <span class="material-icons" style="color: #607D8B">phone</span>
                 <span style="margin-left: 5px"><%= @model.user_extra.phone unless @model.user_extra.blank?%></span>
               </div>
             </div>
@@ -53,15 +53,15 @@
   <section id="bio_skill">
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
-        <div class="col-md-11">
-          <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+          <div class="row">
             <div class="col-md-6 info">
               <h3>Bio</h3>
-              <%= @model.user_extra.bio unless @model.user_extra.blank?%>
+              <p><%= @model.user_extra.bio unless @model.user_extra.blank?%></p>
             </div>
-            <div class="col-md-5 info">
-              <h3>Skills</h3>
-              <%= @model.user_extra.skill unless @model.user_extra.blank?%>
+            <div class="col-md-6 info">
+              <h3>Habilidades</h3>
+              <p><%= @model.user_extra.skill unless @model.user_extra.blank?%></p>
             </div>
           </div>
         </div>
