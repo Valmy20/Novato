@@ -110,7 +110,7 @@ module Frontend
       params.require(:user).permit(
         :name, :email, :password, :password_confirmation, :password_current, :new_password,
         :new_password_confirmation, :status, :avatar, :crop_x, :crop_y, :crop_w, :crop_h, :cover, :cropc_x,
-        :cropc_y, :cropc_w, :cropc_h, user_extra_attributes: %i[bio skill phone]
+        :cropc_y, :cropc_w, :cropc_h, user_extra_attributes: %i[bio phone], skills_attributes: %i[id name _destroy]
       )
     end
 

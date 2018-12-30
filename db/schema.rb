@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_25_155543) do
+ActiveRecord::Schema.define(version: 2018_12_29_162405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,9 +99,16 @@ ActiveRecord::Schema.define(version: 2018_12_25_155543) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_skills_on_user_id"
+  end
+
   create_table "user_extras", force: :cascade do |t|
     t.text "bio"
-    t.text "skill"
     t.string "phone"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -128,5 +135,6 @@ ActiveRecord::Schema.define(version: 2018_12_25_155543) do
 
   add_foreign_key "categories", "admins"
   add_foreign_key "employer_extras", "employers"
+  add_foreign_key "skills", "users"
   add_foreign_key "user_extras", "users"
 end

@@ -2,7 +2,9 @@ class User < ApplicationRecord
   has_secure_password
   has_secure_token :token_reset
   has_one :user_extra, dependent: :destroy
-  accepts_nested_attributes_for :user_extra
+  has_many :skills, inverse_of: :user, dependent: :destroy
+  accepts_nested_attributes_for :skills, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :user_extra, allow_destroy: true
   attr_accessor :password_current, :require_password_current, :new_password,
                 :new_password_confirmation, :skip_password, :require_user_cover
 

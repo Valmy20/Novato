@@ -83,6 +83,7 @@ GEM
     climate_control (0.2.0)
     cocaine (0.6.0)
       terrapin (= 0.6.0)
+    cocoon (1.2.12)
     codeclimate-engine-rb (0.4.1)
       virtus (~> 1.0)
     coderay (1.1.2)
@@ -430,6 +431,7 @@ DEPENDENCIES
   capybara
   carrierwave (~> 1.0)
   ckeditor
+  cocoon
   coffee-rails (~> 4.2)
   database_cleaner
   dotenv-rails

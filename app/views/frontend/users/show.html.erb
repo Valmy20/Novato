@@ -54,14 +54,18 @@
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
         <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-6 info">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-5 bio">
               <h3>Bio</h3>
               <p><%= @model.user_extra.bio unless @model.user_extra.blank?%></p>
             </div>
-            <div class="col-md-6 info">
+            <div class="col-md-6 skill">
               <h3>Habilidades</h3>
-              <p><%= @model.user_extra.skill unless @model.user_extra.blank?%></p>
+              <div class="row">
+                <% @model.skills.each do |skill| %>
+                  <p><%= skill.name %></p>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

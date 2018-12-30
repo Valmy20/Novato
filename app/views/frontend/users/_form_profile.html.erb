@@ -4,25 +4,47 @@
       <div class="col-md-12">
         <%= simple_form_for @model, url: frontend_user_profile_path do |f| %>
           <div class="fields">
+
             <div class="name">
               <%= f.input :name, label: 'Nome' %>
             </div>
+
             <%= f.input :avatar, as: :file, label: 'Foto do Perfil' %>
             <%= f.hidden_field :avatar_cache %>
+
             <%= f.simple_fields_for :user_extra do |extra| %>
               <div class="phone">
                 <%= extra.input :phone, input_html: {class: 'phone'}, label: 'Telefone' %>
               </div>
               <%= extra.input :bio, input_html: { rows: 7 }%>
-              <%= extra.input :skill, label: 'Habilidades', input_html: { rows: 5 } %>
             <% end %>
+
+            <div class="new" >
+              <div class="new_skill">
+                <div class="link_add">
+                  <%= link_to_add_association "Novo", f, :skills, style:"color: white;" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="skills">
+              <div class="row">
+                <%= f.simple_fields_for :skills do |skill| %>
+                  <div class="col-sm-6 col-md-6 col-xl-3">
+                    <%= render 'skill_fields', f: skill %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           </div>
+
           <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> salvando..."}) do %>
             <div class="d-flex">
               <span class="material-icons" style="">check</span>
               <span style="margin-left: 5px">Salvar</span>
             </div>
           <% end %>
+
         <% end %>
       </div>
     </div>
