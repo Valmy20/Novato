@@ -2,6 +2,7 @@ module Frontend
   class UsersController < FrontendController
     before_action :set_item, only: %i[show edit update destroy]
     before_action :authenticate_user, only: %i[show edit update profile destroy]
+    layout 'user_profile', except: %i[new create]
 
     def new
       redirect_to frontend_user_path(current_user) if current_user

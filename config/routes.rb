@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     match 'profile', to: 'admins#profile', via: %i[get patch put], as: :profile
     resources :categories, except: %i[show]
     resources :users, only: %i[index show]
+    resources :employers, only: %i[index show]
     post 'update_user_status/:id', to: 'users#update_status', as: :update_user_status
+    post 'update_employer_status/:id', to: 'employers#update_status', as: :update_employer_status
   end
 
   namespace 'frontend', path: 'novato' do

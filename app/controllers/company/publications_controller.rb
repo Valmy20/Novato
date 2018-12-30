@@ -1,6 +1,7 @@
 module Company
   class PublicationsController < CompanyController
     before_action :set_item, only: %i[edit show update destroy]
+    layout 'company_profile'
 
     def index
       @q = Publication.employer(current_employer)

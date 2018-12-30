@@ -17,81 +17,9 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <div class="page">
-        <%= render partial:"layouts/frontend/nav" %>
-        <!-- Left Panel -->
-        <aside id="left-panel" class="left-panel">
-            <nav class="navbar navbar-expand-sm navbar-default" style="background: #607D8B;">
-              <div class="navbar-header">
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-                      <i class="material-icons" style="color: #BBDEFB;">account_circle</i>
-                  </button>
-              </div>
-
-                <div id="main-menu" class="main-menu collapse navbar-collapse">
-                    <ul class="nav navbar-nav" style="background: #607D8B;">
-                        <h3 class="menu-title">Ações</h3><!-- /.menu-title -->
-                        <li class="menu-item-has-children">
-                            <%= link_to frontend_update_user_cover_path, method: "get" do %>
-                              <i class="menu-icon material-icons md-18" style="color: white;">insert_photo</i>Foto de capa
-                            <% end %>
-                        </li>
-
-                        <h3 class="menu-title">Informações</h3><!-- /.menu-title -->
-
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon material-icons md-18" style="color: white;">person</i>Usuário</a>
-                            <ul class="sub-menu children dropdown-menu">
-                              <li class="menu-icon">
-                                <i class="menu-icon material-icons md-18" style="color: white;">chrome_reader_mode</i>
-                                <%= link_to frontend_user_path(current_user) do %>
-                                  <i></i>Perfil
-                                <% end %>
-                              </li>
-                              <li class="menu-icon">
-                                <i class="menu-icon material-icons md-18" style="color: white;">create</i>
-                                <%= link_to frontend_user_profile_path do %>
-                                  <i></i>Editar perfil
-                                <% end %>
-                              </li>
-                              <li class="menu-icon">
-                                <i class="menu-icon material-icons md-18" style="color: white;">exit_to_app</i>
-                                <%= link_to logout_session_user_path do %>
-                                  <i></i>Sair
-                                <% end %>
-                              </li>
-                            </ul>
-                        </li>
-                        <h3 class="menu-title">Segurança</h3><!-- /.menu-title -->
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon material-icons md-18" style="color: white;">lock</i>Senha</a>
-                            <ul class="sub-menu children dropdown-menu">
-                              <li class="menu-icon">
-                                <i class="menu-icon material-icons md-18" style="color: white;">lock_open</i>
-                                <%= link_to frontend_update_user_password_path do %>
-                                  <i></i>Alterar senha
-                                <% end %>
-                              </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </nav>
-        </aside><!-- /#left-panel -->
-        <!-- Left Panel -->
-
-
-        <!-- Right Panel -->
-        <div id="right-panel" class="right-panel">
-          <%= yield %>
-        </div><!-- /#right-panel -->
-      </div><!-- end page -->
-    <% else %>
-      <div class="page">
-        <%= render partial:"layouts/frontend/nav" %>
-        <%= yield %>
-      </div>
-    <% end %>
+    <div class="page">
+      <%= render partial:"layouts/frontend/nav" %>
+      <%= yield %>
+    </div>
   </body>
 </html>

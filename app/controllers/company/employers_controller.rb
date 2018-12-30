@@ -2,6 +2,8 @@ module Company
   class EmployersController < CompanyController
     before_action :set_item, only: %i[edit update destroy]
     before_action :authenticate_employer, only: %i[edit update profile destroy]
+    layout 'company', only: %i[new create]
+    layout 'company_profile', except: %i[new create]
 
     def new
       @model = Employer.new
@@ -14,7 +16,7 @@ module Company
         session[:employer_id] = @model.id
         redirect_to company_employer_profile_path, notice: 'Employer registered'
       else
-        render :new
+        redirect_to new_company_employer_path, alert: 'Verifique as informações'
       end
     end
 

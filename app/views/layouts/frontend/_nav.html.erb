@@ -39,6 +39,9 @@
             <%= link_to logout_session_user_path, class:"dropdown-item" do %>
               Sair
             <% end %>
+            <%= link_to frontend_user_path(current_user), class:"dropdown-item" do %>
+              Perfil
+            <% end %>
           <% else %>
             <%= link_to new_session_user_path, class:"dropdown-item" do %>
               Login

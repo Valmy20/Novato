@@ -56,7 +56,7 @@ RSpec.describe Company::EmployersController, type: :controller do
 					description: ''
 				}
 			}
-			expect(response).to render_template("new")
+			expect(response).to redirect_to(new_company_employer_path)
 		end
 	end
 
