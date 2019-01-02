@@ -16,10 +16,11 @@
     <%= javascript_include_tag 'frontend' %>
   </head>
 
-  <body>
-    <div class="page">
+  <body id="frontend">
+    <div class="page" style="overflow-x: hidden;">
       <%= render partial:"layouts/frontend/nav" %>
-      <%= yield %>
+        <%= yield %>
+      <%= render partial:"layouts/frontend/footer" %>
     </div>
   </body>
 </html>

@@ -5,31 +5,204 @@
 @import "bootstrap";
 @import "material_icons";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
 $smartphone: "(max-width: 767px)";
 $tablet: "(min-width: 768px) and (max-width: 1023px)";
 $desktop: "(min-width: 1024px)";
-body {
-  //nav
+body#frontend {
+  // index
+  font-family: 'Varela Round', sans-serif;
+  div#index {
+    section#cover {
+      height: 100vh;
+      background: rgba(0,191,255, 0.6);
+      div.search {
+        margin-top: 20px;
+        input {
+          width: 300px;
+        }
+        .btn-search {
+          position: relative;
+          background: #fdc000;
+          height: 36px;
+          width: 36px;
+          padding-left: 7px;
+          top: -37px;
+          left: 131px;
+        }
+      }// end div.search
+    } //end section#cover
+  }
+  nav#nav-novato {
+    div.collapse {
+      a.custom-link {
+        color: #78909C !important;
+        font-weight: 700 !important;
+      }
+      a.custom-link:hover {
+        color: #42A5F5 !important;
+      }
+    }
+  }
   @media #{$smartphone} {
-    .nav-mobile {
+    background-image: url("irece-mobile.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% top;
+    background-attachment: fixed;
+    .ul-mobile {
       position: relative;
       left: 10px;
     }
+    h1.desktop {
+      display: none;
+    }
+    section#info {
+      div.info {
+        margin-top: 30px;
+      }
+      div.card_text {
+        margin-bottom: 20px;
+        background: white;
+        padding: 10px 10px 5px;
+        border-radius: 10px;
+        border: 1px solid #80DEEA;
+      }
+      p {
+        text-align: center;
+      }
+    }
+    h1.text-capa {
+      font-size: 1.6em;
+      color: white;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      border-radius: 2px;
+      padding: 10px 3px 10px;
+    }
   }
   @media #{$tablet} {
-    .nav-mobile {
+    background-image: url("irece.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% top;
+    background-attachment: fixed;
+    .ul-mobile {
       position: relative;
-      left: 10%;
+      left: 10px;
+    }
+    h1.desktop {
+      display: none;
+    }
+    h1.text-capa {
+      font-size: 2em;
+      color: white;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      border-radius: 10px;
+      padding: 40px 15px 40px;
     }
   }
   @media #{$desktop} {
-    .nav-mobile {
+    background-image: url("irece.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% top;
+    background-attachment: fixed;
+    .ul-mobile {
       position: relative;
       left: 10%;
     }
+    h1.mobile {
+      display: none;
+    }
+    h1.text-capa {
+      font-size: 2em;
+      color: white;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      border-radius: 10px;
+      padding: 40px 15px 40px;
+    }
+    a.usuario {
+      border: 1px solid #78909C;
+      padding: 1px 10px 1px;
+      border-radius: 30px;
+    }
+    a.empregador {
+      border: 1px solid #78909C;
+      padding: 1px 10px 1px;
+      border-radius: 30px;
+      margin-left: 10px;
+    }
+    div.card_text {
+      padding: 10px;
+    }
   }
+
+
+  div#footer {
+    padding: 0px;
+    .footer-bs {
+       padding: 20px;
+       margin-top: 30px;
+       background-color: #3c3d41;
+       color: rgba(255,255,255,1.00);
+     }
+     .footer-bs .footer-brand, .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { padding:10px 25px; }
+     .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-color: transparent; }
+     .footer-bs .footer-brand h2 { margin:0px 0px 10px; }
+     .footer-bs .footer-brand p { font-size:12px; color:rgba(255,255,255,0.70); margin-top: 10px;}
+
+     .footer-bs .footer-nav ul.pages { list-style:none; padding:0px; }
+     .footer-bs .footer-nav ul.pages li { padding:5px 0px;}
+     .footer-bs .footer-nav ul.pages a { color:rgba(255,255,255,1.00); font-weight:bold; text-transform:uppercase; }
+     .footer-bs .footer-nav ul.pages a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+     .footer-bs .footer-nav h4 {
+       font-size: 11px;
+       text-transform: uppercase;
+       letter-spacing: 3px;
+       margin-bottom:10px;
+     }
+
+     .footer-bs .footer-nav ul.list { list-style:none; padding:0px; }
+     .footer-bs .footer-nav ul.list li { padding:5px 0px;}
+     .footer-bs .footer-nav ul.list a { color:rgba(255,255,255,0.80); }
+     .footer-bs .footer-nav ul.list a:hover { color:rgba(255,255,255,0.60); text-decoration:none; }
+
+     .footer-bs .footer-social ul { list-style:none; padding:0px; }
+     .footer-bs .footer-social h4 {
+       font-size: 11px;
+       text-transform: uppercase;
+       letter-spacing: 3px;
+     }
+     .footer-bs .footer-social li { padding:5px 4px;}
+     .footer-bs .footer-social a { color:rgba(255,255,255,1.00);}
+     .footer-bs .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+
+     .footer-bs .footer-ns h4 {
+       font-size: 11px;
+       text-transform: uppercase;
+       letter-spacing: 3px;
+       margin-bottom:10px;
+     }
+     .footer-bs .footer-ns p { font-size:12px; color:rgba(255,255,255,0.70); }
+
+     @media (min-width: 768px) {
+       .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
+     }
+  }//end footer
+  section#search-publications {
+    min-height: 100vh;
+    background: white;
+    padding: 10px;
+  }
+}// end frontend
+
+body {
   section#show_profile {
+    margin-top: 5px;
     section#top {
       .image_cover {
           background-position: 0 50%;
@@ -376,4 +549,7 @@ body {
      padding-left:  60px;
      border-radius: 0px;
    }
+
+
+
 }

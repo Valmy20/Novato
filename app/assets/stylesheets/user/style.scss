@@ -1674,19 +1674,55 @@ header .form-inline {
         }
     }
 }
+// nav
 
+nav#nav-novato {
+  div.collapse {
+    a.custom-link {
+      color: #78909C !important;
+      font-weight: 700 !important;
+    }
+    a.custom-link:hover {
+      color: #42A5F5 !important;
+    }
+  }
+}
 @media #{$smartphone} {
   .right-panel {
     width: 100vw;
+  }
+  div#user_profile {
+    nav#nav-novato {
+      display: none;
+    }
   }
 }
 @media #{$tablet} {
   .right-panel {
     width: 80vw;
   }
+  .ul-mobile {
+    position: relative;
+    left: 10px;
+  }
 }
 @media #{$desktop} {
   .right-panel {
     width: 80vw;
+  }
+  .ul-mobile {
+    position: relative;
+    left: 10%;
+  }
+  a.usuario {
+    border: 1px solid #78909C;
+    padding: 1px 10px 1px !important;
+    border-radius: 30px;
+  }
+  a.empregador {
+    border: 1px solid #78909C;
+    padding: 1px 10px 1px !important;
+    border-radius: 30px;
+    margin-left: 10px;
   }
 }

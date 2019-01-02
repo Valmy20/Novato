@@ -31,10 +31,10 @@
               <%= (image_tag @model.avatar.url(:thumb), class:"img-fluid img_avatar") unless @model.avatar.blank? %>
               <%= (image_tag 'default_user.jpeg', class:"img-fluid img_avatar") if @model.avatar.blank? %>
             </div>
-            <div class="col-md-6 personal_info">
+            <div class="col-md-5 personal_info">
               <p class="info"><%= @model.name unless @model.name.blank?%></p>
             </div>
-            <div class="col-md-3 contact_info">
+            <div class="col-md-4 contact_info">
               <div class="d-flex">
                 <span class="material-icons" style="color: #607D8B">email</span>
                 <span style="margin-left: 5px"><%= @model.email unless @model.email.blank?%></span>

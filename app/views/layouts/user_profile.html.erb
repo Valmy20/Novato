@@ -17,7 +17,7 @@
   </head>
 
   <body>
-      <div class="page">
+      <div id="user_profile" class="page">
         <%= render partial:"layouts/frontend/nav" %>
         <!-- Left Panel -->
         <aside id="left-panel" class="left-panel">
@@ -30,10 +30,9 @@
 
                 <div id="main-menu" class="main-menu collapse navbar-collapse">
                     <ul class="nav navbar-nav" style="background: #607D8B;">
-                        <h3 class="menu-title">Ações</h3><!-- /.menu-title -->
                         <li class="menu-item-has-children">
-                            <%= link_to frontend_update_user_cover_path, method: "get" do %>
-                              <i class="menu-icon material-icons md-18" style="color: white;">insert_photo</i>Foto de capa
+                            <%= link_to root_path do %>
+                              <i class="menu-icon material-icons md-18" style="color: white;">home</i>Início
                             <% end %>
                         </li>
 
@@ -45,7 +44,7 @@
                               <li class="menu-icon">
                                 <i class="menu-icon material-icons md-18" style="color: white;">chrome_reader_mode</i>
                                 <%= link_to frontend_user_path(current_user) do %>
-                                  <i></i>Perfil
+                                  Perfil
                                 <% end %>
                               </li>
                               <li class="menu-icon">
@@ -55,9 +54,15 @@
                                 <% end %>
                               </li>
                               <li class="menu-icon">
+                                <i class="menu-icon material-icons md-18" style="color: white;">insert_photo</i>
+                                <%= link_to frontend_update_user_cover_path do %>
+                                  Foto de capa
+                                <% end %>
+                              </li>
+                              <li class="menu-icon">
                                 <i class="menu-icon material-icons md-18" style="color: white;">exit_to_app</i>
                                 <%= link_to logout_session_user_path do %>
-                                  <i></i>Sair
+                                  Sair
                                 <% end %>
                               </li>
                             </ul>
@@ -69,7 +74,7 @@
                               <li class="menu-icon">
                                 <i class="menu-icon material-icons md-18" style="color: white;">lock_open</i>
                                 <%= link_to frontend_update_user_password_path do %>
-                                  <i></i>Alterar senha
+                                  Alterar senha
                                 <% end %>
                               </li>
                             </ul>
