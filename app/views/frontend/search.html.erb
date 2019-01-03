@@ -1,61 +1,44 @@
 <section id="search-publications">
   <div class="container-fluid">
     <% @model.each do |row| %>
-      <div class="row d-flex justify-content-center" style="margin-bottom: 20px;">
-        <div class="col-8" style="border: 1px solid red;">
+      <%= link_to root_path do %>
+        <div class="row d-flex justify-content-center" style="margin-bottom: 20px;">
+          <div class="col-md-8 col-12  publication">
 
-          <div class="row">
-            <div class="col-12">
-              <p><%= row.title %></p>
+            <div class="row">
+              <div class="col-9 d-flex flex-column information">
+                <p class="title"><%= row.title %></p>
+                <p class="vacancies" style="color: #546E7A;">vagas: <%= row.vacancies %></p>
+                <% if row.remunaration.present? %>
+                  <p class="remunaration" style="color: #546E7A;">R$ <%= row.remunaration %></p>
+                <% end %>
+              </div>
+              <div class="col-3 location_and_type">
+                <div class="row">
+                  <div class="col-9" style="padding: 0px;">
+                    <div class="type"><%= row._type %></div>
+                  </div>
+                  <div class="col-3" style="padding: 0px;">
+                    <% if row.location.present? %>
+                      <i class="material-icons" style="color: #fdc000;" title="possui local">place</i>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <div class="row">
+              <div class="col-12" style="padding: 0px;">
+                <div class="" style="padding: 10px;">
+                  <% text =  strip_tags(row.information) %>
+                  <p><%= truncate(text, length: 160) {link_to "Continuar", "#"} %></p>
+                </div>
+              </div>
+            </div>
+
           </div>
-
-          <div class="row">
-            <div class="col-md-8">
-              <textarea name="name" rows="8" style="width: 100%;" disabled><%= strip_tags(row.information)%></textarea>
-            </div>
-            <div class="col-md-4">
-              <% if row.location.present? %>
-                <div id="map" style="height: 200px; width: 100%; border: 2px solid #CFD8DC;"></div>
-              <% end %>
-            </div>
-          </div>
-
         </div>
-      </div>
-
-      <script src='https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_KEY'] %>'></script>
-         <script type='text/javascript'>
-
-          function initialize() {
-
-            navigator.geolocation.getCurrentPosition(function(location) {
-              var lat = location.coords.latitude;
-              var lng = location.coords.longitude;
-
-              "<% if row.location.present? %>"
-                var my_position = new google.maps.LatLng(<%= row.place_pin %>);
-              "<% else %>"
-                var my_position = new google.maps.LatLng(lat,lng);
-                var input = document.getElementById('input_id');
-                input.value =  lat + ", " + lng;
-              "<% end %>"
-
-              var map = new google.maps.Map(document.getElementById('map'), {
-                  center: my_position,
-                  zoom: 15
-              });
-              var marker = new google.maps.Marker({
-                  position: my_position,
-                  map: map
-              });
-
-            });
-
-          }
-          google.maps.event.addDomListener(window, 'load', initialize);
-       </script>
-
+      <% end %>
     <% end %>
   </div>
 </section>
