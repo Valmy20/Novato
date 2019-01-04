@@ -11,7 +11,7 @@ class Publication < ApplicationRecord
   validates :vacancies, presence: true, numericality: { greater_than: 0 }
   validates :_type, presence: true
   validates :remunaration, numericality: { greater_than: 0 }, allow_blank: true
-  validates :information, length: { minimum: 20 }, allow_blank: true
+  validates :information, length: { minimum: 20, maximum: 780 }, allow_blank: true
 
   def place_pin
     location.tr('()', '') if location.present?

@@ -1,0 +1,67 @@
+<section id="show_publication" style="min-height: 100vh; padding-top: 10px">
+  <div class="container-fluid publication">
+
+    <div class="row" style="margin-bottom: 10px;">
+      <div class="col-12 d-flex flex-column" style="padding-top: 10px;">
+        <span class="title"><%= @model.title %></span>
+        <span class="postman">por: <%= @postman.name %></span>
+        <span class="vacancies">vagas: <%= @model.vacancies %></span>
+        <% if @model.remunaration.present? %>
+          <span class="remunaration">R$ <%= @model.remunaration %></span>
+        <% else %>
+          <span class="no-remunaration">remuneração não informada</span>
+        <% end %>
+
+      </div>
+
+    </div>
+
+    <div class="row body">
+      <div class="col-md-10 col-12" style="padding: 0px;">
+        <div class="" style="padding: 10px;">
+          <% text =  strip_tags(@model.information) %>
+          <p class="information"><%= text %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row div-map d-flex justify-container-center align-items-center">
+      <div class="col-12" style="padding: 5px;">
+        <% if @model.location.present? %>
+          <span style="color: #90A4AE;">Local</span>
+          <div id="map" style="height: 300px; width: 100%;"></div>
+        <% else %>
+          <div class="row d-flex justify-content-center" style="margin-top: 80px">
+            <i class="material-icons md-48" style="color: #ECEFF1;">place</i>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <p style="color: #CFD8DC;">sem local</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</section>
+<script src='https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_KEY'] %>'></script>
+ <script type='text/javascript'>
+
+  function initialize() {
+    navigator.geolocation.getCurrentPosition(function(location) {
+      "<% if @model.location.present? %>"
+        var my_position = new google.maps.LatLng(<%= @model.place_pin %>);
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: my_position,
+            zoom: 15
+        });
+
+        var marker = new google.maps.Marker({
+            position: my_position,
+            map: map
+        });
+      "<% end %>"
+    });
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+ </script>

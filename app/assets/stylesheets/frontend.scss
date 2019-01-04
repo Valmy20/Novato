@@ -194,11 +194,12 @@ body#frontend {
      }
   }//end footer
   section#search-publications {
+    min-height: 100vh;
     padding: 10px;
     div.publication {
       border: 1px solid #CFD8DC;
       div.head-card {
-        background: #E3F2FD;
+        background: #ECEFF1;
         div.information {
           min-height: 80px;
           p.title {
@@ -238,12 +239,68 @@ body#frontend {
       }
     }
 
-    @media #{$desktop} {
-      div.body {
-        min-height: 100px;
+  }
+  section#show_publication {
+    padding: 10px;
+    div.publication {
+      min-height: 85vh;
+      background: white;
+      .no-remunaration {
+        color: #546E7A;
+        font-size: 0.6em;
+        border: 1px solid #546E7A;
+        border-radius: 4px;
+        padding: 1px 4px 1px;
+        width: 150px;
+      }
+      .remunaration {
+        color: #546E7A;
+        font-size: 0.8em;
+      }
+      .vacancies {
+        font-size: 0.8em;
+        color: #546E7A;
+      }
+      p.information {
+        border: 1px solid #CFD8DC;
+        border-radius: 4px;
+        padding: 5px;
+      }
+      @media #{$smartphone} {
+        .title {
+          font-size: 1.5em;
+          color: #546E7A;
+        }
+        .postman {
+          font-size: 0.8em;
+          color: #546E7A;
+        }
+      }
+      @media #{$tablet} {
+        .title {
+          font-size: 1.8em;
+          color: #546E7A;
+        }
+        .postman {
+          font-size: 0.9em;
+          color: #546E7A;
+        }
+      }
+
+      @media #{$desktop} {
+        p.information {
+          min-height: 150px;
+        }
+        .title {
+          font-size: 1.8em;
+          color: #546E7A;
+        }
+        .postman {
+          font-size: 0.9em;
+          color: #546E7A;
+        }
       }
     }
-
   }
 }// end frontend
 

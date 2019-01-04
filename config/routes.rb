@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   # home
   root 'frontend#index'
   get 'publications', to: 'frontend#search', as: :search_publications
+  get 'show_publication/:publication', to: 'frontend#show_publication', as: :show_publication
 
   # session admin
   get 'admin/login', to: 'sessions#new', as: :new_session

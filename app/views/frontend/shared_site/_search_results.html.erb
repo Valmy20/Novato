@@ -1,0 +1,61 @@
+<div class="row d-flex justify-content-center" style="margin-bottom: 20px;">
+  <div class="col-md-8 col-12  publication">
+
+    <div class="row head-card">
+      <div class="col-8 col-md-9 d-flex flex-column information">
+        <%= link_to show_publication_path(row), method:"get" do %>
+          <p class="title"><%= row.title %></p>
+        <% end %>
+        <p class="vacancies" style="color: #546E7A;">vagas: <%= row.vacancies %></p>
+        <% if row.remunaration.present? %>
+          <p class="remunaration" style="color: #546E7A;">R$ <%= row.remunaration %></p>
+        <% end %>
+      </div>
+      <div class="col-4 col-md-3">
+        <div class="row" style="margin-top: 3px;">
+
+          <div class="col-xl-7 col-md-3 col-2 d-flex justify-content-end align-items-center" style="padding: 1px;">
+            <i class="material-icons md-18" style="color: #B0BEC5;">watch_later</i>
+          </div>
+
+          <div class="col-xl-4 col-md-6 col-8 d-flex justify-content-start align-items-center" style="padding: 0px;">
+            <span style="font-size: 0.6em;"><%= row.created_at.strftime("%d-%m-%Y") %></span>
+          </div>
+
+          <div class="col-xl-1 col-md-2 col-2 d-flex justify-content-center align-items-center" style="padding: 1px;">
+            <% if row.location.present? %>
+              <i class="material-icons md-18" style="color: #fdc000;" title="possui local">place</i>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- <div class="col-4 col-md-3 publication_date">
+        <div class="row">
+          <div class="col-md-2 icon-div col-1 d-flex justify-content-center align-items-center">
+            <i class="material-icons md-18" style="color: #B0BEC5;">watch_later</i>
+          </div>
+          <div class="col-md-5 col-7 date d-flex justify-content-start align-items-center">
+            <span><%= row.created_at.strftime("%d-%m-%Y") %></span>
+          </div>
+          <div class="col-md-2 col-1 icon-div d-flex justify-content-center">
+            <% if row.location.present? %>
+              <i class="material-icons md-18" style="color: #fdc000;" title="possui local">place</i>
+            <% end %>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="row body">
+      <div class="col-12" style="padding: 0px;">
+        <div class="" style="padding: 10px;">
+          <% text =  strip_tags(row.information) %>
+          <p><%= truncate(text, length: 190) {link_to "mais", show_publication_path(row), method:"get" } %></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

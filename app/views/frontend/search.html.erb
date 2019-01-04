@@ -1,48 +1,11 @@
 <section id="search-publications" style="background: transparent;">
   <div class="container-fluid">
-    <% @model.each do |row| %>
-        <div class="row d-flex justify-content-center" style="margin-bottom: 20px;">
-          <div class="col-md-8 col-12  publication">
-
-            <div class="row head-card">
-              <div class="col-8 col-md-9 d-flex flex-column information">
-                <%= link_to root_path do %>
-                  <p class="title"><%= row.title %></p>
-                <% end %>
-                <p class="vacancies" style="color: #546E7A;">vagas: <%= row.vacancies %></p>
-                <% if row.remunaration.present? %>
-                  <p class="remunaration" style="color: #546E7A;">R$ <%= row.remunaration %></p>
-                <% end %>
-              </div>
-              <div class="col-4 col-md-3 publication_date">
-                <div class="row">
-                  <div class="col-md-2 icon-div col-1 d-flex justify-content-center align-items-center">
-                    <i class="material-icons md-18" style="color: #B0BEC5;">watch_later</i>
-                  </div>
-                  <div class="col-md-7 col-7 date d-flex justify-content-start align-items-center">
-                    <span><%= row.created_at.strftime("%d-%m-%Y") %></span>
-                  </div>
-                  <div class="col-md-2 col-1 icon-div d-flex justify-content-center">
-                    <% if row.location.present? %>
-                      <i class="material-icons md-18" style="color: #fdc000;" title="possui local">place</i>
-                    <% end %>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <div class="row body">
-              <div class="col-12" style="padding: 0px;">
-                <div class="" style="padding: 10px;">
-                  <% text =  strip_tags(row.information) %>
-                  <p><%= truncate(text, length: 190) {link_to "mais", "#"} %></p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
+    <% unless @model.blank? %>
+      <% @model.each do |row| %>
+        <%= render partial:"frontend/shared_site/search_results", locals: { row: row } %>
+      <% end %>
+    <% else %>
+      <%= render partial:"frontend/shared_site/no_results" %>
     <% end %>
   </div>
 </section>
