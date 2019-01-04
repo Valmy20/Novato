@@ -194,53 +194,56 @@ body#frontend {
      }
   }//end footer
   section#search-publications {
-    min-height: 100vh;
-    background: white;
     padding: 10px;
-    @media #{$smartphone} {
-      div.publication {
-        border: 1px solid #CFD8DC;
-        border-radius: 10px;
+    div.publication {
+      border: 1px solid #CFD8DC;
+      div.head-card {
+        background: #E3F2FD;
         div.information {
           min-height: 80px;
-          background: #E3F2FD;
-          border-top-left-radius: 10px;
+          p.title {
+            font-size: 1.2em;
+            margin: 1px;
+            color:  #546E7A;
+          }
+          p.remunaration {
+            font-size: 0.7em;
+            color: #26C6DA;
+            margin: 1px;
+          }
+          p.vacancies {
+            font-size: 0.8em;
+            color: black;
+            margin: 1px;
+            color: #26C6DA;
+          }
+        }
+        div.publication_date {
+          padding: 0px;
+          padding-top: 3px;
+          div.date {
+            padding-left: 1px;
+          span {
+              font-size: 0.6em;
+              color: #607D8B;
+            }
+          }
+          div.icon-div {
+            padding: 1px 8px 1px;
+          }
         }
       }
-      div.location {
-        padding: 0px;
-        background:#E3F2FD;
-        border-top-right-radius: 10px;
-      }
-      div.location_and_type {
-        background: #E3F2FD;
-      }
-      div.type {
-        text-align: center;
-        background: #B0BEC5;
-        color: white;
-        border-radius: 20px;
-        padding: 0px;
-        margin-top: 3px;
-        font-size: 0.8em;
-      }
-      p.title {
-        font-size: 1.2em;
-        margin: 1px;
-        color: #26C6DA;
-      }
-      p.vacancies {
-        font-size: 0.8em;
-        color: black;
-        margin: 1px;
-        color: #26C6DA;
-      }
-      p.remunaration {
-        font-size: 0.8em;
-        color: #26C6DA;
-        margin: 1px;
+      div.body {
+        background: white;
       }
     }
+
+    @media #{$desktop} {
+      div.body {
+        min-height: 100px;
+      }
+    }
+
   }
 }// end frontend
 
