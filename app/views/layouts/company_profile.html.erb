@@ -17,7 +17,7 @@
     <%= javascript_include_tag 'company' %>
   </head>
 
-  <body id="company">
+  <body id="company_profile">
     <%= render partial: "layouts/notification/flash_messages" %>
     <%= render partial:"layouts/frontend/nav"%>
     <div class="page">
@@ -38,6 +38,11 @@
                         <p><%= current_employer.name %></p>
                       </li>
                       <h3 class="menu-title">Ações</h3><!-- /.menu-title -->
+                      <li class="menu-item-has-children">
+                        <%= link_to root_path do %>
+                          <i class="menu-icon material-icons md-18">home</i>Início
+                        <% end %>
+                      </li>
                       <li class="menu-item-has-children">
                           <%= link_to company_publications_path, method: "get" do %>
                             <i class="menu-icon material-icons md-18">subject</i>Publicações

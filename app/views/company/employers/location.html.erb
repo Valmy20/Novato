@@ -4,7 +4,7 @@
     <div id="map" style="height: 300px; width: 100%"></div>
   <% end %>
 
-  <%= button_tag(class: "btn btn-success") do %>
+  <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
     <div class="d-flex">
       <span class="material-icons" style="">check</span>
       <span style="margin-left: 5px">Salvar</span>

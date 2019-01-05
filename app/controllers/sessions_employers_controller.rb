@@ -1,5 +1,5 @@
 class SessionsEmployersController < ApplicationController
-  layout 'application'
+  layout 'company'
 
   def new
     redirect_to company_employer_profile_path if current_employer.present?

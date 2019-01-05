@@ -24,7 +24,7 @@ RSpec.describe Company::EmployersController, type: :controller do
 	  describe "GET #new" do
 	    it "returns http success" do
 	      get :new
-	      expect(response).to be_success
+	      expect(response).to be_success if session[:employer_id].blank?
 	    end
 	  end
 

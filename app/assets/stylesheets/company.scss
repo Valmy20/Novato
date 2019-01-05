@@ -5,13 +5,22 @@
  $smartphone: "(max-width: 767px)";
  $tablet: "(min-width: 768px) and (max-width: 1023px)";
  $desktop: "(min-width: 1024px)";
-body#company {
+
+body#company_profile {
   .btn_custom {
     padding: 2px 20px 2px;
     margin: 3px;
     border-radius: 4px;
   }
-
+  @media #{$smartphone} {
+    nav#nav-novato {
+      display: none;
+    }
+    .ul-mobile {
+      position: relative;
+      left: 10px;
+    }
+  }
   div.page {
     li.name_employer {
       padding: 5px;
@@ -27,13 +36,12 @@ body#company {
         border: 2px solid #546E7A;
       }
       .navbar-header {
-        background-color: #263238;
-        border-radius: 5px;
         padding: 5px;
       }
       .input_type, .input_vacancies, .input_title, .input_remunaration, .input_small{
         width: 90vw;
       }
+
     }
     @media #{$tablet} {
       .logo-tiny-employer {
@@ -41,8 +49,6 @@ body#company {
         border: 2px solid #546E7A;
       }
       .navbar-header {
-        background-color: #263238;
-        border-radius: 30px;
         padding: 5px;
       }
       .input_title{
@@ -58,8 +64,6 @@ body#company {
         border: 2px solid #546E7A;
       }
       .navbar-header {
-        background-color: #263238;
-        border-radius: 30px;
         padding: 5px;
       }
       .input_title{

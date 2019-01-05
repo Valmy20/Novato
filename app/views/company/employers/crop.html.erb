@@ -1,4 +1,3 @@
-<h1>Recortar Logo</h1>
 <div class="row">
   <div class="col-md-8">
     <%= image_tag @model.logo.url(:large), id: "employer_cropbox" %>
@@ -6,7 +5,12 @@
       <% %w[x y w h].each do |attribute| %>
         <%= f.input "crop_#{attribute}", as: :hidden %>
       <% end %>
-      <%= f.button :submit, class: 'btn btn-primary' %>
+      <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
+        <div class="d-flex">
+          <span class="material-icons" style="">check</span>
+          <span style="margin-left: 5px">Salvar</span>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

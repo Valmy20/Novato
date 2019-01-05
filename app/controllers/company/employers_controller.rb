@@ -2,10 +2,11 @@ module Company
   class EmployersController < CompanyController
     before_action :set_item, only: %i[edit update destroy]
     before_action :authenticate_employer, only: %i[edit update profile destroy]
-    layout 'company', only: %i[new create]
-    layout 'company_profile', except: %i[new create]
+    layout 'company', only: %i[new create reset_password]
+    layout 'company_profile', except: %i[new create reset_password]
 
     def new
+      redirect_to company_employer_profile_path(current_employer) if current_employer
       @model = Employer.new
       @model.build_employer_extra if @model.employer_extra.blank?
     end

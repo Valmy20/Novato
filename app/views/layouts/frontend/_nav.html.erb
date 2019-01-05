@@ -63,8 +63,21 @@
           Empregador
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Acessar</a>
-          <a class="dropdown-item" href="#">Junte-se à nós</a>
+          <% if current_employer %>
+            <%= link_to logout_session_employer_path, class:"dropdown-item" do %>
+              Sair
+            <% end %>
+            <%= link_to company_employer_profile_path(current_employer), class:"dropdown-item" do %>
+              Perfil
+            <% end %>
+          <% else %>
+            <%= link_to new_session_employer_path, class:"dropdown-item" do %>
+              Acessar
+            <% end %>
+            <%= link_to new_company_employer_path, class:"dropdown-item" do %>
+              Juste-se à nós
+            <% end %>
+          <% end %>
         </div>
       </li>
     </ul>
