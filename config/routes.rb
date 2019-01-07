@@ -68,6 +68,10 @@ Rails.application.routes.draw do
   match 'employer_reset_password', to: 'company/employers#reset_password', as: :employer_reset_password, via:[:get, :post]
   get 'employer_verify_token_reset/:token', to: 'company/employers#verify_token_reset', as: :employer_verify_token_reset
 
+  #reset institution password
+  match 'institution_reset_password', to: 'entity/institutions#reset_password', as: :institution_reset_password, via:[:get, :post]
+  get 'institution_verify_token_reset/:token', to: 'entity/institutions#verify_token_reset', as: :institution_verify_token_reset
+
   #user login facebook
   post 'login/:provider', to: redirect('/auth/%{provider}'), as: :login_facebook
   get 'auth/:provider/callback', to: 'sessions_users#create', as: :login_with_provider

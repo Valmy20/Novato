@@ -1,5 +1,5 @@
 class SessionsInstitutionsController < ApplicationController
-  layout 'application'
+  layout 'entity'
 
   def new
     redirect_to entity_institution_profile_path if current_institution.present?

@@ -10,13 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-    <%= stylesheet_link_tag 'institution', media: 'all' %>
-    <%= stylesheet_link_tag 'institution/_variables', media: 'all' %>
-    <%= stylesheet_link_tag 'institution/style', media: 'all' %>
+    <%= stylesheet_link_tag 'entity', media: 'all' %>
+    <%= stylesheet_link_tag 'entity/_variables', media: 'all' %>
+    <%= stylesheet_link_tag 'entity/style', media: 'all' %>
 
-    <%= javascript_include_tag 'institution' %>
+    <%= javascript_include_tag 'entity' %>
   <body>
-    <%= render partial: "layouts/notification/flash_messages" %>
     <%= render partial:"layouts/frontend/nav"%>
     <div class="page">
       <%= yield %>
