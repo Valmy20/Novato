@@ -1,0 +1,77 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+ $smartphone: "(max-width: 767px)";
+ $tablet: "(min-width: 768px) and (max-width: 1023px)";
+ $desktop: "(min-width: 1024px)";
+
+ body#institution_profile {
+  .btn_custom {
+    padding: 2px 20px 2px;
+    margin: 3px;
+    border-radius: 4px;
+  }
+  @media #{$smartphone} {
+    nav#nav-novato {
+      display: none;
+    }
+    .ul-mobile {
+      position: relative;
+      left: 10px;
+    }
+  }
+  div.page {
+    li.name_institution {
+      padding: 5px;
+    }
+    @media #{$smartphone} {
+      .hide_mobile {
+        display: none;
+      }
+      .logo-tiny-institution {
+        border-radius: 5px;
+        width: 40px;
+        height: 40px;
+        border: 2px solid #546E7A;
+      }
+      .navbar-header {
+        padding: 5px;
+      }
+      .input_type, .input_vacancies, .input_title, .input_remunaration, .input_small{
+        width: 90vw;
+      }
+
+    }
+    @media #{$tablet} {
+      .logo-tiny-institution {
+        border-radius: 80px;
+        border: 2px solid #546E7A;
+      }
+      .navbar-header {
+        padding: 5px;
+      }
+      .input_title{
+        width: 50vw;
+      }
+      .input_type, .input_vacancies, .input_remunaration, .input_small{
+        width: 20vw;
+      }
+    }
+    @media #{$desktop} {
+      .logo-tiny-institution {
+        border-radius: 80px;
+        border: 2px solid #546E7A;
+      }
+      .navbar-header {
+        padding: 5px;
+      }
+      .input_title{
+        width: 40vw;
+      }
+      .input_type, .input_vacancies, .input_remunaration, .input_small{
+        width: 20vw;
+      }
+    }
+  }
+ }

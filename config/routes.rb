@@ -26,6 +26,11 @@ Rails.application.routes.draw do
     match 'location', to: 'employers#location', via: %i[get patch put], as: :employer_location
   end
 
+  namespace 'entity', path: 'novato' do
+    resources :institutions, only: %i[new create edit update destroy]
+    match 'institution_profile', to: 'institutions#profile', via: %i[get patch put], as: :institution_profile
+  end
+
   # home
   root 'frontend#index'
   get 'publications', to: 'frontend#search', as: :search_publications
@@ -45,6 +50,11 @@ Rails.application.routes.draw do
   get 'employer/login', to: 'sessions_employers#new', as: :new_session_employer
   post 'employer/login', to: 'sessions_employers#create', as: :sessions_employer
   get 'logout_employer', to: 'sessions_employers#destroy', as: :logout_session_employer
+
+  # session institution
+  get 'institution/login', to: 'sessions_institutions#new', as: :new_session_institution
+  post 'institution/login', to: 'sessions_institutions#create', as: :sessions_institution
+  get 'logout_institution', to: 'sessions_institutions#destroy', as: :logout_session_institution
 
   #reset admin password
   match 'reset_password', to: 'frontend/admins#reset_password', as: :reset_password, via:[:get, :post]

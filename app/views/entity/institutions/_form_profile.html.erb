@@ -1,0 +1,12 @@
+<%= simple_form_for @model, url: entity_institution_profile_path do |f| %>
+  <div class="input_title">
+    <%= f.input :name, label: 'Nome' %>
+  </div>
+  
+  <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
+    <div class="d-flex">
+      <span class="material-icons" style="">check</span>
+      <span style="margin-left: 5px">Salvar</span>
+    </div>
+  <% end %>
+<% end %>
