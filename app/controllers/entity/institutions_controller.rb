@@ -65,6 +65,18 @@ module Entity
       redirect_to new_session_institution_path, notice: 'A nova senha foi enviada para o seu email !'
     end
 
+    def update_password
+      @model = current_institution
+      @model.require_password_current = true
+      return unless request.patch?
+
+      if @model.update(set_params)
+        redirect_to entity_institution_profile_path, notice: 'Senha atualizada'
+      else
+        render :update_password
+      end
+    end
+
     private
 
     def set_item

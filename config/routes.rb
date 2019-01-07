@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   namespace 'entity', path: 'novato' do
     resources :institutions, only: %i[new create edit update destroy]
     match 'institution_profile', to: 'institutions#profile', via: %i[get patch put], as: :institution_profile
+    match 'update_institution_password', to: 'institutions#update_password', via: %i[get patch put], as: :update_institution_password
   end
 
   # home
