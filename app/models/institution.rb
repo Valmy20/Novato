@@ -1,6 +1,8 @@
 class Institution < ApplicationRecord
   has_secure_password
   has_secure_token :token_reset
+  has_one :institution_extra, dependent: :destroy
+  accepts_nested_attributes_for :institution_extra
   attr_accessor :password_current, :require_password_current, :new_password,
                 :new_password_confirmation
 

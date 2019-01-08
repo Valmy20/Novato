@@ -8,6 +8,7 @@ module Entity
     def new
       redirect_to entity_institution_profile_path(current_institution) if current_institution
       @model = Institution.new
+      @model.build_institution_extra if @model.institution_extra.blank?
     end
 
     def create
@@ -34,6 +35,7 @@ module Entity
 
     def profile
       @model = current_institution
+      @model.build_institution_extra if @model.institution_extra.blank?
       return unless request.patch?
       return unless @model.update(set_params)
 
@@ -97,7 +99,8 @@ module Entity
       if_is_blank
       params.require(:institution).permit(
         :name, :email, :password, :password_confirmation,
-        :password_current, :new_password, :new_password_confirmation, :status
+        :password_current, :new_password, :new_password_confirmation,
+        :status, institution_extra_attributes: %i[about phone location]
       )
     end
 
