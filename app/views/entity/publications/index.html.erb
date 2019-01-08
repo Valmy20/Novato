@@ -1,0 +1,44 @@
+<section class="entity">
+  <div>
+    <%= link_to new_entity_publication_path, class:"btn btn-primary" do %>
+    <div class="d-flex">
+      <span class="material-icons" style="color: white">add</span>
+      <span style="margin-left: 5px">Novo</span>
+    </div>
+    <% end %>
+  </div>
+  <table class="table table_margin">
+    <thead>
+      <tr>
+        <th class="hide_mobile">ID</th>
+        <th>Título</th>
+        <th class="hide_mobile">Tipo</th>
+        <th class="d-flex justify-content-end">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @model.each do |publication| %>
+        <tr>
+          <td class="column_id hide_mobile" ><%= publication.id %></td>
+          <td><%= truncate(publication.title, length: 13) %></td>
+          <td class="hide_mobile"><%= publication._type %></td>
+          <td class="d-flex justify-content-end">
+            <%= link_to entity_publication_path(publication), title:"Ver", method:"get", class:"btn btn-primary btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons">remove_red_eye</span>
+              </div>
+            <% end %>
+            <%= link_to edit_entity_publication_path(publication), title:"Editar", class:"btn btn-success btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons">create</span>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%= paginate @model %>
+  </div>
+</section>
