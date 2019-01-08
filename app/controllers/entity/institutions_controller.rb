@@ -2,7 +2,7 @@ module Entity
   class InstitutionsController < EntityController
     before_action :set_item, only: %i[edit update destroy]
     before_action :authenticate_institution, only: %i[edit update profile destroy]
-    layout 'entity_profile', except: %i[new create reset_password]
+    layout 'entity_profile', except: %i[new create]
 
     def new
       redirect_to entity_institution_profile_path(current_institution) if current_institution
@@ -39,8 +39,7 @@ module Entity
       return unless @model.update(set_params)
 
       logo = params[:institution][:logo]
-      msg = 'Aterações realizadas'
-      (redirect_to entity_institution_profile_path, notice: msg) unless (render :crop if logo.present?)
+      redirect_to entity_institution_profile_path, notice: 'Alterado!' unless (render :crop if logo.present?)
     end
 
     def update_institution_cover
@@ -48,34 +47,18 @@ module Entity
       @model.require_password_current = false
       @model.require_institution_cover = true
       return unless request.patch?
-
       return unless @model.update(set_params)
 
       render :update_institution_cover
     end
 
-    def reset_password
-      return unless request.post?
+    def location
+      @model = current_institution
+      @model.build_institution_extra if @model.institution_extra.blank?
+      return unless request.patch?
+      return unless @model.update(set_params)
 
-      @model = Institution.where(email: params[:institution][:email]).last
-      if @model
-        InstitutionMailer.reset_password(@model).deliver_now
-        redirect_to new_session_institution_path, notice: 'Pedido de nova senha enviado, vefirique seu email.'
-      else
-        flash[:alert] = 'Email não cadastrado !'
-      end
-    end
-
-    def verify_token_reset
-      @model = Institution.where(token_reset: params[:token]).last
-      return nil if @model.blank?
-
-      reset = @model
-      password = SecureRandom.hex(8)
-      reset.regenerate_token_reset
-      reset.update(password: password)
-      InstitutionMailer.send_new_password(reset, password).deliver_now
-      redirect_to new_session_institution_path, notice: 'A nova senha foi enviada para o seu email !'
+      render :location, notice: 'Local adicionado'
     end
 
     def update_password
@@ -97,22 +80,19 @@ module Entity
     end
 
     def password_blank?
-      params[:institution][:password].blank? &&
-        params[:institution][:password_confirmation].blank?
+      params[:institution][:password].blank? && params[:institution][:password_confirmation].blank?
     end
 
     def new_password_blank?
-      params[:institution][:new_password].blank? &&
-        params[:institution][:new_password_confirmation].blank?
+      params[:institution][:new_password].blank? && params[:institution][:new_password_confirmation].blank?
     end
 
     def set_params
       if_is_blank
       params.require(:institution).permit(
-        :name, :email, :password, :password_confirmation,
-        :password_current, :new_password, :new_password_confirmation,
-        :logo, :cover, :crop_x, :crop_y, :crop_w, :crop_h,
-        :status, institution_extra_attributes: %i[about phone location]
+        :name, :email, :password, :password_confirmation, :password_current,
+        :new_password, :new_password_confirmation, :logo, :cover, :crop_x,
+        :crop_y, :crop_w, :crop_h, :status, institution_extra_attributes: %i[about phone location]
       )
     end
 

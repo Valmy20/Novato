@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     match 'institution_profile', to: 'institutions#profile', via: %i[get patch put], as: :institution_profile
     match 'update_institution_password', to: 'institutions#update_password', via: %i[get patch put], as: :update_institution_password
     match 'update_institution_cover', to: 'institutions#update_institution_cover', via: %i[get patch put], as: :update_institution_cover
+    match 'institution_location', to: 'institutions#location', via: %i[get patch put], as: :institution_location
   end
 
   # home
@@ -71,8 +72,8 @@ Rails.application.routes.draw do
   get 'employer_verify_token_reset/:token', to: 'company/employers#verify_token_reset', as: :employer_verify_token_reset
 
   #reset institution password
-  match 'institution_reset_password', to: 'entity/institutions#reset_password', as: :institution_reset_password, via:[:get, :post]
-  get 'institution_verify_token_reset/:token', to: 'entity/institutions#verify_token_reset', as: :institution_verify_token_reset
+  match 'institution_reset_password', to: 'frontend/institutions#reset_password', as: :institution_reset_password, via:[:get, :post]
+  get 'institution_verify_token_reset/:token', to: 'frontend/institutions#verify_token_reset', as: :institution_verify_token_reset
 
   #user login facebook
   post 'login/:provider', to: redirect('/auth/%{provider}'), as: :login_facebook
