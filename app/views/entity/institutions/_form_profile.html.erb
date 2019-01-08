@@ -4,6 +4,10 @@
     <%= f.input :name, label: 'Nome' %>
   </div>
 
+  <%= f.input :logo, as: :file, label: 'Logo da empresa' %>
+  <%= f.hidden_field :logo_cache %>
+  <%= (image_tag @model.logo.url(:thumb), class:"img-fluid") unless @model.logo.blank? %>
+
   <%= f.simple_fields_for :institution_extra do |extra| %>
     <div class="custon_field left-addon input_small" style="margin-top: 30px">
       <div class="icon">

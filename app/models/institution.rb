@@ -4,13 +4,20 @@ class Institution < ApplicationRecord
   has_one :institution_extra, dependent: :destroy
   accepts_nested_attributes_for :institution_extra
   attr_accessor :password_current, :require_password_current, :new_password,
-                :new_password_confirmation
+                :new_password_confirmation, :require_institution_cover
+
+  mount_uploader :cover, CoverUploader
+
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  mount_uploader :logo, LogoUploader
+  after_update :crop_logo
 
   extend FriendlyId
   friendly_id :name, use: :slugged
 
   default_scope { where(deleted: false) }
   enum status: %i[disapproved approved]
+  validates :cover, presence: true, if: :require_institution_cover
   validates :name, presence: true, length: { in: 2..50 }
   validates :password, :password_confirmation, presence: true, on: :create
   validates :password, :password_confirmation, length: { in: 6..20 }, allow_blank: true
@@ -23,6 +30,10 @@ class Institution < ApplicationRecord
   after_validation :update_passowrd, if: :require_password_current
 
   before_create :generate_token
+
+  def crop_logo
+    logo.recreate_versions! if crop_x.present?
+  end
 
   private
 

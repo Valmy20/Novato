@@ -2,7 +2,6 @@ module Entity
   class InstitutionsController < EntityController
     before_action :set_item, only: %i[edit update destroy]
     before_action :authenticate_institution, only: %i[edit update profile destroy]
-    layout 'entity', only: %i[new create reset_password]
     layout 'entity_profile', except: %i[new create reset_password]
 
     def new
@@ -39,8 +38,20 @@ module Entity
       return unless request.patch?
       return unless @model.update(set_params)
 
+      logo = params[:institution][:logo]
       msg = 'Aterações realizadas'
-      redirect_to entity_institution_profile_path, notice: msg
+      (redirect_to entity_institution_profile_path, notice: msg) unless (render :crop if logo.present?)
+    end
+
+    def update_institution_cover
+      @model = current_institution
+      @model.require_password_current = false
+      @model.require_institution_cover = true
+      return unless request.patch?
+
+      return unless @model.update(set_params)
+
+      render :update_institution_cover
     end
 
     def reset_password
@@ -100,6 +111,7 @@ module Entity
       params.require(:institution).permit(
         :name, :email, :password, :password_confirmation,
         :password_current, :new_password, :new_password_confirmation,
+        :logo, :cover, :crop_x, :crop_y, :crop_w, :crop_h,
         :status, institution_extra_attributes: %i[about phone location]
       )
     end
