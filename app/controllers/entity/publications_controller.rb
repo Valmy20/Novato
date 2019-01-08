@@ -39,6 +39,15 @@ module Entity
       end
     end
 
+    def location
+      @model = Publication.find_by(id: params[:id])
+      return unless request.patch?
+      return unless @model.update(set_params)
+
+      flash[:notice] = 'Local adicionado'
+      redirect_to entity_publications_path, notice: 'Local adicionado'
+    end
+
     def destroy
       @model.deleted = true
       (redirect_to entity_publications_path, notice: 'Publicação deletada') if @model.save
@@ -56,7 +65,8 @@ module Entity
         :_type,
         :information,
         :remunaration,
-        :vacancies
+        :vacancies,
+        :location
       )
     end
   end

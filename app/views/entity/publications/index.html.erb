@@ -33,6 +33,11 @@
                 <span class="material-icons">create</span>
               </div>
             <% end %>
+            <%= link_to entity_job_location_path(publication.id), method:"get", title:"Adicionar local da vaga", class:"btn btn-secondary btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons">add_location</span>
+              </div>
+            <% end %>
           </td>
         </tr>
       <% end %>
