@@ -15,7 +15,7 @@
         <tr>
           <td class="column_id" ><%= employer.id %></td>
           <td><%= truncate(employer.name, length: 25) %></td>
-          <td><%= helper_status_enum_employer(employer) %>
+          <td><%= helper_status_enum(employer) %>
             <%= link_to backoffice_update_employer_status_path(employer.id), method: :post,
                 class:"btn btn-secondary", style:"padding: 0px 5px 0px;" do %>
                 <div class="d-flex">

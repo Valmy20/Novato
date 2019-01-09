@@ -15,26 +15,20 @@
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to backoffice_categories_path, class:"nav-link" do %>
-      <div class="d-flex">
-        <i class="material-icons">grid_on</i>
-        <span style="margin: 2px 2px 0px">Categorias</span>
-      </div>
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "#", class:"nav-link" do %>
-      <div class="d-flex">
-        <i class="material-icons">place</i>
-        <span style="margin: 2px 2px 0px">Instituições</span>
-      </div>
-      <% end %>
-    </li>
-    <li class="nav-item">
       <%= link_to backoffice_users_path, class:"nav-link" do %>
       <div class="d-flex">
         <i class="material-icons">school</i>
         <span style="margin: 2px 2px 0px">Usuários</span>
+      </div>
+      <% end %>
+    </li>
+
+
+    <li class="nav-item">
+      <%= link_to backoffice_institutions_path, class:"nav-link" do %>
+      <div class="d-flex">
+        <i class="material-icons">place</i>
+        <span style="margin: 2px 2px 0px">Instituições</span>
       </div>
       <% end %>
     </li>
@@ -43,6 +37,14 @@
       <div class="d-flex">
         <i class="material-icons">group</i>
         <span style="margin: 2px 2px 0px">Empregadores</span>
+      </div>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to backoffice_categories_path, class:"nav-link" do %>
+      <div class="d-flex">
+        <i class="material-icons">grid_on</i>
+        <span style="margin: 2px 2px 0px">Cat. publicaçoes</span>
       </div>
       <% end %>
     </li>

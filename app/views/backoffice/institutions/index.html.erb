@@ -11,12 +11,12 @@
       </tr>
     </thead>
     <tbody>
-      <% @model.each do |user| %>
+      <% @model.each do |institution| %>
         <tr>
-          <td class="column_id" ><%= user.id %></td>
-          <td><%= truncate(user.name, length: 25) %></td>
-          <td><%= helper_status_enum(user) %>
-            <%= link_to backoffice_update_user_status_path(user), method: :post,
+          <td class="column_id" ><%= institution.id %></td>
+          <td><%= truncate(institution.name, length: 25) %></td>
+          <td><%= helper_status_enum(institution) %>
+            <%= link_to backoffice_update_institution_status_path(institution.id), method: :post,
                 class:"btn btn-secondary", style:"padding: 0px 5px 0px;" do %>
                 <div class="d-flex">
                   <span class="material-icons md-18" style="color: white">create</span>
@@ -24,7 +24,7 @@
             <% end %>
           </td>
           <td class="d-flex justify-content-end btn-actions">
-            <%= link_to backoffice_user_path(user), class:"btn btn-primary btn_custom" do %>
+            <%= link_to backoffice_institution_path(institution.id), method:"get", class:"btn btn-primary btn_custom" do %>
               <div class="d-flex">
                 <span class="material-icons" style="color: white">remove_red_eye</span>
               </div>

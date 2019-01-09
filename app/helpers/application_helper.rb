@@ -7,16 +7,8 @@ module ApplicationHelper
     end
   end
 
-  def helper_status_enum_user(user)
-    if user.approved?
-      content_tag(:span, 'Ativado', class: 'badge badge-pill badge-primary')
-    else
-      content_tag(:span, 'Desativado', class: 'badge badge-pill badge-danger')
-    end
-  end
-
-  def helper_status_enum_employer(employer)
-    if employer.approved?
+  def helper_status_enum(model)
+    if model.approved?
       content_tag(:span, 'Ativado', class: 'badge badge-pill badge-primary')
     else
       content_tag(:span, 'Desativado', class: 'badge badge-pill badge-danger')
