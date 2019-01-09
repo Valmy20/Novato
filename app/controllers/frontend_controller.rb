@@ -16,8 +16,7 @@ class FrontendController < ApplicationController
     if @model.publicationable_type == 'Employer'
       @postman = Employer.find_by(id: id)
     elsif @model.publicationable_type == 'Institution'
-      TODO
-      # @postman = Institution.find_by(id: id)
+      @postman = Institution.find_by(id: id)
     end
   end
 end

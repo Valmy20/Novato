@@ -1,0 +1,18 @@
+<section id="new_message" style="min-height: 100vh; background: #ECEFF1">
+  <div class="row d-flex justify-content-center align-items-center" style="padding: 10px; height: 100vh;">
+    <div class="col-12 col-md-6">
+      <%= simple_form_for(@model, url: new_message_path, method:"post") do |f|%>
+        <%= f.input :email, as: :email, label:'E-mail' %>
+        <%= f.input :body, label:'Mensagem', as: :text, input_html:{rows: 5} %>
+        <div class="d-flex justify-content-center">
+          <%= button_tag(class: "btn btn-success", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Enviando..."}) do %>
+            <div class="d-flex">
+              <span class="material-icons" style="">check</span>
+              <span style="margin-left: 5px">Enviar</span>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

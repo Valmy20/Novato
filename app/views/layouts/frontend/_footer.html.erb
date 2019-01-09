@@ -1,30 +1,22 @@
 <div id="footer" class="container-fluid">
   <footer class="footer-bs" style="margin-top: 0px;">
       <div class="row" style="margin: 0px; padding: 0px;">
-      	<div class="col-md-3 footer-brand animated fadeInLeft">
+      	<div class="col-md-4 footer-brand animated fadeInLeft">
           	<!-- <a href="index.html"><img class="logo" src="imgs/logo_5.png" alt="logo"></a> -->
               <p style="text-align: center;">A Novato Irecê é uma iniciativa que tem como objetivo aproximar unidades de ensino e seus estudantes a empregadores da
-              região de Irecê, com o objetivo de facilitar a entrada no mercado de trabalho tanto de estudantes quanto recém-formados.</p>
+              região de Irecê, a fim de facilitar a entrada no mercado de trabalho tanto de estudantes quanto recém-formados.</p>
           </div>
-      	<div class="col-md-4 footer-nav animated fadeInUp">
-          	<div class="col-md-6">
-                  <ul class="list">
-                      <li><a href="#">Termos & Condições</a></li>
-                      <li><a href="#">Política de privacidade</a></li>
-                  </ul>
-              </div>
-          </div>
-      	<div class="col-md-3 footer-ns animated fadeInRight">
-          	<h4>Enviar mensagem</h4>
-              <p>
-                  <div class="input-group">
-                    <input type="text" class="form-control">
-                    <span class="input-group-btn">
-                      <button class="btn btn-primary" type="button">Enviar</button>
-                    </span>
-                  </div><!-- /input-group -->
-               </p>
-          </div>
+      	<div class="col-md-4 footer-nav d-flex flex-column align-items-center">
+        	<p>Termos & Condições</p>
+        	<p>Política de privacidade</p>
+        </div>
+      	<div class="col-md-4 footer-ns d-flex justify-content-center align-items-center">
+          <%= link_to new_message_path do %>
+            <div class="d-flex" style="background: transparent; padding: 5px; border: 1px solid  white;">
+              <i class="material-icons" style="color: white">mail_outline</i><span style="color: white">Enviar mensagem</span>
+            </div>
+          <% end %>
+        </div>
       </div>
       <div class="d-flex justify-content-center" style="padding-top: 20px;">
         Developed by Novato Irecê

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   root 'frontend#index'
   get 'publications', to: 'frontend#search', as: :search_publications
   get 'show_publication/:publication', to: 'frontend#show_publication', as: :show_publication
+  match 'new_message', to: 'frontend/messages#new_message', as: :new_message, via:[:get, :post]
 
   # session admin
   get 'admin/login', to: 'sessions#new', as: :new_session
