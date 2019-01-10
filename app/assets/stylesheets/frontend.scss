@@ -46,11 +46,7 @@ body#frontend {
     }
   }
   @media #{$smartphone} {
-    background-image: image-url('irece-mobile.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 100% top;
-    background-attachment: fixed;
+    background: #90CAF9;
     .ul-mobile {
       position: relative;
       left: 10px;
@@ -83,11 +79,7 @@ body#frontend {
     }
   }
   @media #{$tablet} {
-    background-image: image-url('irece.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 100% top;
-    background-attachment: fixed;
+    background: #90CAF9;
     .ul-mobile {
       position: relative;
       left: 10px;
@@ -105,11 +97,7 @@ body#frontend {
     }
   }
   @media #{$desktop} {
-    background-image: image-url('irece.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 100% top;
-    background-attachment: fixed;
+    background: #90CAF9;
     .ul-mobile {
       position: relative;
       left: 10%;
