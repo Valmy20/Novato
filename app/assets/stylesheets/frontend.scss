@@ -45,8 +45,8 @@ body#frontend {
       }
     }
   }
+  background-image: url("irece-mobile.jpg") !important;
   @media #{$smartphone} {
-    background-image: url("irece-mobile.jpg") !important;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% top;
