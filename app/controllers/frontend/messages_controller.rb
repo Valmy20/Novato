@@ -4,7 +4,7 @@ module Frontend
       if request.post?
         @model = Message.new(set_params)
         if @model.save
-          redirect_to new_message_path, notice: 'Mensagem enviada !'
+          redirect_to root_path, notice: 'Mensagem enviada'
         else
           render :new_message
         end

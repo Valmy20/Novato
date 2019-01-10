@@ -18,6 +18,7 @@
 
   <body id="frontend">
     <div class="page" style="overflow-x: hidden;">
+      <%= render partial: "layouts/notification/flash_messages" %>
       <%= render partial:"layouts/frontend/nav" %>
         <%= yield %>
       <%= render partial:"layouts/frontend/footer" %>
