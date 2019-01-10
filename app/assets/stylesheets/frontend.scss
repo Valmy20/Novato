@@ -45,8 +45,8 @@ body#frontend {
       }
     }
   }
-  background-image: url("irece-mobile.jpg") !important;
   @media #{$smartphone} {
+    background-image: image-url('irece-mobile.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% top;
@@ -83,6 +83,7 @@ body#frontend {
     }
   }
   @media #{$tablet} {
+    background-image: image-url('irece.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% top;
@@ -104,6 +105,7 @@ body#frontend {
     }
   }
   @media #{$desktop} {
+    background-image: image-url('irece.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% top;
