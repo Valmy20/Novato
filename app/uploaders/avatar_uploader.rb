@@ -8,7 +8,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :large do
-    resize_to_limit(600, 600)
+    resize_to_limit(500, 500)
   end
 
   version :thumb do
@@ -24,7 +24,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def crop
     return nil if model.crop_x.blank?
 
-    resize_to_limit(600, 600)
+    resize_to_limit(500, 500)
     manipulate! do |img|
       x = model.crop_x.to_i
       y = model.crop_y.to_i
