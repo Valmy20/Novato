@@ -7,37 +7,39 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto mr-auto ul-mobile">
-      <li class="nav-item active">
-        <%= link_to root_path, class:"nav-link custom-link" do %>
+    <%= link_to root_path do %>
+      <%= image_tag("logo.png", class:"logo") %>
+    <% end %>
+    <ul class="navbar-nav ml-auto mr-auto ul-mobile" style="padding-right: 150px">
+      <li class="nav-item">
+        <%= link_to root_path, class:"nav-link" do %>
           Home
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to root_path, class:"nav-link custom-link" do %>
+        <%= link_to root_path, class:"nav-link" do %>
           Blog
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to search_publications_path, class:"nav-link custom-link" do %>
+        <%= link_to search_publications_path, class:"nav-link" do %>
           Vagas
         <% end %>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link custom-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Sobre
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+      <li class="nav-item">
+        <%= link_to new_session_employer_path, class:"nav-link" do %>
+          Empregador
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to new_session_institution_path, class:"nav-link" do %>
+          Instituição
+        <% end %>
       </li>
     </ul>
     <ul class="navbar-nav" style="padding-right: 100px; margin-left: 10px;">
       <li class="nav-item dropdown">
-        <a class="nav-link custom-link usuario dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link usuario dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Usuário
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -54,28 +56,6 @@
             <% end %>
             <%= link_to new_frontend_user_path, class:"dropdown-item" do %>
               Cadastrar
-            <% end %>
-          <% end %>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link custom-link empregador dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Empregador
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% if current_employer %>
-            <%= link_to logout_session_employer_path, class:"dropdown-item" do %>
-              Sair
-            <% end %>
-            <%= link_to company_employer_profile_path(current_employer), class:"dropdown-item" do %>
-              Perfil
-            <% end %>
-          <% else %>
-            <%= link_to new_session_employer_path, class:"dropdown-item" do %>
-              Acessar
-            <% end %>
-            <%= link_to new_company_employer_path, class:"dropdown-item" do %>
-              Juste-se à nós
             <% end %>
           <% end %>
         </div>

@@ -9,6 +9,11 @@
       	<div class="col-md-4 footer-nav d-flex flex-column align-items-center">
         	<p>Termos & Condições</p>
         	<p>Política de privacidade</p>
+          <%= link_to new_session_collaborator_path do %>
+            <div class="d-flex" style="background: transparent; padding: 5px;">
+              <i class="material-icons" style="color: white">person</i><span style="color: white">Seja um colaborador</span>
+            </div>
+          <% end %>
         </div>
       	<div class="col-md-4 footer-ns d-flex justify-content-center align-items-center">
           <%= link_to new_message_path do %>

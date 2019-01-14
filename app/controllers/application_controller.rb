@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_admin, :current_user, :current_employer, :current_institution
+  helper_method :current_admin, :current_user, :current_employer, :current_institution, :current_collaborator
 
   private
 
@@ -38,5 +38,14 @@ class ApplicationController < ActionController::Base
 
   def authenticate_institution
     redirect_to sessions_institution_path unless current_institution
+  end
+
+  def current_collaborator
+    collaborator = Collaborator.where(id: session[:collaborator_id]).last
+    @current_collaborator ||= collaborator if session[:collaborator_id] && collaborator
+  end
+
+  def authenticate_collaborator
+    redirect_to sessions_collaborator_path unless current_collaborator
   end
 end

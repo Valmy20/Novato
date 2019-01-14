@@ -1,0 +1,26 @@
+<section id="login">
+	<div class="container d-flex justify-content-center align-items-center">
+		<div class="card card-login">
+			<div class="card-header">Login</div>
+
+			<div class="card-body">
+				<%= simple_form_for(:login, url: :sessions_collaborator, method: :post) do |f| %>
+					<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
+					<%= f.input :password, as: :password, label: false, class:"form-control", placeholder:"Password" %>
+					<div class="d-flex justify-content-center">
+						<%= button_tag(class: "btn", style:"width: 100%;", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Aguarde..."}) do %>
+		         	Login
+		        <% end %>
+					</div>
+				<% end %>
+				<%= link_to new_contributor_collaborator_path, class:"d-block small", style:"text-align: left" do %>
+					Criar conta
+				<% end %>
+				<%= link_to "#", class:"d-block small", style:"text-align: left" do %>
+					Esqueceu a senha ?
+				<% end %>
+			</div>
+
+		</div>
+	</div>
+</section>

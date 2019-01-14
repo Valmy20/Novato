@@ -40,6 +40,11 @@ Rails.application.routes.draw do
     match 'institution_location', to: 'institutions#location', via: %i[get patch put], as: :institution_location
   end
 
+  namespace 'contributor', path: 'novato' do
+    resources :collaborators, except: %i[show]
+    match 'collaborator_profile', to: 'collaborators#profile', via: %i[get patch put], as: :collaborator_profile
+  end
+
   # home
   root 'frontend#index'
   get 'publications', to: 'frontend#search', as: :search_publications
@@ -65,6 +70,11 @@ Rails.application.routes.draw do
   get 'institution/login', to: 'sessions_institutions#new', as: :new_session_institution
   post 'institution/login', to: 'sessions_institutions#create', as: :sessions_institution
   get 'logout_institution', to: 'sessions_institutions#destroy', as: :logout_session_institution
+
+  # session collaborator
+  get 'collaborator/login', to: 'sessions_collaborators#new', as: :new_session_collaborator
+  post 'collaborator/login', to: 'sessions_collaborators#create', as: :sessions_collaborator
+  get 'logout_collaborator', to: 'sessions_collaborators#destroy', as: :logout_session_collaborator
 
   #reset admin password
   match 'reset_password', to: 'frontend/admins#reset_password', as: :reset_password, via:[:get, :post]

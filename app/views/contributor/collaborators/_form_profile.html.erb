@@ -1,0 +1,12 @@
+<div class="container">
+  <%= simple_form_for @model, url: contributor_collaborator_profile_path do |f| %>
+    <%= f.input :name, label:"Nome" %>
+    <%= f.input :email, label:"E-mail" %>
+    <%= f.input :password_current, as: :password, label:"Current password", label:"Senha Atual" %>
+    <%= f.input :new_password, as: :password, label:"New password", label: "Nova Senha" %>
+    <%= f.input :new_password_confirmation, as: :password, label:"Confirmar Nova Senha"%>
+    <%= button_tag(class: "btn btn-success", style:"width: 130px", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
+      Salvar
+    <% end %>
+  <% end %>
+</div>

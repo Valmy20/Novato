@@ -10,6 +10,14 @@
 $smartphone: "(max-width: 767px)";
 $tablet: "(min-width: 768px) and (max-width: 1023px)";
 $desktop: "(min-width: 1024px)";
+
+nav#nav-novato {
+  .nav-link {
+    color: #90CAF9 !important;
+    font-weight: bold;
+  }
+}
+
 body#frontend {
   // index
   font-family: 'Varela Round', sans-serif;
@@ -33,17 +41,6 @@ body#frontend {
         }
       }// end div.search
     } //end section#cover
-  }
-  nav#nav-novato {
-    div.collapse {
-      a.custom-link {
-        color: #78909C !important;
-        font-weight: 700 !important;
-      }
-      a.custom-link:hover {
-        color: #42A5F5 !important;
-      }
-    }
   }
   @media #{$smartphone} {
     background: #90CAF9;
@@ -117,12 +114,6 @@ body#frontend {
       border: 1px solid #78909C;
       padding: 1px 10px 1px;
       border-radius: 30px;
-    }
-    a.empregador {
-      border: 1px solid #78909C;
-      padding: 1px 10px 1px;
-      border-radius: 30px;
-      margin-left: 10px;
     }
     div.card_text {
       padding: 10px;
@@ -641,7 +632,4 @@ body {
      padding-left:  60px;
      border-radius: 0px;
    }
-
-
-
 }
