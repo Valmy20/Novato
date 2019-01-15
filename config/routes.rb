@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   namespace 'contributor', path: 'novato' do
     resources :collaborators, except: %i[show]
     match 'collaborator_profile', to: 'collaborators#profile', via: %i[get patch put], as: :collaborator_profile
+    resources :posts
   end
 
   # home
