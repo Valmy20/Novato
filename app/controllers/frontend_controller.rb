@@ -1,12 +1,12 @@
 class FrontendController < ApplicationController
-  before_action :search
+  before_action :search, only: %i[index]
 
   def index
   end
 
   def search
     @q = Publication.ransack(params[:q])
-    @model = @q.result.page(params[:page]).per(10)
+    @model = @q.result.order(id: :desc).page(params[:page]).per(10)
   end
 
   def show_publication

@@ -1,0 +1,47 @@
+
+<div class="container">
+  <div>
+    <%= link_to new_contributor_post_path, class:"btn btn-primary" do %>
+    <div class="d-flex">
+      <span class="material-icons" style="color: white">add</span>
+      <span style="margin-left: 5px">Novo</span>
+    </div>
+    <% end %>
+  </div>
+<table class="table">
+
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th class="d-flex justify-content-end">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @model.each do |row|%>
+      <tr>
+        <td><%= row.id %></td>
+        <td><%= row.title %></td>
+        <td class="d-flex justify-content-end btn-actions">
+          <%= link_to edit_contributor_post_path(row), style:"padding: 4px 25px 1px", class:"btn btn-primary btn_custom" do %>
+            <div class="d-flex">
+              <span class="material-icons">create</span>
+            </div>
+          <% end %>
+          <%= link_to contributor_post_path(row), method: :delete,
+            data: { confirm: "Deseja realmente excluir ?" }, style:"padding: 4px 25px 1px; margin-left: 4px", class:"btn btn-danger btn_custom" do %>
+            <div class="d-flex">
+              <span class="material-icons" style="">delete_sweep</span>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+  <div class="row d-flex justify-content-center">
+    <%= paginate @model, theme: '../kaminari' %>
+  </div>
+</div>
