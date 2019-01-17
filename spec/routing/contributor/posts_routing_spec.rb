@@ -8,12 +8,8 @@ RSpec.describe Contributor::PostsController, type: :routing do
       expect(:get => contributor_posts_path).to route_to("contributor/posts#index")
     end
 
-    it "routes to #show" do
-      expect(:get => contributor_post_path).to route_to("contributor/posts#show")
-    end
-
     it "routes to #new" do
-      expect(:get => new_contributor_collaborator_path).to route_to("contributor/posts#new")
+      expect(:get => new_contributor_post_path).to route_to("contributor/posts#new")
     end
 
 		it "routes to #create" do
@@ -21,15 +17,15 @@ RSpec.describe Contributor::PostsController, type: :routing do
     end
 
 		it "routes to #edit" do
-      expect(:get => edit_contributor_collaborator_path(1)).to route_to("contributor/posts#edit", id: '1')
+      expect(:get => edit_contributor_post_path(1)).to route_to("contributor/posts#edit", id: '1')
     end
 
 		it "routes to #update" do
-      expect(:put => contributor_collaborator_path(1)).to route_to("contributor/posts#update", id: '1')
+      expect(:put => contributor_post_path(1)).to route_to("contributor/posts#update", id: '1')
     end
 
 		it "routes to #detroy" do
-      expect(:delete => contributor_collaborator_path(1)).to route_to("contributor/posts#destroy", :id => '1')
+      expect(:delete => contributor_post_path(1)).to route_to("contributor/posts#destroy", :id => '1')
     end
 
   end

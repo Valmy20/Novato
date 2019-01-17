@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="col-md-12">
+      <%= simple_form_for([:contributor, @model], multpart: true) do |f|%>
+        <%= f.input :title, label:'Título' %>
+        <div class="row">
+          <div class="col-5 col-md-2">
+            <label class="btn btn-primary">
+              <div class="d-flex">
+                <i class="material-icons">photo</i>Imagem
+              </div>
+              <span style="display:none;">
+                <%= f.file_field :thumb, as: :file %>
+              </span>
+            </label>
+          </div>
+          <div class="col-3 col-md-1">
+            <% unless @model.thumb.blank? %>
+              <%= image_tag @model.thumb.url(:tiny) %>
+            <% end %>
+          </div>
+        </div>
+        <%= f.hidden_field :thumb_cache %>
+        <%= f.input :category_ids, collection: @categories, input_html: { multiple: true }, label:"Categorias" %>
+        <%= f.input :body, label: 'Conteúdo', as: :ckeditor, input_html: { ckeditor: { height: 300 } } %>
+        <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
+          <div class="d-flex">
+            <span class="material-icons" style="">check</span>
+            <span style="margin-left: 5px">Salvar</span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_14_170948) do
+ActiveRecord::Schema.define(version: 2019_01_15_212542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2019_01_14_170948) do
     t.boolean "deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ass_post_categories", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_ass_post_categories_on_category_id"
+    t.index ["post_id"], name: "index_ass_post_categories_on_post_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -129,6 +138,19 @@ ActiveRecord::Schema.define(version: 2019_01_14_170948) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.text "thumb"
+    t.string "slug"
+    t.integer "status"
+    t.boolean "deleted"
+    t.string "postable_type"
+    t.integer "postable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "publications", force: :cascade do |t|
     t.string "title"
     t.integer "_type"
@@ -178,6 +200,8 @@ ActiveRecord::Schema.define(version: 2019_01_14_170948) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ass_post_categories", "categories"
+  add_foreign_key "ass_post_categories", "posts"
   add_foreign_key "categories", "admins"
   add_foreign_key "employer_extras", "employers"
   add_foreign_key "institution_extras", "institutions"

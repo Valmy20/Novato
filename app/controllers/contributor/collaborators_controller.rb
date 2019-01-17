@@ -2,8 +2,7 @@ module Contributor
   class CollaboratorsController < ContributorController
     before_action :set_item, only: %i[edit update destroy]
     before_action :authenticate_collaborator, only: %i[index edit update profile destroy]
-    layout 'frontend', only: %i[new create]
-    layout 'collaborator_profile', except: %i[new create]
+    layout 'contributor_profile', only: %i[profile]
 
     def index
     end
