@@ -276,7 +276,7 @@ aside.left-panel {
                 }
 
                 .sub-menu {
-                    background: #607D8B;
+                    background: #272c33;
                     border: none;
                     box-shadow: none;
                     overflow-y: hidden;
@@ -1700,6 +1700,7 @@ nav#nav-novato {
 @media #{$tablet} {
   .right-panel {
     width: 80vw;
+    padding-top: 60px;
   }
   .ul-mobile {
     position: relative;
@@ -1709,6 +1710,7 @@ nav#nav-novato {
 @media #{$desktop} {
   .right-panel {
     width: 80vw;
+    padding-top: 60px;
   }
   .ul-mobile {
     position: relative;

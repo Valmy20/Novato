@@ -1,27 +1,52 @@
-<section id="login">
-	<div class="container d-flex justify-content-center align-items-center">
-		<div class="card card-login">
-			<%= render partial: "layouts/notification/flash_messages" %>
-			<div class="card-header">Login</div>
-
-			<div class="card-body">
-				<%= simple_form_for(:login, url: :sessions_employer, method: :post) do |f| %>
-					<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
-					<%= f.input :password, as: :password, label: false, class:"form-control", placeholder:"Password" %>
-					<div class="d-flex justify-content-center">
-						<%= button_tag(class: "btn", style:"width: 100%;", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Aguarde..."}) do %>
-		         	Login
-		        <% end %>
-					</div>
-				<% end %>
-				<%= link_to new_company_employer_path, class:"d-block small", style:"text-align: left" do %>
-					Criar conta
-				<% end %>
-				<%= link_to employer_reset_password_path, class:"d-block small", style:"text-align: left" do %>
-					Esqueceu a senha ?
-				<% end %>
+<section id="screen_login_employer">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="d-flex">
+						<%= image_tag("job-search2", class:"img-fluid") %>
+						<h1 style="color: white" class="title">Recrute pessoas da nossa região</h1>
+				</div>
+				<div style="max-width: 700px; padding: 15px;">
+						<p style="color: white" class="d-sm-none">
+							Recrute pessoas da nossa região, use a tecnologia a seu favor e conheça
+							alunos recém-formados e estudantes com o perfil do seu negócio.
+						</p>
+						<p style="color: white" class="d-none d-sm-block">
+							Recrute pessoas da nossa região, use a tecnologia a seu favor e conheça
+							alunos recém-formados e estudantes com o perfil do seu negócio. Divulgue vagas
+							de estágio ou emprego e saia na frente. Além de poder recrutar quem precisa, sua
+						  empresa estará se promovendo na região.
+						</p>
+				</div>
 			</div>
+			<div class="col-md-4">
+					<div style="max-width: 400px">
+						<div class="card card-login">
+							<%= render partial: "layouts/notification/flash_messages" %>
+							<div class="card-header">Login</div>
 
+							<div class="card-body">
+								<%= simple_form_for(:login, url: :sessions_employer, method: :post) do |f| %>
+									<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
+									<%= f.input :password, as: :password, label: false, class:"form-control", placeholder:"Password" %>
+									<div class="d-flex justify-content-center">
+										<%= button_tag(class: "btn", style:"width: 100%;", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Aguarde..."}) do %>
+						         	Login
+						        <% end %>
+									</div>
+								<% end %>
+								<%= link_to new_company_employer_path, class:"d-block small", style:"text-align: left" do %>
+									Criar conta
+								<% end %>
+								<%= link_to employer_reset_password_path, class:"d-block small", style:"text-align: left" do %>
+									Esqueceu a senha ?
+								<% end %>
+							</div>
+
+						</div>
+					</div>
+			</div>
 		</div>
 	</div>
 </section>
+<%= render partial: "./layouts/frontend/footer" %>

@@ -1,26 +1,44 @@
-<section id="login">
-	<div class="container d-flex justify-content-center align-items-center">
-		<div class="card card-login">
-			<div class="card-header">Login</div>
-
-			<div class="card-body">
-				<%= simple_form_for(:login, url: :sessions_collaborator, method: :post) do |f| %>
-					<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
-					<%= f.input :password, as: :password, label: false, class:"form-control", placeholder:"Password" %>
-					<div class="d-flex justify-content-center">
-						<%= button_tag(class: "btn", style:"width: 100%;", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Aguarde..."}) do %>
-		         	Login
-		        <% end %>
+<section id="screen_login_collaborator">
+	<div class="container-fluid">
+		<div class="row main">
+			<div class="col-md-8">
+				<div class="row" style="padding: 0px">
+					<div class="col-md-12">
+						<div class="d-flex justify-content-center">
+								<%= image_tag("icon-blog", class:"img-fluid") %>
+						</div>
+						<h1 style="color: white; text-align: center" class="title d-sm-none">Torne-se um colaborador</h1>
+						<p style="color: white; tex-align: justify;" class="title d-sm-none">Faça postagems no blog
+						sobre carrera, negócios, e tudo que envolve o mercado de trabalho de sua área e da região.</p>
+						<h1 style="color: white; text-align: center" class="title d-none d-sm-block">Um blog sobre carreria,
+						 negócios, empreendedorismo, e muito mais.</h1>
 					</div>
-				<% end %>
-				<%= link_to new_contributor_collaborator_path, class:"d-block small", style:"text-align: left" do %>
-					Criar conta
-				<% end %>
-				<%= link_to "#", class:"d-block small", style:"text-align: left" do %>
-					Esqueceu a senha ?
-				<% end %>
+				</div>
 			</div>
-
+			<div class="col-md-4">
+					<div style="max-width: 400px">
+						<div class="card card-login">
+							<div class="card-header">Login</div>
+								<div class="card-body">
+									<%= simple_form_for(:login, url: :sessions_collaborator, method: :post) do |f| %>
+										<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
+										<%= f.input :password, as: :password, label: false, class:"form-control", placeholder:"Password" %>
+										<div class="d-flex justify-content-center">
+											<%= button_tag(class: "btn", style:"width: 100%;", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Aguarde..."}) do %>
+							         	Login
+							        <% end %>
+										</div>
+									<% end %>
+									<%= link_to new_contributor_collaborator_path, class:"d-block small", style:"text-align: left" do %>
+										Criar conta
+									<% end %>
+									<%= link_to "#", class:"d-block small", style:"text-align: left" do %>
+										Esqueceu a senha ?
+									<% end %>
+								</div>
+						</div>
+					</div>
+			</div>
 		</div>
 	</div>
 </section>
