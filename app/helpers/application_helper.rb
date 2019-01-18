@@ -18,4 +18,33 @@ module ApplicationHelper
   def logged_facebook(user)
     user.provider.blank?
   end
+
+  def helper_month_post(month)
+    case month
+    when 1
+      'Jan'
+    when 2
+      'Fev'
+    when 3
+      'Mar'
+    when 4
+      'Abr'
+    when 5
+      'Maio'
+    when 6
+      'Jun'
+    when 7
+      'Jul'
+    when 8
+      'Ago'
+    when 9
+      'Set'
+    when 10
+      'Out'
+    when 11
+      'Nov'
+    else
+      'Dez'
+    end
+  end
 end

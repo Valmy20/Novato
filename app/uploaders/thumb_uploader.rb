@@ -13,7 +13,7 @@ class ThumbUploader < CarrierWave::Uploader::Base
 
   version :thumb do
     process :crop
-    resize_to_fill(300, 300)
+    resize_to_fill(300, 220)
   end
 
   version :tiny do

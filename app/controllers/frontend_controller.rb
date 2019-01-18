@@ -19,4 +19,8 @@ class FrontendController < ApplicationController
       @postman = Institution.find_by(id: id)
     end
   end
+
+  def posts
+    @model = Post.order(id: :desc).page(params[:page]).per(10)
+  end
 end

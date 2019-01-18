@@ -19,6 +19,69 @@ nav#nav-novato {
 }
 
 body#frontend {
+  section#posts {
+     padding-top: 15px;
+     background: #ECEFF1;
+     min-height: 100vh;
+    @media #{$smartphone} {
+      div.post {
+        background: white;
+        border: 1px solid #CFD8DC;
+        padding: 5px;
+        margin-bottom: 7px;
+        div.div-info {
+          height: 100%;
+          span.title {
+
+          }
+          i.watch {
+            padding-top: 1px;
+          }
+          p.date {
+            font-size: 0.8em;
+          }
+        }
+      }
+    }
+    @media #{$tablet} {
+      div.post {
+        background: white;
+        border: 1px solid #CFD8DC;
+        padding: 5px;
+        margin-bottom: 15px;
+        div.div-info {
+          height: 100%;
+          span.title {
+            margin-top: 20px;
+            font-size: 1.5em;
+            letter-spacing: 0.04em;
+          }
+          i.watch {
+            padding-top: 1px;
+          }
+        }
+      }
+    }
+    @media #{$desktop} {
+      div.post {
+        background: white;
+        border: 1px solid #CFD8DC;
+        padding: 5px;
+        margin-bottom: 15px;
+        div.div-info {
+          height: 100%;
+          span.title {
+            margin-top: 20px;
+            font-size: 1.5em;
+            letter-spacing: 0.04em;
+          }
+          i.watch {
+            padding-top: 1px;
+          }
+        }
+      }
+    }
+  }
   // index
   font-family: 'Varela Round', sans-serif;
   div#index {

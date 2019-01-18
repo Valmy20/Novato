@@ -161,7 +161,7 @@ namespace :seed do
 
   desc 'Posts'
   task post: :environment do
-    thumb_url = Faker::LoremFlickr.image("300x350")
+    thumb_url = Faker::LoremFlickr.image("300x220")
     15.times do
       post = Post.new(
         title: Faker::Name.name,
