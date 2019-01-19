@@ -2,7 +2,7 @@
   <div class="container-fluid publication">
 
     <div class="row" style="margin-bottom: 10px;">
-      <div class="col-12 d-flex flex-column" style="padding-top: 10px;">
+      <div class="col-10 col-md-11 d-flex flex-column" style="padding-top: 10px;">
         <span class="title"><%= @model.title %></span>
         <span class="postman">por: <%= @postman.name %></span>
         <span class="vacancies">vagas: <%= @model.vacancies %></span>
@@ -11,11 +11,17 @@
         <% else %>
           <span class="no-remunaration">remuneração não informada</span>
         <% end %>
-        <div class="d-flex" style="margin-top: 5px;">
-          <%= social_share_button_tag('Share to Facebook', desc: @model.title) %>
+      </div>
+      <div class="col-1 col-md-1">
+        <div class="d-flex justify-content-center">
+          <div class="social-share">
+            <div class="d-flex justify-content-center">
+              <i class="material-icons" style="color: #B0BEC5">share</i>
+            </div>
+            <%= social_share_button_tag('Share', desc: @model.title) %>
+          </div>
         </div>
       </div>
-
     </div>
 
     <div class="row body">

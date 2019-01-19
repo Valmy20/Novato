@@ -11,6 +11,57 @@ $smartphone: "(max-width: 767px)";
 $tablet: "(min-width: 768px) and (max-width: 1023px)";
 $desktop: "(min-width: 1024px)";
 
+@media #{$smartphone} {
+  div.social-share {
+    margin-top: 5px;
+    border: 1px solid #B0BEC5;
+    border-radius: 5px;
+    .social-share-button {
+      padding: 2px;
+      .ssb-icon {
+        opacity: 0.5;
+        background-size: 30px 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+@media #{$tablet} {
+  div.social-share {
+    margin-top: 5px;
+    border: 1px solid #B0BEC5;
+    border-radius: 5px;
+    .social-share-button {
+      padding-left: 10px;
+      .ssb-icon {
+        opacity: 0.5;
+        background-size: 30px 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+@media #{$desktop} {
+  div.social-share {
+    margin-top: 5px;
+    border: 1px solid #B0BEC5;
+    border-radius: 5px;
+    padding-left: 2px;
+    .social-share-button {
+      padding-left: 3px;
+      .ssb-icon {
+        opacity: 0.5;
+        background-size: 30px 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+
 nav#nav-novato {
   .nav-link {
     color: #90CAF9 !important;
