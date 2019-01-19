@@ -5,62 +5,12 @@
 @import "bootstrap";
 @import "material_icons";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Lato');
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
 $smartphone: "(max-width: 767px)";
 $tablet: "(min-width: 768px) and (max-width: 1023px)";
 $desktop: "(min-width: 1024px)";
-
-@media #{$smartphone} {
-  div.social-share {
-    margin-top: 5px;
-    border: 1px solid #B0BEC5;
-    border-radius: 5px;
-    .social-share-button {
-      padding: 2px;
-      .ssb-icon {
-        opacity: 0.5;
-        background-size: 30px 30px;
-        height: 30px;
-        width: 30px;
-      }
-    }
-  }
-}
-@media #{$tablet} {
-  div.social-share {
-    margin-top: 5px;
-    border: 1px solid #B0BEC5;
-    border-radius: 5px;
-    .social-share-button {
-      padding-left: 10px;
-      .ssb-icon {
-        opacity: 0.5;
-        background-size: 30px 30px;
-        height: 30px;
-        width: 30px;
-      }
-    }
-  }
-}
-@media #{$desktop} {
-  div.social-share {
-    margin-top: 5px;
-    border: 1px solid #B0BEC5;
-    border-radius: 5px;
-    padding-left: 2px;
-    .social-share-button {
-      padding-left: 3px;
-      .ssb-icon {
-        opacity: 0.5;
-        background-size: 30px 30px;
-        height: 30px;
-        width: 30px;
-      }
-    }
-  }
-}
-
 
 nav#nav-novato {
   .nav-link {
@@ -137,7 +87,7 @@ body#frontend {
     }
   }
   // index
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Lato', sans-serif;
   div#index {
     section#cover {
       height: 100vh;
@@ -346,6 +296,15 @@ body#frontend {
 
   }
   section#show_publication {
+    .social-share-button {
+        padding: 2px;
+        .ssb-icon {
+          opacity: 0.8;
+          background-size: 27px 27px;
+          height: 27px;
+          width: 27px;
+        }
+    }
     padding: 10px;
     div.publication {
       min-height: 85vh;
@@ -406,6 +365,94 @@ body#frontend {
         .postman {
           font-size: 0.9em;
           color: #546E7A;
+        }
+      }
+    }
+  }
+
+  section#show_post {
+    min-height: 100vh;
+    padding: 20px;
+    background: white;
+    @media #{$smartphone} {
+    padding-top: 50px;
+    .social-share-button {
+        padding: 2px;
+        .ssb-icon {
+          opacity: 0.8;
+          background-size: 27px 27px;
+          height: 27px;
+          width: 27px;
+        }
+      }
+      h1.title {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 1.6em;
+        text-align: center;
+        font-weight: lighter;
+        letter-spacing: 0.04em;
+      }
+      div.info_date {
+        padding-left: 10px;
+        text-align: center;
+        span {
+          font-size: 0.8em;
+        }
+      }
+      div.body {
+        padding: 2px;
+        div.content {
+          background: white;
+          p {
+            font-size: 12px !important;
+          }
+        }
+      }
+    }
+    @media #{$tablet} {
+      padding-top: 70px;
+      .social-share-button {
+          padding: 2px;
+          .ssb-icon {
+            opacity: 0.8;
+            background-size: 27px 27px;
+            height: 27px;
+            width: 27px;
+          }
+      }
+      h1.title {
+        font-size: 2em;
+        font-weight: lighter;
+        letter-spacing: 0.04em;
+      }
+      div.body {
+        padding: 20px;
+        div.content {
+          background: white;
+        }
+      }
+    }
+    @media #{$desktop} {
+      padding-top: 70px;
+      .social-share-button {
+          padding: 2px;
+          .ssb-icon {
+            opacity: 0.8;
+            background-size: 27px 27px;
+            height: 27px;
+            width: 27px;
+          }
+      }
+      h1.title {
+        font-size: 2em;
+        font-weight: lighter;
+        letter-spacing: 0.04em;
+      }
+      div.body {
+        padding: 20px;
+        div.content {
+          background: white;
         }
       }
     }

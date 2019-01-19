@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   get 'show_publication/:publication', to: 'frontend#show_publication', as: :show_publication
   match 'new_message', to: 'frontend/messages#new_message', as: :new_message, via:[:get, :post]
   get 'list_posts', to: 'frontend#posts', as: :list_posts
+  get 'show_post/:post', to: 'frontend#show_post', as: :show_post
 
   # session admin
   get 'admin/login', to: 'sessions#new', as: :new_session

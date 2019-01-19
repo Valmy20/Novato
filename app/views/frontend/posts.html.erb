@@ -4,7 +4,7 @@
     <div class="post", style="padding-bottom: 2px">
       <div class="row" style="padding-bottom: 0px">
         <div class="col-5 col-sm-4 col-md-3 d-flex align-items-center">
-          <%= link_to "#" do %>
+          <%= link_to show_post_path(row) do %>
             <%= (image_tag row.thumb.url(:thumb), class:"img-fluid") unless row.thumb.blank? %>
           <% end %>
         </div>
@@ -12,7 +12,7 @@
         <div class="col-7 col-sm-8 col-md-9">
           <div class="row flex-column div-info">
             <div style="width: 92%">
-              <%= link_to "#" do %>
+              <%= link_to show_post_path(row) do %>
                 <span class="title"><%= truncate(row.title, length: 65) %></span>
               <% end %>
             </div>

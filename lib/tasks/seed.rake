@@ -17,7 +17,7 @@ namespace :seed do
 
   desc 'User'
   task user: :environment do
-    10.times do
+    1.times do
       avatar_url = Faker::LoremFlickr.image("200x200")
       cover_url = Faker::LoremFlickr.image("600x160")
       user = User.new(
@@ -46,7 +46,7 @@ namespace :seed do
         build_errors(extra)
       end
 
-      rand = [6, 10, 4].sample
+      rand = [6, 4].sample
       rand.times do
         skill = Skill.new(
           name: Faker::Music.band,
@@ -64,7 +64,7 @@ namespace :seed do
 
   desc 'Employer'
   task employer: :environment do
-    10.times do
+    1.times do
       logo_url = Faker::LoremFlickr.image("200x200")
       employer = Employer.new(
         name: Faker::Company.name,
@@ -96,7 +96,7 @@ namespace :seed do
 
   desc 'Institution'
   task institution: :environment do
-    10.times do
+    1.times do
       logo_url = Faker::LoremFlickr.image("200x200")
       institution = Institution.new(
         name: Faker::Educator.university,
@@ -145,7 +145,7 @@ namespace :seed do
 
   desc 'Category'
   task category: :environment do
-    10.times do
+    2.times do
       category = Category.new(
         name: Faker::Space.planet,
         admin_id: Admin.last.id
@@ -162,11 +162,11 @@ namespace :seed do
   desc 'Posts'
   task post: :environment do
     thumb_url = Faker::LoremFlickr.image("300x220")
-    15.times do
+    1.times do
       post = Post.new(
-        title: Faker::Name.name,
+        title: Faker::Lorem.sentence,
         remote_thumb_url: thumb_url,
-        body: Faker::Lorem.paragraph_by_chars([100, 160, 247, 400].sample, false),
+        body: Faker::Lorem.paragraph_by_chars([6230, 2500, 3500, 5000].sample, false),
         postable_type: "Collaborator",
         postable_id: Collaborator.last.id
       )
@@ -190,7 +190,7 @@ namespace :seed do
 
   desc 'Publications'
   task publication: :environment do
-    15.times do
+    1.times do
       publciation = Publication.new(
         title: Faker::Job.title,
         _type: [0, 1].sample,

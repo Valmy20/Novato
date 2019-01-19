@@ -12,16 +12,14 @@
           <span class="no-remunaration">remuneração não informada</span>
         <% end %>
       </div>
-      <div class="col-1 col-md-1">
-        <div class="d-flex justify-content-center">
-          <div class="social-share">
-            <div class="d-flex justify-content-center">
-              <i class="material-icons" style="color: #B0BEC5">share</i>
-            </div>
-            <% current_url = request.original_url %>
-            <%= social_share_button_tag(current_url, url: current_url, desc: @model.title) %>
-          </div>
-        </div>
+
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+      <div class="col-12 d-flex justify-content-start">
+        <i class="material-icons md-24" style="color: #B0BEC5; padding-top: 3px;">share</i>
+        <% current_url = request.original_url %>
+        <%= social_share_button_tag(current_url, url: current_url, desc: @model.title) %>
       </div>
     </div>
 

@@ -23,4 +23,8 @@ class FrontendController < ApplicationController
   def posts
     @model = Post.order(id: :desc).page(params[:page]).per(10)
   end
+
+  def show_post
+    @model = Post.friendly.find(params[:post])
+  end
 end

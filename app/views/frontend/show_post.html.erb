@@ -1,0 +1,40 @@
+<section id="show_post">
+
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-sm-12 col-md-10 col-lg-9">
+        <div class="row">
+          <div class="col-md-5 col-lg-4 d-flex justify-content-center">
+            <figure>
+              <%= (image_tag @model.thumb.url(:thumb), class:"img-fluid") unless @model.thumb.blank? %>
+            </figure>
+          </div>
+          <div class="col-md-7 col-lg-8">
+            <h1 class="title"><%= @model.title %></h1>
+            <div class="row info_date">
+              <div class="col-12">
+                <div class="d-flex flex-column">
+                  <span class="date" style="color: #B0BEC5"><%= @model.created_at.strftime("%d#{helper_month_post(@model.created_at.month)}%y - %Hh %M") %></span>
+                  <span style="color: #B0BEC5"><%= "por: #{who_create_post(@model.postable_type, @model.postable_id)}" %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+      <div class="col-12 d-flex justify-content-center">
+        <i class="material-icons md-24" style="color: #B0BEC5; padding-top: 3px;">share</i>
+        <% current_url = request.original_url %>
+        <%= social_share_button_tag(current_url, url: current_url, desc: @model.title) %>
+      </div>
+    </div>
+
+    <div class="row body d-flex justify-content-center">
+      <div class="col-12 col-sm-12 col-md-10 col-lg-9 content">
+        <p><%= @model.body.html_safe %></p>
+      </div>
+    </div>
+
+</section>

@@ -47,4 +47,14 @@ module ApplicationHelper
       'Dez'
     end
   end
+
+  def who_create_post(type, id)
+    if type == 'Collaborator'
+      row = Collaborator.find_by(id: id)
+      row.name
+    elsif type == 'Institution'
+      row = Institution.find_by(id: id)
+      row.name
+    end
+  end
 end
