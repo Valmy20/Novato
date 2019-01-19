@@ -1,7 +1,7 @@
 /*
 *= require jcrop
 */
-
+@import "social-share-button";
 @import "bootstrap";
 @import "material_icons";
 @import "font-awesome";
@@ -321,6 +321,7 @@ body#frontend {
         padding: 5px;
       }
       @media #{$smartphone} {
+        margin-top: 50px;
         .title {
           font-size: 1.5em;
           color: #546E7A;
@@ -331,6 +332,7 @@ body#frontend {
         }
       }
       @media #{$tablet} {
+        margin-top: 60px;
         .title {
           font-size: 1.8em;
           color: #546E7A;
@@ -342,6 +344,7 @@ body#frontend {
       }
 
       @media #{$desktop} {
+          margin-top: 60px;
         p.information {
           min-height: 150px;
         }

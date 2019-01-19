@@ -1,4 +1,4 @@
-<section id="show_publication" style="min-height: 100vh; padding-top: 10px">
+<section id="show_publication" style="min-height: 100vh;">
   <div class="container-fluid publication">
 
     <div class="row" style="margin-bottom: 10px;">
@@ -11,7 +11,9 @@
         <% else %>
           <span class="no-remunaration">remuneração não informada</span>
         <% end %>
-
+        <div class="d-flex" style="margin-top: 5px;">
+          <%= social_share_button_tag(@model.title) %>
+        </div>
       </div>
 
     </div>
