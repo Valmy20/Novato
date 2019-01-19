@@ -19,7 +19,7 @@
               <i class="material-icons" style="color: #B0BEC5">share</i>
             </div>
             <% current_url = request.original_url %>
-            <%= social_share_button_tag(@model.title, url: current_url, desc: @model.title) %>
+            <%= social_share_button_tag(current_url, url: current_url, desc: @model.title) %>
           </div>
         </div>
       </div>
