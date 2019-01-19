@@ -18,7 +18,8 @@
             <div class="d-flex justify-content-center">
               <i class="material-icons" style="color: #B0BEC5">share</i>
             </div>
-            <%= social_share_button_tag('Share', desc: @model.title) %>
+            <% current_url = request.original_url %>
+            <%= social_share_button_tag('Novato Irecê', url: current_url, desc: @model.title) %>
           </div>
         </div>
       </div>
