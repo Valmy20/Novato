@@ -12,7 +12,8 @@
           <span class="no-remunaration">remuneração não informada</span>
         <% end %>
         <div class="d-flex" style="margin-top: 5px;">
-          <%= social_share_button_tag(@model.title) %>
+          <% text =  strip_tags(@model.information) %>
+          <%= social_share_button_tag(@model.title, desc: text[0, 40]) %>
         </div>
       </div>
 

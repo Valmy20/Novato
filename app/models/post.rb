@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   has_many :ass_post_categories, dependent: :destroy
   has_many :categories, through: :ass_post_categories
   validates :title, length: { in: 2..100 }, presence: true
-  validates :body, length: { minimum: 10 }, presence: true
+  validates :body, length: { minimum: 200 }, presence: true
   default_scope { where(deleted: false) }
   scope :collaborator, ->(collaborator) { where(postable_type: 'Collaborator', postable_id: collaborator.id) }
 

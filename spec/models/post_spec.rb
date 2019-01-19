@@ -12,4 +12,10 @@ RSpec.describe Post, type: :model do
     expect(post).to include('postable_type')
     expect(post).to include('postable_id')
   end
+
+  it 'validate body lenght' do
+    is_expected.to validate_length_of(:body).
+     is_at_least(200)
+  end
+
 end

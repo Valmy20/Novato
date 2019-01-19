@@ -19,6 +19,7 @@ RSpec.describe Publication, type: :model do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:vacancies) }
     it { is_expected.to validate_presence_of(:_type) }
+    it { is_expected.to validate_presence_of(:information) }
   end
 
    context 'when validation' do
@@ -33,7 +34,7 @@ RSpec.describe Publication, type: :model do
      end
      it 'validate information lenght' do
        is_expected.to validate_length_of(:information).
-        is_at_least(20).
+        is_at_least(80).
         is_at_most(780)
      end
    end

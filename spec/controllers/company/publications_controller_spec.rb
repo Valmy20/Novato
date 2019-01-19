@@ -13,7 +13,7 @@ RSpec.describe Company::PublicationsController, type: :controller do
 		{
 			title: 'Vaga para analista de TI',
 			_type: :estagio,
-      information: Faker::Lorem.paragraph,
+      information: Faker::Lorem.paragraph_by_chars([100, 160, 247, 400].sample, false),
       remunaration: 500,
 			vacancies: [1,2,3].sample,
       publicationable_type: "Employer",

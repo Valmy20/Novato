@@ -36,7 +36,7 @@ namespace :seed do
       end
 
       extra = UserExtra.new
-      extra.bio = Faker::Lorem.paragraphs(rand(1..3)),
+      extra.bio = Faker::Lorem.paragraph_by_chars([100, 160, 247].sample, false),
       extra.phone = Faker::PhoneNumber.cell_phone,
       extra.user_id = user.id
 
@@ -81,7 +81,7 @@ namespace :seed do
       end
 
       extra = EmployerExtra.new
-      extra.about = Faker::Lorem.paragraphs,
+      extra.about = Faker::Lorem.paragraph_by_chars([100, 160, 247].sample, false),
       extra.phone = Faker::PhoneNumber.cell_phone,
       extra.employer_id = employer.id
 
@@ -113,7 +113,7 @@ namespace :seed do
       end
 
       extra = InstitutionExtra.new
-      extra.about = Faker::Lorem.paragraphs,
+      extra.about = Faker::Lorem.paragraph_by_chars([100, 160, 247, 400].sample, false),
       extra.phone = Faker::PhoneNumber.cell_phone,
       extra.location = "-11.33454, -42.13392",
       extra.institution_id = institution.id
@@ -166,7 +166,7 @@ namespace :seed do
       post = Post.new(
         title: Faker::Name.name,
         remote_thumb_url: thumb_url,
-        body: Faker::Lorem.paragraphs(rand(2..4)),
+        body: Faker::Lorem.paragraph_by_chars([100, 160, 247, 400].sample, false),
         postable_type: "Collaborator",
         postable_id: Collaborator.last.id
       )
@@ -194,7 +194,7 @@ namespace :seed do
       publciation = Publication.new(
         title: Faker::Job.title,
         _type: [0, 1].sample,
-        information: Faker::Lorem.paragraphs(rand(2..4)),
+        information: Faker::Lorem.paragraph_by_chars([100, 160, 247, 400].sample, false),
         remunaration: [200, 400, 450, 1000, 2500, 3000].sample,
         vacancies: [1, 2, 3].sample,
         location: ["-11.33454, -42.13392", nil].sample,

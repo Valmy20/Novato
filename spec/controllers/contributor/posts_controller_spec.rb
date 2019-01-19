@@ -11,7 +11,7 @@ RSpec.describe Contributor::PostsController, type: :controller do
   let(:valid_attributes) {
 		{
 			title: Faker::Lorem.name,
-			body: Faker::Lorem.paragraph
+			body: Faker::Lorem.paragraph_by_chars([200, 247, 400].sample, false)
 		}
 	}
 	context "actions" do
