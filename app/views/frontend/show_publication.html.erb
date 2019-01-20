@@ -1,55 +1,83 @@
 <section id="show_publication" style="min-height: 100vh;">
   <div class="container-fluid publication">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-md-10" style="background: white; padding-bottom: 10px">
 
-    <div class="row" style="margin-bottom: 10px;">
-      <div class="col-10 col-md-11 d-flex flex-column" style="padding-top: 10px;">
-        <span class="title"><%= @model.title %></span>
-        <span class="postman">por: <%= @postman.name %></span>
-        <span class="vacancies">vagas: <%= @model.vacancies %></span>
-        <% if @model.remunaration.present? %>
-          <span class="remunaration">R$ <%= @model.remunaration %></span>
-        <% else %>
-          <span class="no-remunaration">remuneração não informada</span>
-        <% end %>
-      </div>
-
-    </div>
-
-    <div class="row" style="margin-top: 10px">
-      <div class="col-12 d-flex justify-content-start">
-        <i class="material-icons md-24" style="color: #B0BEC5; padding-top: 3px;">share</i>
-        <% current_url = request.original_url %>
-        <%= social_share_button_tag(current_url, url: current_url, desc: @model.title) %>
-      </div>
-    </div>
-
-    <div class="row body">
-      <div class="col-md-10 col-12" style="padding: 0px;">
-        <div class="" style="padding: 10px;">
-          <% text =  strip_tags(@model.information) %>
-          <p class="information"><%= text %></p>
+        <div class="row d-flex justify-content-center" style="margin-bottom: 10px;">
+          <div class="col-10 col-md-10 d-flex flex-column" style="padding-top: 10px">
+            <span class="title"><%= @model.title %></span>
+            <span style="color: #B0BEC5">Vagas: <%= @model.vacancies %></span>
+            <% if @model.remunaration.present? %>
+              <span style="color: #B0BEC5">R$ <%= @model.remunaration %></span>
+            <% else %>
+              <span class="no-remunaration">remuneração não informada</span>
+            <% end %>
+            <span style="color: #B0BEC5">Por: <%= @postman.name %></span>
+          </div>
+          <div class="col-2 col-md-1" style="padding: 0px">
+            <p style="color: #B0BEC5; font-size: 0.7em" class="d-lg-none"><%= @model.created_at.strftime("%d #{helper_month_post(@model.created_at.month)} %y") %></p>
+            <p style="color: #B0BEC5" class="d-none d-lg-block"><%= @model.created_at.strftime("%d #{helper_month_post(@model.created_at.month)} %y") %></p>
+          </div>
         </div>
+
+        <div class="row d-flex justify-content-center">
+          <div class="col-12 col-md-11">
+            <% if user_compete?(@model.id) %>
+              <%= link_to apply_publication_path(@model.id), method: :post, class:"btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> processando..."} do %>
+                <div class="d-flex">
+                  <i class="material-icons" style="position: relative; left:-4px; color: white">check_circle_outline</i>Concorrendo
+                </div>
+    					<% end %>
+            <% else %>
+              <%= link_to apply_publication_path(@model.id), method: :post, class:"btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> processando..."} do %>
+                <div class="d-flex">
+                  <i class="material-icons" style="position: relative; left:-4px; color: white">star_rate</i>Concorrer
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+          <div class="col-12 col-md-11 d-flex justify-content-end">
+            <div class="d-flex">
+              <i class="material-icons md-24" style="color: #B0BEC5; padding-top: 3px;">share</i>
+              <% current_url = request.original_url %>
+              <%= social_share_button_tag(current_url, url: current_url, desc: @model.title) %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row body d-flex justify-content-center">
+          <div class="col-12 col-md-11" style="padding: 0px;">
+            <div class="" style="padding: 10px;">
+              <% text =  strip_tags(@model.information) %>
+              <p class="information"><%= text %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row div-map d-flex justify-content-center align-items-center">
+          <div class="col-12 col-md-11" style="padding: 5px;">
+            <% if @model.location.present? %>
+              <span style="color: #90A4AE;">Local</span>
+              <div id="map" style="height: 300px; width: 100%;"></div>
+            <% else %>
+              <div class="row d-flex justify-content-center" style="margin-top: 80px">
+                <i class="material-icons md-48" style="color: #ECEFF1;">place</i>
+              </div>
+              <div class="row d-flex justify-content-center">
+                <p style="color: #CFD8DC;">sem local</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <div class="row div-map d-flex justify-container-center align-items-center">
-      <div class="col-12" style="padding: 5px;">
-        <% if @model.location.present? %>
-          <span style="color: #90A4AE;">Local</span>
-          <div id="map" style="height: 300px; width: 100%;"></div>
-        <% else %>
-          <div class="row d-flex justify-content-center" style="margin-top: 80px">
-            <i class="material-icons md-48" style="color: #ECEFF1;">place</i>
-          </div>
-          <div class="row d-flex justify-content-center">
-            <p style="color: #CFD8DC;">sem local</p>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
   </div>
 </section>
+
 <script src='https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_KEY'] %>'></script>
  <script type='text/javascript'>
 

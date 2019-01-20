@@ -57,4 +57,11 @@ module ApplicationHelper
       row.name
     end
   end
+
+  def user_compete?(publication)
+    return false if current_user.blank?
+
+    compete = Compete.find_by(user_id: current_user.id, publication_id: publication)
+    compete.present?
+  end
 end

@@ -54,6 +54,9 @@ Rails.application.routes.draw do
   get 'list_posts', to: 'frontend#posts', as: :list_posts
   get 'show_post/:post', to: 'frontend#show_post', as: :show_post
 
+  # compete
+  post 'compete_publication/:id', to: 'frontend/competes#apply_publication', as: :apply_publication
+
   # session admin
   get 'admin/login', to: 'sessions#new', as: :new_session
   post 'admin/login', to: 'sessions#create', as: :sessions

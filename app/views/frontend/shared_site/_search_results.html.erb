@@ -1,45 +1,48 @@
-<div class="row d-flex justify-content-center" style="margin-bottom: 20px;">
-  <div class="col-md-8 col-12  publication">
-
-    <div class="row head-card">
-      <div class="col-8 col-md-9 d-flex flex-column information">
+<section id="list_publication">
+  <div class="container-fluid publication" style="padding: 0px">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-md-10" style="background: white;">
         <%= link_to show_publication_path(row), method:"get" do %>
-          <p class="title"><%= row.title %></p>
+          <div class="row d-flex justify-content-center" style="margin-bottom: 10px">
+            <div class="col-10 col-md-10 d-flex flex-column" style="padding-top: 10px">
+              <span class="title"><%= row.title %></span>
+              <span style="color: #B0BEC5">Vagas: <%= row.vacancies %></span>
+              <% if row.remunaration.present? %>
+                <span style="color: #B0BEC5">R$ <%= row.remunaration %></span>
+              <% else %>
+                <span class="no-remunaration">remuneração não informada</span>
+              <% end %>
+            </div>
+            <div class="col-2 col-md-1" style="padding: 0px">
+              <p style="color: #B0BEC5; font-size: 0.7em" class="d-lg-none"><%= row.created_at.strftime("%d #{helper_month_post(row.created_at.month)} %y") %></p>
+              <p style="color: #B0BEC5" class="d-none d-lg-block"><%= row.created_at.strftime("%d #{helper_month_post(row.created_at.month)} %y") %></p>
+            </div>
+          </div>
         <% end %>
-        <p class="vacancies" style="color: #546E7A;">vagas: <%= row.vacancies %></p>
-        <% if row.remunaration.present? %>
-          <p class="remunaration" style="color: #546E7A;">R$ <%= row.remunaration %></p>
-        <% end %>
-      </div>
-      <div class="col-4 col-md-3">
-        <div class="row" style="margin-top: 3px;">
 
-          <div class="col-xl-7 col-md-3 col-2 d-flex justify-content-end align-items-center" style="padding: 1px;">
-            <i class="material-icons md-18" style="color: #B0BEC5;">watch_later</i>
+        <div class="row d-flex justify-content-center">
+          <div class="col-12 col-md-11 d-flex justify-content-end">
+            <div class="d-flex">
+              <i class="material-icons md-24" style="color: #B0BEC5; padding-top: 3px;">share</i>
+              <% url = "https://novato-irece.herokuapp.com/show_publication/#{row.slug}" %>
+              <%= social_share_button_tag(url, url: url, desc: row.title) %>
+            </div>
           </div>
-
-          <div class="col-xl-4 col-md-6 col-8 d-flex justify-content-start align-items-center" style="padding: 0px;">
-            <span style="font-size: 0.6em;"><%= row.created_at.strftime("%d-%m-%Y") %></span>
-          </div>
-
-          <div class="col-xl-1 col-md-2 col-2 d-flex justify-content-center align-items-center" style="padding: 1px;">
-            <% if row.location.present? %>
-              <i class="material-icons md-18" style="color: #fdc000;" title="possui local">place</i>
-            <% end %>
-          </div>
-
         </div>
+
+        <%= link_to show_publication_path(row), method:"get" do %>
+          <div class="row body d-flex justify-content-center">
+            <div class="col-12 col-md-11" style="padding: 0px;">
+              <div class="" style="padding: 10px;">
+                <% text =  strip_tags(row.information) %>
+                <p class="information d-md-none"><%= truncate(text, length: 100) %></p>
+                <p class="information d-none d-md-block"><%= truncate(text, length: 200) %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
       </div>
     </div>
-
-    <div class="row body">
-      <div class="col-12" style="padding: 0px;">
-        <div class="" style="padding: 10px;">
-          <% text =  strip_tags(row.information) %>
-          <p><%= truncate(text, length: 190) {link_to "mais", show_publication_path(row), method:"get" } %></p>
-        </div>
-      </div>
-    </div>
-
   </div>
-</div>
+</section>

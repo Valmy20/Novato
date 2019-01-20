@@ -34,7 +34,7 @@ RSpec.describe Publication, type: :model do
      end
      it 'validate information lenght' do
        is_expected.to validate_length_of(:information).
-        is_at_least(80).
+        is_at_least(200).
         is_at_most(780)
      end
    end

@@ -251,51 +251,10 @@ body#frontend {
     }
     min-height: 100vh;
     padding: 10px;
-    div.publication {
-      border: 1px solid #CFD8DC;
-      div.head-card {
-        background: #ECEFF1;
-        div.information {
-          min-height: 80px;
-          p.title {
-            font-size: 1.2em;
-            margin: 1px;
-            color:  #546E7A;
-          }
-          p.remunaration {
-            font-size: 0.7em;
-            color: #26C6DA;
-            margin: 1px;
-          }
-          p.vacancies {
-            font-size: 0.8em;
-            color: black;
-            margin: 1px;
-            color: #26C6DA;
-          }
-        }
-        div.publication_date {
-          padding: 0px;
-          padding-top: 3px;
-          div.date {
-            padding-left: 1px;
-          span {
-              font-size: 0.6em;
-              color: #607D8B;
-            }
-          }
-          div.icon-div {
-            padding: 1px 8px 1px;
-          }
-        }
-      }
-      div.body {
-        background: white;
-      }
-    }
 
   }
   section#show_publication {
+    background: #ECEFF1;
     .social-share-button {
         padding: 2px;
         .ssb-icon {
@@ -308,7 +267,7 @@ body#frontend {
     padding: 10px;
     div.publication {
       min-height: 85vh;
-      background: white;
+
       .no-remunaration {
         color: #546E7A;
         font-size: 0.6em;
@@ -326,8 +285,8 @@ body#frontend {
         color: #546E7A;
       }
       p.information {
-        border: 1px solid #CFD8DC;
-        border-radius: 4px;
+        border: 2px solid #ECEFF1;
+        border-radius: 2px;
         padding: 5px;
       }
       @media #{$smartphone} {
@@ -355,6 +314,78 @@ body#frontend {
 
       @media #{$desktop} {
           margin-top: 60px;
+        p.information {
+          min-height: 150px;
+        }
+        .title {
+          font-size: 1.8em;
+          color: #546E7A;
+        }
+        .postman {
+          font-size: 0.9em;
+          color: #546E7A;
+        }
+      }
+    }
+  }
+  section#list_publication {
+    background: #ECEFF1;
+    .social-share-button {
+        padding: 2px;
+        .ssb-icon {
+          opacity: 0.8;
+          background-size: 27px 27px;
+          height: 27px;
+          width: 27px;
+        }
+    }
+    div.publication {
+      .no-remunaration {
+        color: #546E7A;
+        font-size: 0.6em;
+        border: 1px solid #546E7A;
+        border-radius: 4px;
+        padding: 1px 4px 1px;
+        width: 150px;
+      }
+      .remunaration {
+        color: #546E7A;
+        font-size: 0.8em;
+      }
+      .vacancies {
+        font-size: 0.8em;
+        color: #546E7A;
+      }
+      p.information {
+        border: 2px solid #ECEFF1;
+        border-radius: 2px;
+        padding: 5px;
+      }
+      @media #{$smartphone} {
+        margin-bottom: 20px;
+        .title {
+          font-size: 1.5em;
+          color: #546E7A;
+        }
+        .postman {
+          font-size: 0.8em;
+          color: #546E7A;
+        }
+      }
+      @media #{$tablet} {
+        margin-bottom: 20px;
+        .title {
+          font-size: 1.8em;
+          color: #546E7A;
+        }
+        .postman {
+          font-size: 0.9em;
+          color: #546E7A;
+        }
+      }
+
+      @media #{$desktop} {
+        margin-bottom: 30px;
         p.information {
           min-height: 150px;
         }

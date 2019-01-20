@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_15_212542) do
+ActiveRecord::Schema.define(version: 2019_01_20_010213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 2019_01_15_212542) do
     t.boolean "deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "competes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "publication_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["publication_id"], name: "index_competes_on_publication_id"
+    t.index ["user_id"], name: "index_competes_on_user_id"
   end
 
   create_table "employer_extras", force: :cascade do |t|
@@ -203,6 +212,8 @@ ActiveRecord::Schema.define(version: 2019_01_15_212542) do
   add_foreign_key "ass_post_categories", "categories"
   add_foreign_key "ass_post_categories", "posts"
   add_foreign_key "categories", "admins"
+  add_foreign_key "competes", "publications"
+  add_foreign_key "competes", "users"
   add_foreign_key "employer_extras", "employers"
   add_foreign_key "institution_extras", "institutions"
   add_foreign_key "skills", "users"
