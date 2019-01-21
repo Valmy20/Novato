@@ -23,13 +23,14 @@
         <div class="row d-flex justify-content-center">
           <div class="col-12 col-md-11 d-flex justify-content-end">
             <div class="d-flex">
-              <i class="material-icons md-24" style="color: #B0BEC5; padding-top: 3px;">share</i>
-              <% url = "https://novato-irece.herokuapp.com/show_publication/#{row.slug}" %>
-              <%= social_share_button_tag(url, url: url, desc: row.title) %>
+              <i id="btn<%= row.slug %>"class="material-icons md-24" style="color: #B0BEC5; padding-top: 3px;">share</i>
+              <div id="<%= row.slug %>">
+                <% url = "https://novato-irece.herokuapp.com/show_publication/#{row.slug}" %>
+                <%= social_share_button_tag(url, url: url, desc: row.title) %>
+              </div>
             </div>
           </div>
         </div>
-
         <%= link_to show_publication_path(row), method:"get" do %>
           <div class="row body d-flex justify-content-center">
             <div class="col-12 col-md-11" style="padding: 0px;">
@@ -46,3 +47,12 @@
     </div>
   </div>
 </section>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#<%= row.slug %>").toggle();
+    $("#btn<%= row.slug %>").click(function(){
+      $("#<%= row.slug %>").toggle('slow');
+    });
+  });
+</script>
