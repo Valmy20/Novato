@@ -10,9 +10,9 @@
 					<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
 					<%= f.input :password, as: :password, label: false, class:"form-control", placeholder:"Password" %>
 					<div class="d-flex justify-content-center">
-						<%= f.button :button, class:"btn btn-primary", style:"width: 100%;" do %>
-							Login
-						<% end %>
+						<%= button_tag(class: "btn btn-primary", style:"width: 100%;", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Aguarde..."}) do %>
+		         	Login
+		        <% end %>
 					</div>
 				<% end %>
 				<%= link_to reset_password_path, class:"d-block small", style:"text-align: left" do %>

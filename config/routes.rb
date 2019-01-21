@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[index show]
     resources :employers, only: %i[index show]
     resources :institutions, only: %i[index show]
+    resources :messages, only: [:index, :show, :destroy]
     post 'update_user_status/:id', to: 'users#update_status', as: :update_user_status
     post 'update_employer_status/:id', to: 'employers#update_status', as: :update_employer_status
     post 'update_institution_status/:id', to: 'institutions#update_status', as: :update_institution_status
@@ -41,7 +42,7 @@ Rails.application.routes.draw do
   end
 
   namespace 'contributor', path: 'novato' do
-    resources :collaborators, except: %i[show]
+    resources :collaborators, except: %i[show update]
     match 'collaborator_profile', to: 'collaborators#profile', via: %i[get patch put], as: :collaborator_profile
     resources :posts, except: %i[show]
   end

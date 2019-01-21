@@ -1,0 +1,34 @@
+<section class="backoffice">
+  <table class="table table_margin">
+    <thead>
+      <tr>
+        <th>Email do remetente</th>
+        <th class="d-flex justify-content-end">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @model.each do |row| %>
+        <tr>
+          <td><%= truncate(row.email, length: 25) %></td>
+          <td class="d-flex justify-content-end btn-actions">
+            <%= link_to backoffice_message_path(row), method: :get, class:"btn btn-primary btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons" style="color: white">remove_red_eye</span>
+              </div>
+            <% end %>
+
+            <%= link_to backoffice_message_path(row), method: :delete,
+                data: { confirm: "Deseja realmente deletar ?" }, class:"btn btn-primary btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons" style="color: white">delete_sweep</span>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%= paginate @model %>
+  </div>
+</section>

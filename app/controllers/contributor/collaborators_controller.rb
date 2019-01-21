@@ -1,7 +1,7 @@
 module Contributor
   class CollaboratorsController < ContributorController
-    before_action :set_item, only: %i[edit update destroy]
-    before_action :authenticate_collaborator, only: %i[index edit update profile destroy]
+    before_action :set_item, only: %i[destroy]
+    before_action :authenticate_collaborator, only: %i[index profile destroy]
     layout 'contributor_profile', only: %i[profile]
 
     def index
@@ -22,17 +22,6 @@ module Contributor
       end
     end
 
-    def edit
-    end
-
-    def update
-      if @model.update(set_params)
-        redirect_to contributor_collaborator_profile_path, notice: 'Alterações realizadas'
-      else
-        render :edit
-      end
-    end
-
     def destroy
       @model.deleted = true
       redirect_to root_path, notice: 'Contribuidor deletado' if @model.save
@@ -44,7 +33,7 @@ module Contributor
       return unless request.patch?
 
       msg = 'Perfil editado'
-      redirect_to contributor_collaborators_path, notice: msg if @model.update(set_params)
+      redirect_to contributor_collaborator_profile_path, notice: msg if @model.update(set_params)
     end
 
     private

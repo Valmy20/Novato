@@ -1,0 +1,16 @@
+<form>
+  <div class="row">
+    <div class="col-md-7">
+      <div class="form-group">
+        <label>E-mail do remetente</label>
+        <input class="form-control" placeholder="<%= @model.email %>" disabled >
+      </div>
+      <div class="form-group">
+        <label>Mensagem</label>
+        <textarea name="name" class="form-control" rows="5" cols="70" disabled ><%= @model.body %>
+        </textarea>
+      </div>
+    </div>
+  </div>
+
+</form>

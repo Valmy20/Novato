@@ -16,10 +16,6 @@ RSpec.describe Contributor::CollaboratorsController, type: :routing do
       expect(:post => contributor_collaborators_path).to route_to("contributor/collaborators#create")
     end
 
-		it "routes to #edit" do
-      expect(:get => edit_contributor_collaborator_path(1)).to route_to("contributor/collaborators#edit", id: '1')
-    end
-
     context "routes to #profile" do
       it 'get' do
         expect(:get => contributor_collaborator_profile_path).to route_to("contributor/collaborators#profile")
@@ -28,10 +24,6 @@ RSpec.describe Contributor::CollaboratorsController, type: :routing do
       it 'patch' do
         expect(:patch => contributor_collaborator_profile_path).to route_to("contributor/collaborators#profile")
       end
-    end
-
-		it "routes to #update" do
-      expect(:put => contributor_collaborator_path(1)).to route_to("contributor/collaborators#update", id: '1')
     end
 
 		it "routes to #detroy" do

@@ -25,13 +25,6 @@ RSpec.describe Contributor::CollaboratorsController, type: :controller do
 	      expect(response).to be_success if session[:collaborator_id].blank?
 	    end
 	  end
-
-	  describe "GET #edit" do
-	    it "returns http success" do
-	      get :edit, params: {id: @collaborator.id}
-	      expect(response).to be_success
-	    end
-	  end
 	end
 
 	context "Post #create", :skip_before do
@@ -55,38 +48,6 @@ RSpec.describe Contributor::CollaboratorsController, type: :controller do
 				}
 			}
 			expect(response).to render_template("new")
-		end
-	end
-
-	context "PUT #update", :skip_before do
-		email = Faker::Internet.email
-		let(:new_attributes) {
-			{
-					email: email
-			}
-		}
-
-		it "updates the requested collaborator" do
-			collaborator = create(:collaborator)
-			put :update, params: {id: collaborator.id, collaborator: new_attributes}
-			collaborator.reload
-			expect(Collaborator.last.email).to eq(email)
-		end
-
-		it "redirects to the collaborator" do
-			collaborator = create(:collaborator)
-			put :update, params: {id: collaborator.id, collaborator: new_attributes}
-			expect(response).to redirect_to(contributor_collaborator_profile_path)
-		end
-
-		it "with invalid params" do
-			collaborator = create(:collaborator)
-			put :update, params: {
-				id: collaborator.id, collaborator: {
-					email: nil
-				}
-			}
-			expect(response).to render_template("edit")
 		end
 	end
 

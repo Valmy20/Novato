@@ -3,4 +3,5 @@ class Message < ApplicationRecord
   validates :email, presence: true, email: true, uniqueness: {
     scope: :deleted, conditions: -> { where(deleted: false) }
   }
+  default_scope { where(deleted: false) }
 end
