@@ -12,7 +12,17 @@
             <% else %>
               <span class="no-remunaration">remuneração não informada</span>
             <% end %>
-            <span style="color: #B0BEC5">Por: <%= @postman.name %></span>
+
+            <% if @model.publicationable_type == "Employer" %>
+              <%= link_to show_profile_employer_path(@postman) do %>
+                por: <link style="color: #B0BEC5;"><%= @postman.name %></link>
+              <% end %>
+            <% else %>
+              <%= link_to show_profile_institution_path(@postman) do %>
+                por: <link style="color: #B0BEC5;"><%= @postman.name %></link>
+              <% end %>
+            <% end %>
+
           </div>
           <div class="col-2 col-md-1" style="padding: 0px">
             <p style="color: #B0BEC5; font-size: 0.7em" class="d-lg-none"><%= @model.created_at.strftime("%d #{helper_month_post(@model.created_at.month)} %y") %></p>

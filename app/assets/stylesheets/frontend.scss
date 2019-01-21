@@ -11,6 +11,7 @@
 $smartphone: "(max-width: 767px)";
 $tablet: "(min-width: 768px) and (max-width: 1023px)";
 $desktop: "(min-width: 1024px)";
+$tablet_desktop: "(min-width: 768px)";
 
 nav#nav-novato {
   .nav-link {
@@ -860,6 +861,100 @@ body {
     }
   }
 
+  section#show_profile_employer {
+    min-height: 100vh;
+    background: white;
+    @media #{$smartphone} {
+      div.main_col {
+        margin-bottom: 20px;
+      }
+    }
+    @media #{$desktop} {
+      div.main_col {
+        border: 1px solid #B2DFDB;
+        border-radius: 10px;
+        margin-top: 90px;
+        margin-bottom: 100px;
+        padding-top: 15px;
+      }
+    }
+    section#top {
+      @media #{$smartphone} {
+        height: 200px;
+        background: #B2DFDB;
+      }
+      @media #{$tablet_desktop} {
+        height: 300px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background: #B2DFDB;
+      }
+    }
+    div.employer_logo{
+      @media #{$smartphone} {
+        max-height: 100px;
+        div.logo {
+          .img_logo {
+            border: 4px solid white;
+            border-radius: 50%;
+            position: relative;
+            top: -110px;
+          }
+        }
+      }
+      @media #{$tablet_desktop} {
+        max-height: 100px;
+        div.logo {
+          .img_logo {
+            border: 4px solid white;
+            border-radius: 50%;
+            position: relative;
+            top: -100px;
+          }
+        }
+      }
+    }
+    div.follow {
+      @media #{$desktop} {
+        .btn_follow {
+          position: relative;
+          top: -90px;
+          border-radius: 20px;
+        }
+      }
+    }
+    div.employer_info {
+      @media #{$smartphone} {
+        padding: 20px;
+        p.name {
+          font-size: 1.5em;
+          font-weight: bold;
+        }
+      }
+      @media #{$tablet_desktop} {
+        padding: 20px;
+        p.name {
+          font-size: 2em;
+          font-weight: bold;
+        }
+      }
+    }
+    div.about {
+      @media #{$smartphone} {
+        padding: 10px;
+        p {
+          text-align: justify;
+        }
+      }
+      @media #{$tablet_desktop} {
+        padding: 10px;
+        p {
+          text-align: justify;
+        }
+      }
+    }
+
+  }
   // custom inputs
   .custon_field {
     position: relative;

@@ -27,4 +27,14 @@ class FrontendController < ApplicationController
   def show_post
     @model = Post.friendly.find(params[:post])
   end
+
+  def show_profile_employer
+    id = Employer.friendly.find(params[:id])
+    @model = Employer.find_by(id: id)
+  end
+
+  def show_profile_institution
+    id = Institution.friendly.find(params[:id])
+    @model = Institution.find_by(id: id)
+  end
 end

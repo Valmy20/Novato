@@ -4,7 +4,7 @@
     <%= f.input :name, label: 'Nome' %>
   </div>
 
-  <%= f.input :logo, as: :file, label: 'Logo da empresa' %>
+  <%= f.input :logo, as: :file, label: 'Imagem da instituição' %>
   <%= f.hidden_field :logo_cache %>
   <%= (image_tag @model.logo.url(:thumb), class:"img-fluid") unless @model.logo.blank? %>
 

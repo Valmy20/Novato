@@ -53,6 +53,8 @@ Rails.application.routes.draw do
   match 'new_message', to: 'frontend/messages#new_message', as: :new_message, via:[:get, :post]
   get 'list_posts', to: 'frontend#posts', as: :list_posts
   get 'show_post/:post', to: 'frontend#show_post', as: :show_post
+  get 'show_profile_employer/:id', to: 'frontend#show_profile_employer', as: :show_profile_employer
+  get 'show_profile_institution/:id', to: 'frontend#show_profile_institution', as: :show_profile_institution
 
   # compete
   post 'compete_publication/:id', to: 'frontend/competes#apply_publication', as: :apply_publication

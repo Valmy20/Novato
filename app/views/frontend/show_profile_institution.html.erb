@@ -1,0 +1,60 @@
+<section id="show_profile_employer">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-10 col-md-10 main_col">
+      <section id="top">
+        <div class="container-fluid">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-12 default_cover">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="row employer_logo">
+        <div class="col-12 logo d-flex justify-content-center">
+          <div>
+            <%= (image_tag @model.logo.url(:thumb), class:"img-fluid img_logo") unless @model.logo.blank? %>
+            <%= (image_tag 'default_user.jpeg', class:"img-fluid img_logo") if @model.logo.blank? %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row follow d-none">
+        <div class="col-12 d-flex justify-content-end">
+            <%= link_to "#", class:"btn btn-primary btn_follow", title:"veja quem também se interessa", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> processando..."} do %>
+              <div class="d-flex">
+                <i class="material-icons" style="position: relative; left:-4px; color: white">favorite_border</i>Follow
+              </div>
+            <% end %>
+        </div>
+      </div>
+      <div class="employer_info">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center">
+            <p class="name"><%= @model.name %></p>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="d-flex">
+                <span class="material-icons" style="color: #607D8B">phone</span>
+                <span style="margin-left: 5px; color: #607D8B"><%= @model.institution_extra.phone unless @model.institution_extra.blank? %></span>
+              </div>
+              <div class="d-flex">
+                <span class="material-icons" style="color: #607D8B">email</span>
+                <span style="margin-left: 5px; color: #607D8B"><%= @model.email %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center">
+            <p><%= @model.institution_extra.about unless @model.institution_extra.blank? %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
