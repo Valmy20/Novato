@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   default_scope { where(deleted: false) }
   enum status: %i[disapproved approved review]
   scope :collaborator, ->(collaborator) { where(postable_type: 'Collaborator', postable_id: collaborator.id) }
+  scope :available_post, -> { where(status: :approved, visibility: true) }
 
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   mount_uploader :thumb, ThumbUploader

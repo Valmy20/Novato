@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       collection do
         get 'interested/:id', to: 'publications#interested', as: :publication_interested
         get 'show_user/:id', to: 'publications#show_user', as: :publication_interested_user
+        post 'update_visibility/:id', to: 'publications#visibility', as: :update_visibility
       end
     end
     match 'job_location/:id', to: 'publications#location', via: %i[get patch put], as: :job_location
@@ -47,6 +48,7 @@ Rails.application.routes.draw do
         collection do
           get 'interested/:id', to: 'publications#interested', as: :publication_interested
           get 'show_user/:id', to: 'publications#show_user', as: :publication_interested_user
+          post 'update_visibility/:id', to: 'publications#visibility', as: :update_visibility
         end
       end
       match 'job_location/:id', to: 'publications#location', via: %i[get patch put], as: :job_location
@@ -60,7 +62,11 @@ Rails.application.routes.draw do
   namespace 'contributor', path: 'novato' do
     resources :collaborators, except: %i[index show update]
     match 'collaborator_profile', to: 'collaborators#profile', via: %i[get patch put], as: :collaborator_profile
-    resources :posts, except: %i[show]
+    resources :posts, except: %i[show] do
+      collection do
+        post 'update_visibility/:id', to: 'posts#visibility', as: :update_visibility
+      end
+    end
   end
 
   # home

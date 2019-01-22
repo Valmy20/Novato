@@ -12,8 +12,12 @@ module Backoffice
     end
 
     def update_status
-      msg = 'Status atualizado'
-      (redirect_to backoffice_posts_path, notice: msg if @model.update!(set_params)) if request.patch?
+      return unless request.patch?
+
+      return unless @model.update!(set_params)
+
+      @model.update_attribute(:visibility, true) if @model.approved?
+      redirect_to backoffice_posts_path, notice: 'Status atualizado'
     end
 
     def destroy

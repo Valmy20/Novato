@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.string "slug"
     t.integer "status", default: 2
     t.boolean "deleted", default: false
+    t.boolean "visibility", default: false
     t.string "postable_type"
     t.integer "postable_id"
     t.datetime "created_at", null: false
@@ -169,6 +170,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.string "location"
     t.string "slug"
     t.boolean "deleted", default: false
+    t.boolean "visibility", default: false
     t.integer "status", default: 2
     t.string "publicationable_type"
     t.integer "publicationable_id"

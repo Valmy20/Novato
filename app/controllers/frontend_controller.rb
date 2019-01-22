@@ -21,7 +21,7 @@ class FrontendController < ApplicationController
   end
 
   def posts
-    @model = Post.order(id: :desc).page(params[:page]).per(10)
+    @model = Post.available_post.order(id: :desc).page(params[:page]).per(10)
   end
 
   def show_post

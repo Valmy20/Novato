@@ -8,6 +8,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :status
       t.boolean :deleted, default: false
       t.integer :status, default: 2
+      t.boolean :visibility, default: false
       t.string :postable_type
       t.integer :postable_id
 

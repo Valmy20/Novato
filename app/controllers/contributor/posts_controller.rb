@@ -1,6 +1,6 @@
 module Contributor
   class PostsController < ContributorController
-    before_action :set_item, only: %i[edit show update destroy]
+    before_action :set_item, only: %i[edit show update destroy visibility]
     before_action :set_others, only: %i[new create update edit]
 
     layout 'contributor_profile'
@@ -48,6 +48,17 @@ module Contributor
     def destroy
       @model.deleted = true
       (redirect_to contributor_posts_path, notice: 'Postagem deletada') if @model.save
+    end
+
+    def visibility
+      @model.visibility = if @model.visibility
+                            false
+                          else
+                            true
+                          end
+      return unless @model.approved?
+
+      redirect_to contributor_posts_path, notice: 'Alterado' if @model.save
     end
 
     private

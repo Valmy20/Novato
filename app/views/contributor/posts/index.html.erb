@@ -14,6 +14,8 @@
     <tr>
       <th>ID</th>
       <th>Nome</th>
+      <th>Status</th>
+      <th>Visível ao público</th>
       <th class="d-flex justify-content-end">Ações</th>
     </tr>
   </thead>
@@ -23,6 +25,31 @@
       <tr>
         <td><%= row.id %></td>
         <td><%= row.title %></td>
+        <td><%= helper_status_publication(row) %></td>
+        <td>
+          <% if row.approved? %>
+            <% if row.visibility %>
+              <%= link_to update_visibility_contributor_posts_path(row), method: :post, title:"clique para mudar  a visibilidade",
+               class:"badge badge-pill badge-success" do %>
+                <div class="d-flex">
+                  <i class="material-icons md-18" style="color: white">visibility</i>
+                  <span style="padding: 3px 3px 0px">visível</span>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to update_visibility_contributor_posts_path(row), method: :post, title:"clique para mudar  a visibilidade",
+               class:"badge badge-pill badge-secondary" do %>
+               <div class="d-flex">
+                 <i class="material-icons md-18" style="color: white">visibility_off</i>
+                 <span style="padding: 3px 3px 0px">não visível</span>
+               </div>
+              <% end %>
+            <% end %>
+
+          <% else %>
+            aprovação pendente
+          <% end %>
+        </td>
         <td class="d-flex justify-content-end btn-actions">
           <%= link_to edit_contributor_post_path(row), style:"padding: 4px 25px 1px", class:"btn btn-primary btn_custom" do %>
             <div class="d-flex">

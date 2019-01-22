@@ -1,17 +1,27 @@
 module ApplicationHelper
   def helper_status(status)
     if status
-      content_tag(:span, 'Active', class: 'badge badge-pill badge-primary')
+      content_tag(:span, 'Active', class: 'badge badge-pill badge-primary', style: 'padding: 7px')
     else
-      content_tag(:span, 'Inactive', class: 'badge badge-pill badge-danger')
+      content_tag(:span, 'Inactive', class: 'badge badge-pill badge-danger', style: 'padding: 7px')
     end
   end
 
   def helper_status_enum(model)
     if model.approved?
-      content_tag(:span, 'Ativado', class: 'badge badge-pill badge-primary')
+      content_tag(:span, 'Ativado', class: 'badge badge-pill badge-primary', style: 'padding: 7px')
     else
-      content_tag(:span, 'Desativado', class: 'badge badge-pill badge-danger')
+      content_tag(:span, 'Desativado', class: 'badge badge-pill badge-danger', style: 'padding: 7px')
+    end
+  end
+
+  def helper_status_publication(model)
+    if model.approved?
+      content_tag(:span, 'Aprovado', class: 'badge badge-pill badge-success', style: 'padding: 7px')
+    elsif model.disapproved?
+      content_tag(:span, 'Desaprovado', class: 'badge badge-pill badge-danger', style: 'padding: 7px')
+    else
+      content_tag(:span, 'Review', class: 'badge badge-pill badge-info', style: 'padding: 7px')
     end
   end
 
@@ -63,15 +73,5 @@ module ApplicationHelper
 
     compete = Compete.find_by(user_id: current_user.id, publication_id: publication)
     compete.present?
-  end
-
-  def helper_status_publication(model)
-    if model.approved?
-      content_tag(:span, 'Aprovado', class: 'badge badge-pill badge-success')
-    elsif model.disapproved?
-      content_tag(:span, 'Desaprovado', class: 'badge badge-pill badge-danger')
-    else
-      content_tag(:span, 'Review', class: 'badge badge-pill badge-info')
-    end
   end
 end

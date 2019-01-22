@@ -1,6 +1,6 @@
 module Company
   class PublicationsController < CompanyController
-    before_action :set_item, only: %i[edit show update destroy interested]
+    before_action :set_item, only: %i[edit show update destroy interested visibility]
     layout 'company_profile'
 
     def index
@@ -59,6 +59,17 @@ module Company
 
     def show_user
       @model = User.find_by(id: params[:id])
+    end
+
+    def visibility
+      @model.visibility = if @model.visibility
+                            false
+                          else
+                            true
+                          end
+      return unless @model.approved?
+
+      redirect_to company_publications_path, notice: 'Alterado' if @model.save
     end
 
     private
