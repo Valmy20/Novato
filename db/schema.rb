@@ -152,8 +152,8 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.text "body"
     t.text "thumb"
     t.string "slug"
-    t.integer "status"
-    t.boolean "deleted"
+    t.integer "status", default: 2
+    t.boolean "deleted", default: false
     t.string "postable_type"
     t.integer "postable_id"
     t.datetime "created_at", null: false
