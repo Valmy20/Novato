@@ -6,7 +6,7 @@ class FrontendController < ApplicationController
 
   def search
     @q = Publication.ransack(params[:q])
-    @model = @q.result.order(id: :desc).where(status: :approved).page(params[:page]).per(10)
+    @model = @q.result.available_publication.order(id: :desc).page(params[:page]).per(10)
   end
 
   def show_publication
