@@ -1,0 +1,28 @@
+<section>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |row| %>
+        <tr>
+          <td><%= row.name %></td>
+          <td><%= row.email %></td>
+          <td><%= row.user_extra.phone if row.user_extra.present? %></td>
+          <td class="d-flex justify-content-end">
+            <%= link_to publication_interested_user_company_publications_path(row.id), title:"Mais informações", class:"btn btn-info" do %>
+              <div class="d-flex">
+                <span class="material-icons">list</span>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

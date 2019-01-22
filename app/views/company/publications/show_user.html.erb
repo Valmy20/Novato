@@ -1,0 +1,27 @@
+<form>
+  <div class="form-group">
+    <label>Nome</label>
+    <input class="form-control" placeholder="<%= @model.name %>" disabled >
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input class="form-control" placeholder="<%= @model.email %>" disabled >
+  </div>
+  <div class="form-group">
+    <label>Telefone</label>
+    <input class="form-control" placeholder="<%= @model.user_extra.phone %>" disabled >
+  </div>
+  <div class="form-group">
+    <label>Bio</label>
+    <textarea name="name" class="form-control" rows="5" cols="70" disabled ><%= @model.user_extra.bio %>
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label>Habilidades</label>
+    <div class="row" style="margin: 1px;">
+      <% @model.skills.each do |skill| %>
+        <p style="background: #607D8B; padding: 3px 10px 3px; margin: 5px; color: white"><%= skill.name %></p>
+      <% end %>
+    </div>
+  </div>
+</form>

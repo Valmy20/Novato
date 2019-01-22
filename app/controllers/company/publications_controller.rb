@@ -1,6 +1,6 @@
 module Company
   class PublicationsController < CompanyController
-    before_action :set_item, only: %i[edit show update destroy]
+    before_action :set_item, only: %i[edit show update destroy interested]
     layout 'company_profile'
 
     def index
@@ -51,6 +51,14 @@ module Company
 
       flash[:notice] = 'Local adicionado'
       redirect_to company_publications_path, notice: 'Local adicionado'
+    end
+
+    def interested
+      @users = Compete.publication_scope(@model).map { |comp| User.find_by(id: comp.user_id) }
+    end
+
+    def show_user
+      @model = User.find_by(id: params[:id])
     end
 
     private

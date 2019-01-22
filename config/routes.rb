@@ -28,7 +28,12 @@ Rails.application.routes.draw do
 
   namespace 'company', path: 'novato' do
     resources :employers, only: %i[new create edit update destroy]
-    resources :publications
+    resources :publications do
+      collection do
+        get 'interested/:id', to: 'publications#interested', as: :publication_interested
+        get 'show_user/:id', to: 'publications#show_user', as: :publication_interested_user
+      end
+    end
     match 'job_location/:id', to: 'publications#location', via: %i[get patch put], as: :job_location
     match 'employer_profile', to: 'employers#profile', via: %i[get patch put], as: :employer_profile
     match 'update_employer_password', to: 'employers#update_employer_password', via: %i[get patch put], as: :update_employer_password
@@ -38,7 +43,12 @@ Rails.application.routes.draw do
   namespace 'entity', path: 'novato' do
     resources :institutions, only: %i[new create edit update destroy]
     scope 'institution' do
-      resources :publications
+      resources :publications do
+        collection do
+          get 'interested/:id', to: 'publications#interested', as: :publication_interested
+          get 'show_user/:id', to: 'publications#show_user', as: :publication_interested_user
+        end
+      end
       match 'job_location/:id', to: 'publications#location', via: %i[get patch put], as: :job_location
     end
     match 'institution_profile', to: 'institutions#profile', via: %i[get patch put], as: :institution_profile

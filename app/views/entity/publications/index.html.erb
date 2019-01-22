@@ -38,6 +38,11 @@
                 <span class="material-icons">add_location</span>
               </div>
             <% end %>
+            <%= link_to publication_interested_entity_publications_path(publication), method:'get', title:"Usuários interessados", class:"btn btn-info btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons">group</span>
+              </div>
+            <% end %>
           </td>
         </tr>
       <% end %>
