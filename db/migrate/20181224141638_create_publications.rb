@@ -9,6 +9,7 @@ class CreatePublications < ActiveRecord::Migration[5.2]
       t.string :location
       t.string :slug
       t.boolean :deleted, default: false
+      t.integer :status, default: 2
       t.string :publicationable_type
       t.integer :publicationable_id
 

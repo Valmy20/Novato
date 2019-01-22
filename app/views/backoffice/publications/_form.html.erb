@@ -1,0 +1,22 @@
+<form>
+  <div class="form-group">
+    <label>Título</label>
+    <input type="text" class="form-control" placeholder="<%= @model.title %>" disabled>
+  </div>
+  <div class="form-group">
+    <label>Tipo</label>
+    <input type="text" class="form-control" placeholder="<%= @model._type %>" disabled>
+  </div>
+  <div class="form-group">
+    <label>Vagas</label>
+    <input type="text" class="form-control" placeholder="<%= @model.vacancies %>" disabled>
+  </div>
+  <div class="form-group">
+    <label>Remuneração</label>
+    <input type="text" class="form-control" placeholder="<%= @model.remunaration %>" disabled>
+  </div>
+  <div class="form-group">
+    <label>Informações adicionais</label>
+    <textarea name="name" class="form-control" rows="8" cols="80" disabled><%= @model.information %></textarea>
+  </div>
+</form>

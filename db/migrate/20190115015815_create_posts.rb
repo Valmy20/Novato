@@ -6,7 +6,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.text :thumb
       t.string :slug
       t.integer :status
-      t.boolean :deleted
+      t.boolean :deleted, default: false
+      t.integer :status, default: 2
       t.string :postable_type
       t.integer :postable_id
 

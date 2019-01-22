@@ -1,0 +1,40 @@
+<section class="backoffice">
+  <table class="table table_margin">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>
+          Status
+        </th>
+        <th class="d-flex justify-content-end">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @model.each do |row| %>
+        <tr>
+          <td class="column_id" ><%= row.id %></td>
+          <td><%= truncate(row.name, length: 25) %></td>
+          <td><%= helper_status_enum(row) %>
+            <%= link_to backoffice_update_collaborator_status_path(row.id), method: :post,
+                class:"btn btn-secondary", style:"padding: 0px 5px 0px;" do %>
+                <div class="d-flex">
+                  <span class="material-icons md-18" style="color: white">create</span>
+                </div>
+            <% end %>
+          </td>
+          <td class="d-flex justify-content-end btn-actions">
+            <%= link_to backoffice_collaborator_path(row.id), method:"get", class:"btn btn-primary btn_custom" do %>
+              <div class="d-flex">
+                <span class="material-icons" style="color: white">remove_red_eye</span>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%= paginate @model %>
+  </div>
+</section>

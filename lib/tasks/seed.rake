@@ -190,7 +190,7 @@ namespace :seed do
 
   desc 'Publications'
   task publication: :environment do
-    6.times do
+    1.times do
       publciation = Publication.new(
         title: Faker::Job.title,
         _type: [0, 1].sample,

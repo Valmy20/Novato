@@ -1,0 +1,10 @@
+<%= simple_form_for @model, url: backoffice_update_publication_status_path, method: :patch do |f| %>
+  <% options = [:disapproved, :approved, :review]%>
+  <%= f.input :status, collection: options, label: 'status' %>
+  <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
+    <div class="d-flex">
+      <span class="material-icons">check</span>
+      <span style="margin-left: 5px">Salvar</span>
+    </div>
+  <% end %>
+<% end %>

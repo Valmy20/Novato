@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   validates :title, length: { in: 2..100 }, presence: true
   validates :body, length: { minimum: 200 }, presence: true
   default_scope { where(deleted: false) }
+  enum status: %i[disapproved approved review]
   scope :collaborator, ->(collaborator) { where(postable_type: 'Collaborator', postable_id: collaborator.id) }
 
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h

@@ -64,4 +64,14 @@ module ApplicationHelper
     compete = Compete.find_by(user_id: current_user.id, publication_id: publication)
     compete.present?
   end
+
+  def helper_status_publication(model)
+    if model.approved?
+      content_tag(:span, 'Aprovado', class: 'badge badge-pill badge-success')
+    elsif model.disapproved?
+      content_tag(:span, 'Desaprovado', class: 'badge badge-pill badge-danger')
+    else
+      content_tag(:span, 'Review', class: 'badge badge-pill badge-info')
+    end
+  end
 end

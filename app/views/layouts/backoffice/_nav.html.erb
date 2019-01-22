@@ -7,15 +7,31 @@
   </button>
   <ul class="navbar-nav ml-auto ml-md-0">
 
+    <li class="nav-item no-arrow mx-1">
+      <%= link_to backoffice_publications_path, class:'nav-link' do %>
+        <div class="d-flex">
+          <i class="material-icons" style="">view_headline</i>
+          <span>Vagas</span>
+        </div>
+      <% end %>
+    </li>
+
     <li class="nav-item dropdown no-arrow mx-1">
-      <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="material-icons">email</i>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-        <%= link_to backoffice_messages_path, class:'dropdown-item' do %>
-          Mensagens
-        <% end %>
-      </div>
+      <%= link_to backoffice_posts_path, class:'nav-link dropdown-toggle' do %>
+        <div class="d-flex">
+          <i class="material-icons">comment</i>
+          <span>Blog</span>
+        </div>
+      <% end %>
+    </li>
+
+    <li class="nav-item no-arrow mx-1">
+      <%= link_to backoffice_messages_path, class:'nav-link' do %>
+        <div class="d-flex">
+          <i class="material-icons" style="">email</i>
+          <span>Mensagens</span>
+        </div>
+      <% end %>
     </li>
 
     <li class="nav-item dropdown no-arrow">

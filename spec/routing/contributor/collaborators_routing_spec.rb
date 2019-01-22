@@ -4,10 +4,6 @@ RSpec.describe Contributor::CollaboratorsController, type: :routing do
 
   describe "routing" do
 
-		it "routes to #new" do
-      expect(:get => contributor_collaborators_path).to route_to("contributor/collaborators#index")
-    end
-
     it "routes to #new" do
       expect(:get => new_contributor_collaborator_path).to route_to("contributor/collaborators#new")
     end
