@@ -1,0 +1,5 @@
+<div>
+  <p>clique no link abaixo para confirmar seu email.</p>
+  <%= link_to "Confirmar Email", verify_token_confirm_employer_url(@user.token_reset)%>
+  <p>Se esse não é você, por favor, ignore esse email !</p>
+</div>

@@ -46,7 +46,7 @@ RSpec.describe Company::EmployersController, type: :controller do
 
 		it "redirects after create employer" do
 			post :create, params: {employer: valid_attributes}
-			expect(response).to redirect_to(company_employer_profile_path)
+			expect(response).to redirect_to(new_session_employer_path)
 		end
 
 		it "#create with invalid params" do
@@ -56,7 +56,7 @@ RSpec.describe Company::EmployersController, type: :controller do
 					description: ''
 				}
 			}
-			expect(response).to redirect_to(new_company_employer_path)
+			expect(response).to render_template(:new)
 		end
 	end
 

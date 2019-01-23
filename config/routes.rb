@@ -123,8 +123,16 @@ Rails.application.routes.draw do
   match 'institution_reset_password', to: 'frontend/institutions#reset_password', as: :institution_reset_password, via:[:get, :post]
   get 'institution_verify_token_reset/:token', to: 'frontend/institutions#verify_token_reset', as: :institution_verify_token_reset
 
+  # confirm employer email
+  get 'confirm_employer_email', to: 'company#confirm_email', as: :confirm_email_employer
+  get 'email_confirmado', to: 'company#email_confirmed', as: :email_confirmed_employer
+  get 'verify_token/:token', to: 'company#verify_token_confirm', as: :verify_token_confirm_employer
+
   #user login facebook
   post 'login/:provider', to: redirect('/auth/%{provider}'), as: :login_facebook
   get 'auth/:provider/callback', to: 'sessions_users#create', as: :login_with_provider
   mount Ckeditor::Engine => '/ckeditor'
+
+  #handling with error
+  match '*path', to: 'application#routing_error', via: :get
 end

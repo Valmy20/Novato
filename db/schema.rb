@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.string "name"
     t.string "slug"
     t.boolean "status"
-    t.boolean "deleted"
+    t.boolean "deleted", default: false
     t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.string "token_reset"
     t.string "avatar"
     t.string "slug"
-    t.integer "status"
-    t.boolean "deleted"
+    t.integer "status", default: 0
+    t.boolean "deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.string "logo"
     t.string "token_reset"
     t.string "slug"
-    t.integer "status"
-    t.boolean "deleted"
+    t.integer "status", default: 0
+    t.boolean "deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -134,8 +134,8 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.string "logo"
     t.string "cover"
     t.string "slug"
-    t.integer "status"
-    t.boolean "deleted"
+    t.integer "status", default: 0
+    t.boolean "deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

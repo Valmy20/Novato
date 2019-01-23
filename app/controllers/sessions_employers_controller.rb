@@ -19,7 +19,7 @@ class SessionsEmployersController < ApplicationController
   private
 
   def authentication_employer(employer:, password:)
-    if employer.present? && employer.authenticate(password)
+    if employer.present? && employer.authenticate(password) && employer.approved?
       session[:employer_id] = employer.id
       flash[:notice] = 'Login efetuado'
       redirect_to company_employer_profile_path

@@ -4,7 +4,7 @@ class CreateCategories < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :slug
       t.boolean :status
-      t.boolean :deleted
+      t.boolean :deleted, default: false
       t.references :admin, foreign_key: true
 
       t.timestamps

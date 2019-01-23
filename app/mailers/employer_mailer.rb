@@ -2,6 +2,11 @@ class EmployerMailer < ApplicationMailer
   default from: 'novatoirece@gmail.com'
   layout 'mailer'
 
+  def confirm_email(user)
+    @user = user
+    mail(to: @user.email, subject: 'Confirmação de email: Novato Irecê')
+  end
+
   def reset_password(user)
     @user = user
     mail(to: @user.email, subject: 'Resetar senha: Novato Irecê')

@@ -8,8 +8,8 @@ class CreateInstitutions < ActiveRecord::Migration[5.2]
       t.string :logo
       t.string :cover
       t.string :slug
-      t.integer :status
-      t.boolean :deleted
+      t.integer :status, default: 0
+      t.boolean :deleted, default: false
 
       t.timestamps
     end

@@ -14,10 +14,9 @@ module Company
     def create
       @model = Employer.new(set_params)
       if @model.save
-        session[:employer_id] = @model.id
-        redirect_to company_employer_profile_path, notice: 'Employer registered'
+        confirm_email(@model)
       else
-        redirect_to new_company_employer_path, alert: 'Verifique as informações'
+        render :new
       end
     end
 
