@@ -7,7 +7,7 @@ class CreateCollaborators < ActiveRecord::Migration[5.2]
       t.string :token_reset
       t.string :avatar
       t.string :slug
-      t.integer :status, default: 0
+      t.integer :status, default: 1
       t.boolean :deleted, default: false
 
       t.timestamps

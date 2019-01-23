@@ -8,10 +8,10 @@
               <%= (image_tag 'default_cover.jpg', class:"img-fluid image_cover") if @model.cover.blank? %>
               <div>
                 <div class="edit-button">
-                    <%= link_to frontend_user_profile_path, class:"btn btn-info" do %>
+                    <%= link_to frontend_user_profile_path, class:"btn btn-warning", style:"border-radius: 5px; border: 1px solid white" do %>
                       <div class="d-flex">
-                        <span class="material-icons" style="">create</span>
-                        <span style="margin-left: 5px">Editar</span>
+                        <span class="material-icons" style="color: #455A64">create</span>
+                        <span style="margin-left: 5px; color: #455A64">Editar</span>
                       </div>
                     <% end %>
             		</div>
@@ -55,11 +55,11 @@
       <div class="row d-flex justify-content-center">
         <div class="col-md-12">
           <div class="row d-flex justify-content-center">
-            <div class="col-md-5 bio">
-              <h3>Bio</h3>
+            <div class="col-md-6 bio">
+              <h3>Biografia</h3>
               <p><%= @model.user_extra.bio unless @model.user_extra.blank?%></p>
             </div>
-            <div class="col-md-6 skill">
+            <div class="col-md-5 skill">
               <h3>Habilidades</h3>
               <div class="row">
                 <% @model.skills.each do |skill| %>

@@ -30,55 +30,45 @@
 
                 <div id="main-menu" class="main-menu collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="menu-item-has-children">
+                        <li class="menu-item menu-left-mobile">
                             <%= link_to root_path do %>
                               <i class="menu-icon material-icons md-18" style="color: white;">home</i>Início
                             <% end %>
                         </li>
+                        <h3 class="menu-title">Usuário</h3><!-- /.menu-title -->
 
-                        <h3 class="menu-title">Informações</h3><!-- /.menu-title -->
+                        <li class="menu-item">
+                            <%= link_to frontend_user_path(current_user), method: "get" do %>
+                              <i class="menu-icon material-icons md-18" style="color: white">person</i>
+                              Perfil
+                            <% end %>
+                        </li>
+                        <li class="menu-item">
+                            <%= link_to frontend_update_user_cover_path, method: "get" do %>
+                              <i class="menu-icon material-icons md-18" style="color: white">insert_photo</i>Foto de capa
+                            <% end %>
+                        </li>
+                        <li class="menu-item">
+                            <%= link_to logout_session_user_path do %>
+                              <i class="menu-icon material-icons md-18" style="color: white">exit_to_app</i>
+                              Logout
+                            <% end %>
+                        </li>
 
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon material-icons md-18" style="color: white;">person</i>Usuário</a>
-                            <ul class="sub-menu children dropdown-menu">
-                              <li class="menu-icon">
-                                <i class="menu-icon material-icons md-18" style="color: white;">chrome_reader_mode</i>
-                                <%= link_to frontend_user_path(current_user) do %>
-                                  Perfil
-                                <% end %>
-                              </li>
-                              <li class="menu-icon">
-                                <i class="menu-icon material-icons md-18" style="color: white;">create</i>
-                                <%= link_to frontend_user_profile_path do %>
-                                  <i></i>Editar perfil
-                                <% end %>
-                              </li>
-                              <li class="menu-icon">
-                                <i class="menu-icon material-icons md-18" style="color: white;">insert_photo</i>
-                                <%= link_to frontend_update_user_cover_path do %>
-                                  Foto de capa
-                                <% end %>
-                              </li>
-                              <li class="menu-icon">
-                                <i class="menu-icon material-icons md-18" style="color: white;">exit_to_app</i>
-                                <%= link_to logout_session_user_path do %>
-                                  Sair
-                                <% end %>
-                              </li>
-                            </ul>
-                        </li>
-                        <h3 class="menu-title">Segurança</h3><!-- /.menu-title -->
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon material-icons md-18" style="color: white;">lock</i>Senha</a>
-                            <ul class="sub-menu children dropdown-menu">
-                              <li class="menu-icon">
-                                <i class="menu-icon material-icons md-18" style="color: white;">lock_open</i>
-                                <%= link_to frontend_update_user_password_path do %>
-                                  Alterar senha
-                                <% end %>
-                              </li>
-                            </ul>
-                        </li>
+                        <% if current_user.provider.blank? %>
+                          <h3 class="menu-title">Segurança</h3><!-- /.menu-title -->
+                          <li class="menu-item-has-children dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon material-icons md-18" style="color: white;">lock</i>Senha</a>
+                              <ul class="sub-menu children dropdown-menu">
+                                <li class="menu-icon">
+                                  <i class="menu-icon material-icons md-18" style="color: white;">lock_open</i>
+                                  <%= link_to frontend_update_user_password_path do %>
+                                    Alterar senha
+                                  <% end %>
+                                </li>
+                              </ul>
+                          </li>
+                        <% end %>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>

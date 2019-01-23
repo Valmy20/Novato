@@ -1698,6 +1698,9 @@ nav#nav-novato {
   }
 }
 @media #{$tablet} {
+  .menu-left-mobile {
+    margin-top: 80px;
+  }
   .right-panel {
     width: 80vw;
     padding-top: 60px;
@@ -1708,6 +1711,9 @@ nav#nav-novato {
   }
 }
 @media #{$desktop} {
+  .menu-left-mobile {
+    margin-top: 80px;
+  }
   .right-panel {
     width: 80vw;
     padding-top: 60px;

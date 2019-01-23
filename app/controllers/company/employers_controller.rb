@@ -14,7 +14,8 @@ module Company
     def create
       @model = Employer.new(set_params)
       if @model.save
-        confirm_email(@model)
+        session[:employer_id] = @model.id
+        redirect_to company_employer_profile_path, notice: 'Cadastro realizado'
       else
         render :new
       end

@@ -16,9 +16,11 @@
               <div class="phone">
                 <%= extra.input :phone, input_html: {class: 'phone'}, label: 'Telefone' %>
               </div>
-              <%= extra.input :bio, input_html: { rows: 7 }%>
+              <p>Conte um pouco sobre você</p>
+              <%= extra.input :bio, label: false, input_html: { rows: 7 }%>
             <% end %>
 
+            <p>Suas Habilidades</p>
             <div class="new" >
               <div class="new_skill">
                 <div class="link_add">

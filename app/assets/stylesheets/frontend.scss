@@ -596,6 +596,7 @@ body {
 
     section#bio_skill {
       margin: 10px;
+
       div.skill {
         border: 1px solid #B0BEC5;
         border-radius: 10px;
@@ -620,6 +621,12 @@ body {
             padding: 5px 8px 5px;
             border-radius: 5px;
             background: #B0BEC5;
+          }
+          @media #{$desktop} {
+            min-height: 140px;
+          }
+          @media #{$tablet} {
+            min-height: 140px;
           }
         }
       }
