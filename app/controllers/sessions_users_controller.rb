@@ -17,6 +17,8 @@ class SessionsUsersController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    flash[:notice] = nil
+    flash[:alert] = nil
     redirect_to root_path
   end
 
