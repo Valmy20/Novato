@@ -3,7 +3,7 @@ namespace :seed do
   task admin: :environment do
     admin = Admin.new(
       name: 'Administrador Geral',
-      email: 'admin@full_access.com',
+      email: 'admin@novato.com',
       password: '123456',
       password_confirmation: '123456',
       status: true,
