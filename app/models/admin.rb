@@ -5,6 +5,7 @@ class Admin < ApplicationRecord
   attr_accessor :password_current, :require_password_current, :new_password, :new_password_confirmation
 
   default_scope { where(deleted: false) }
+  enum rules: %i[full_access restricted_access]
   validates :name, presence: true, length: { in: 2..30 }
   validates :password, :password_confirmation, presence: true, on: :create
   validates :password, :password_confirmation, length: { in: 6..20 }, allow_blank: true

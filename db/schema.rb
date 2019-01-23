@@ -21,7 +21,8 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.string "password_digest"
     t.string "token_reset"
     t.boolean "status"
-    t.boolean "deleted"
+    t.boolean "deleted", default: false
+    t.integer "rules", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -6,7 +6,8 @@ class CreateAdmins < ActiveRecord::Migration[5.2]
       t.string :password_digest
       t.string :token_reset
       t.boolean :status
-      t.boolean :deleted
+      t.boolean :deleted, default: false
+      t.integer :rules, default: 1
 
       t.timestamps
     end

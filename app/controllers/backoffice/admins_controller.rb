@@ -1,6 +1,7 @@
 module Backoffice
   class AdminsController < BackofficeController
     before_action :set_item, only: %i[edit update destroy]
+    before_action :authorize_admin, only: %i[index new create edit update destroy]
 
     def index
       @q = Admin.ransack(params[:q])
@@ -39,10 +40,19 @@ module Backoffice
 
     def destroy
       @model.deleted = true
-      redirect_to backoffice_admins_path, notice: 'Admin deleted' if @model.save
+
+      if current_admin.id != @model.id
+        redirect_to backoffice_admins_path, notice: 'Administrador deletado' if @model.save
+      else
+        redirect_to backoffice_admins_path, alert: 'Esta ação não é possível'
+      end
     end
 
     private
+
+    def authorize_admin
+      authorize current_admin
+    end
 
     def set_item
       @model = Admin.find(params[:id])

@@ -1,8 +1,16 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   protect_from_forgery with: :exception
   helper_method :current_admin, :current_user, :current_employer, :current_institution, :current_collaborator
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   private
+
+  def user_not_authorized
+    flash[:alert] = 'Você não possui autorização para realizar esta ação'
+    redirect_to(request.referer || backoffice_profile_path)
+  end
 
   def current_admin
     admin = Admin.where(id: session[:admin_id]).last

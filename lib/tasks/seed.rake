@@ -2,11 +2,12 @@ namespace :seed do
   desc 'Admin'
   task admin: :environment do
     admin = Admin.new(
-      name: 'Administrador',
-      email: 'admin@localhost.com',
+      name: 'Administrador Geral',
+      email: 'admin@root.com',
       password: '123456',
       password_confirmation: '123456',
-      status: true
+      status: true,
+      rules: :root
     )
     if admin.save
       p admin.email

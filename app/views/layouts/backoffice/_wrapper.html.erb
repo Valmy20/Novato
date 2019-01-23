@@ -6,14 +6,16 @@
         <span>Dashboard</span>
       </a>
     </li>
-    <li class="nav-item">
-      <%= link_to backoffice_admins_path, class:"nav-link" do %>
-      <div class="d-flex">
-        <i class="material-icons">person</i>
-        <span style="margin: 2px 2px 0px">Admins</span>
-      </div>
-      <% end %>
-    </li>
+    <% if policy(current_admin).new? %>
+      <li class="nav-item">
+        <%= link_to backoffice_admins_path, class:"nav-link" do %>
+        <div class="d-flex">
+          <i class="material-icons">person</i>
+          <span style="margin: 2px 2px 0px">Admins</span>
+        </div>
+        <% end %>
+      </li>
+    <% end %>
     <li class="nav-item">
       <%= link_to backoffice_users_path, class:"nav-link" do %>
       <div class="d-flex">
@@ -22,8 +24,6 @@
       </div>
       <% end %>
     </li>
-
-
     <li class="nav-item">
       <%= link_to backoffice_institutions_path, class:"nav-link" do %>
       <div class="d-flex">
@@ -41,18 +41,18 @@
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to backoffice_categories_path, class:"nav-link" do %>
-      <div class="d-flex">
-        <i class="material-icons">grid_on</i>
-        <span style="margin: 2px 2px 0px">Cat. publicaçoes</span>
-      </div>
-      <% end %>
-    </li>
-    <li class="nav-item">
       <%= link_to backoffice_collaborators_path, class:"nav-link" do %>
       <div class="d-flex">
         <i class="material-icons">group</i>
         <span style="margin: 2px 2px 0px">Contribuidores</span>
+      </div>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to backoffice_categories_path, class:"nav-link" do %>
+      <div class="d-flex">
+        <i class="material-icons">grid_on</i>
+        <span style="margin: 2px 2px 0px">Categoria das Vagas</span>
       </div>
       <% end %>
     </li>
