@@ -63,7 +63,7 @@
               <h3>Habilidades</h3>
               <div class="row">
                 <% @model.skills.each do |skill| %>
-                  <p><%= skill.name %></p>
+                  <button class="btn btn-secondary"><%= skill.name %></button>
                 <% end %>
               </div>
             </div>
