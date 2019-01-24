@@ -1,15 +1,15 @@
 module ApplicationHelper
   def helper_status(status)
     if status
-      content_tag(:span, 'Active', class: 'badge badge-pill badge-primary', style: 'padding: 7px')
+      content_tag(:span, 'Ativado', class: 'badge badge-pill badge-success', style: 'padding: 7px')
     else
-      content_tag(:span, 'Inactive', class: 'badge badge-pill badge-danger', style: 'padding: 7px')
+      content_tag(:span, 'Desativado', class: 'badge badge-pill badge-danger', style: 'padding: 7px')
     end
   end
 
   def helper_status_enum(model)
     if model.approved?
-      content_tag(:span, 'Ativado', class: 'badge badge-pill badge-primary', style: 'padding: 7px')
+      content_tag(:span, 'Ativado', class: 'badge badge-pill badge-success', style: 'padding: 7px')
     else
       content_tag(:span, 'Desativado', class: 'badge badge-pill badge-danger', style: 'padding: 7px')
     end
@@ -61,6 +61,16 @@ module ApplicationHelper
   def who_create_post(type, id)
     if type == 'Collaborator'
       row = Collaborator.find_by(id: id)
+      row.name
+    elsif type == 'Institution'
+      row = Institution.find_by(id: id)
+      row.name
+    end
+  end
+
+  def who_create_publication(type, id)
+    if type == 'Employer'
+      row = Employer.find_by(id: id)
       row.name
     elsif type == 'Institution'
       row = Institution.find_by(id: id)
