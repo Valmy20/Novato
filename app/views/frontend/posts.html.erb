@@ -6,6 +6,7 @@
         <div class="col-5 col-sm-4 col-md-3 d-flex align-items-center">
           <%= link_to show_post_path(row) do %>
             <%= (image_tag row.thumb.url(:thumb), class:"img-fluid") unless row.thumb.blank? %>
+            <%= image_tag('default_post') if row.thumb.blank? %>
           <% end %>
         </div>
 
