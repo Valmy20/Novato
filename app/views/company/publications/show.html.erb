@@ -24,7 +24,9 @@
     <div class="col-md-12">
       <div class="form-group">
         <label>Informações adicionais</label>
-        <textarea class="form-control" rows="8" cols="80" disabled><%= strip_tags(@model.information) %></textarea>
+        <%= simple_form_for([:company, @model], multpart: true) do |f|%>
+          <%= f.input :information, label: false, as: :ckeditor, input_html: { ckeditor: { height: 300 } }, disabled: true  %>
+        <% end %>
       </div>
     </div>
   </div>

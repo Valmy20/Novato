@@ -1,26 +1,16 @@
 <form>
-  <div class="row">
-    <div class="col-md-7">
-      <div class="form-group input_title">
-        <label>Título</label>
-        <input class="form-control" placeholder="<%= @model.title %>" disabled>
-      </div>
-      <div class="form-group input_type">
-        <label>Tipo</label>
-        <input class="form-control" placeholder="<%= @model._type %>" disabled>
-      </div>
-      <div class="form-group input_remunaration">
-        <label>Remuneração</label>
-        <input class="form-control" placeholder="<%= "R$ #{@model.remunaration}"%>" disabled>
-      </div>
-    </div>
+  <div class="form-group">
+    <label>Título do estágio</label>
+    <input type="text" class="form-control" placeholder="<%= @model.title %>" disabled>
   </div>
-  <div class="row" style="padding: 10px;">
-    <div class="col-md-12">
-      <div class="form-group">
-        <label>Informações adicionais</label>
-        <textarea class="form-control" rows="8" cols="80" disabled><%= strip_tags(@model.information) %></textarea>
-      </div>
-    </div>
+  <div class="form-group">
+    <label>remuneração</label>
+    <input type="text" class="form-control" placeholder="<%= @model.remunaration %>" disabled>
+  </div>
+  <div class="form-group">
+    <label>Informações adicionais</label>
+    <%= simple_form_for([:entity, @model], multpart: true) do |f|%>
+      <%= f.input :information, label: false, as: :ckeditor, input_html: { ckeditor: { height: 300 } }, disabled: true  %>
+    <% end %>
   </div>
 </form>

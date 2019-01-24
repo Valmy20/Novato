@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   layout 'application'
 
   def new
-    redirect_to backoffice_admins_path if current_admin.present?
+    redirect_to backoffice_profile_path if current_admin.present?
   end
 
   def create
