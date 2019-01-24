@@ -488,6 +488,18 @@ body#frontend {
       }
     }
   }
+  section.background-login-user {
+    background: image-url('background-jobs2');
+    div.card-login {
+      box-shadow: 5px 1px 50px rgba(68, 68, 68, 1);
+    }
+  }
+  section.form-create-user {
+    background: image-url('background-jobs2');
+    div.form {
+      box-shadow: 5px 1px 50px rgba(68, 68, 68, 1);
+    }
+  }
 }// end frontend
 
 body {
