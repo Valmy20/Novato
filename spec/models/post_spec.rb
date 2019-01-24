@@ -15,7 +15,7 @@ RSpec.describe Post, type: :model do
 
   it 'validate body lenght' do
     is_expected.to validate_length_of(:body).
-     is_at_least(200)
+     is_at_least(1000)
   end
 
 end

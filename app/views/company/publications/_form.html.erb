@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-  <%= f.input :information, label:"Informações adicionais", as: :ckeditor, input_html: { ckeditor: { height: 150 } } %>
+  <%= f.input :information, label:"Informações adicionais: mínimo de 100 caracteres", as: :ckeditor, input_html: { ckeditor: { height: 150 } } %>
 
   <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
     <div class="d-flex">

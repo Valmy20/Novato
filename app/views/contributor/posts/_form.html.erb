@@ -22,7 +22,7 @@
         </div>
         <%= f.hidden_field :thumb_cache %>
         <%= f.input :category_ids, collection: @categories, input_html: { multiple: true }, label:"Categorias" %>
-        <%= f.input :body, label: 'Conteúdo', as: :ckeditor, input_html: { ckeditor: { height: 300 } } %>
+        <%= f.input :body, label: 'Conteúdo: mínimo de 1000 caracteres', as: :ckeditor, input_html: { ckeditor: { height: 300 } } %>
         <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
           <div class="d-flex">
             <span class="material-icons" style="">check</span>
