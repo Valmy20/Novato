@@ -1,13 +1,8 @@
 <%= simple_form_for([:entity, @model]) do |f|%>
   <div class="input_title">
-    <%= f.input :title, label:"Título da vaga" %>
+    <%= f.input :title, label:"Título do estágio" %>
   </div>
   <div class="row">
-    <div class="col-md-4">
-      <div class="input_type">
-        <%= f.input :_type, collection: Publication._types.keys, label:"Tipo da vaga" %>
-      </div>
-    </div>
     <div class="col-md-4">
       <div class="input_vacancies">
         <%= f.input :vacancies, label:"Quantidade de vagas" %>
@@ -15,7 +10,8 @@
     </div>
     <div class="col-md-4">
       <div class="input_remunaration">
-        <%= f.input :remunaration, label:"Remuneração" %>
+        <%= f.input :remunaration, label:"Remuneração", style:"padding: 0px; margin: 0px" %>
+        <span style="color: #B0BEC5; position: relative; top: -18px; font-size: 13px">caso não tenha, ou não queira informar, deixe em branco</span>
       </div>
     </div>
   </div>

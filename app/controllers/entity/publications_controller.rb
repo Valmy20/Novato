@@ -20,6 +20,7 @@ module Entity
 
       @model.publicationable_type = 'Institution'
       @model.publicationable_id = current_institution.id
+      @model._type = :estagio
 
       if @model.save
         redirect_to entity_publications_path, notice: 'Publicação adicionada'
