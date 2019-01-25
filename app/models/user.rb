@@ -8,9 +8,7 @@ class User < ApplicationRecord
   attr_accessor :password_current, :require_password_current, :new_password,
                 :new_password_confirmation, :skip_password, :require_user_cover
 
-  attr_accessor :cropc_x, :cropc_y, :cropc_w, :cropc_h
   mount_uploader :cover, CoverUploader
-  after_update :crop_cover
 
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   mount_uploader :avatar, AvatarUploader
@@ -55,10 +53,6 @@ class User < ApplicationRecord
 
   def crop_avatar
     avatar.recreate_versions! if crop_x.present?
-  end
-
-  def crop_cover
-    cover.recreate_versions! if cropc_x.present?
   end
 
   def self.search(search)

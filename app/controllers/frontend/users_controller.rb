@@ -57,13 +57,13 @@ module Frontend
 
     def update_user_cover
       @model = current_user
-      @model.require_password_current = false
-      @model.require_user_cover = true
       return unless request.patch?
 
-      return unless @model.update(set_params)
-
-      render :update_user_cover unless (render :crop_cover if params[:user][:cover].present?)
+      if params[:user][:cover].present?
+        redirect_to frontend_user_path(@model) if @model.update(set_params)
+      else
+        render :update_user_cover
+      end
     end
 
     def reset_password
@@ -110,8 +110,8 @@ module Frontend
       if_is_blank
       params.require(:user).permit(
         :name, :email, :password, :password_confirmation, :password_current, :new_password,
-        :new_password_confirmation, :status, :avatar, :crop_x, :crop_y, :crop_w, :crop_h, :cover, :cropc_x,
-        :cropc_y, :cropc_w, :cropc_h, user_extra_attributes: %i[bio phone], skills_attributes: %i[id name _destroy]
+        :new_password_confirmation, :status, :avatar, :crop_x, :crop_y, :crop_w, :crop_h, :cover,
+        user_extra_attributes: %i[bio phone], skills_attributes: %i[id name _destroy]
       )
     end
 
