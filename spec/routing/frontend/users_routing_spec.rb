@@ -26,6 +26,36 @@ RSpec.describe Frontend::UsersController, type: :routing do
       end
     end
 
+    context "routes to #cover" do
+      it 'get' do
+        expect(:get => frontend_update_user_cover_path).to route_to("frontend/users#update_user_cover")
+      end
+
+      it 'patch' do
+        expect(:patch => frontend_update_user_cover_path).to route_to("frontend/users#update_user_cover")
+      end
+    end
+
+    context "routes to #bio" do
+      it 'get' do
+        expect(:get => frontend_update_user_bio_path).to route_to("frontend/user_extras#update_user_bio")
+      end
+
+      it 'patch' do
+        expect(:patch => frontend_update_user_bio_path).to route_to("frontend/user_extras#update_user_bio")
+      end
+    end
+
+    context "routes to #skills" do
+      it 'get' do
+        expect(:get => frontend_update_user_skill_path).to route_to("frontend/user_extras#update_user_skill")
+      end
+
+      it 'patch' do
+        expect(:patch => frontend_update_user_skill_path).to route_to("frontend/user_extras#update_user_skill")
+      end
+    end
+
 		it "routes to #update" do
       expect(:put => frontend_user_path(1)).to route_to("frontend/users#update", id: '1')
     end

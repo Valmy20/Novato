@@ -21,6 +21,7 @@ class User < ApplicationRecord
   enum status: %i[disapproved approved]
   validates :cover, presence: true, if: :require_user_cover
   validates :name, presence: true, length: { in: 2..50 }
+  validates :phone, length: { in: 10..20 }, allow_blank: true
   validates :password, :password_confirmation, presence: true, on: :create, unless: :skip_password
   validates :password, :password_confirmation, length: { in: 6..20 }, allow_blank: true
   validates :email, presence: true, email: true, uniqueness: {

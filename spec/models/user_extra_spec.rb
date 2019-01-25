@@ -6,7 +6,6 @@ RSpec.describe UserExtra, type: :model do
   it 'has colums user extra' do
       user = described_class.column_names
       expect(user).to include('bio')
-      expect(user).to include('phone')
       expect(user).to include('user_id')
   end
 

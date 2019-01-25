@@ -1,0 +1,22 @@
+<section id="update_user_bio">
+  <div class="container d-flex align-items-center justify-content-center">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10">
+        <%= simple_form_for @model, url: frontend_update_user_bio_path do |f| %>
+          <%= f.simple_fields_for :user_extra do |extra| %>
+            <p>Conte um pouco sobre você</p>
+            <%= extra.input :bio, label: false, input_html: { rows: 7 }%>
+          <% end %>
+          <div class="d-flex justify-content-center">
+            <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
+              <div class="d-flex">
+                <span class="material-icons" style="">check</span>
+                <span style="margin-left: 5px">Salvar</span>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

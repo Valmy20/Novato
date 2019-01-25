@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     match 'user_profile', to: 'users#profile', via: %i[get patch put], as: :user_profile
     match 'update_user_cover', to: 'users#update_user_cover', via: %i[get patch put], as: :update_user_cover
     match 'update_user_password', to: 'users#update_user_password', via: %i[get patch put], as: :update_user_password
+    match 'update_user_bio', to: 'user_extras#update_user_bio', via: %i[get patch put], as: :update_user_bio
+    match 'update_user_skill', to: 'user_extras#update_user_skill', via: %i[get patch put], as: :update_user_skill
   end
 
   namespace 'company', path: 'novato' do

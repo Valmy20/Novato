@@ -7,6 +7,7 @@ RSpec.describe User, type: :model do
       user = described_class.column_names
       expect(user).to include('name')
       expect(user).to include('email')
+      expect(user).to include('phone')
       expect(user).to include('password_digest')
       expect(user).to include('avatar')
       expect(user).to include('cover')
@@ -45,6 +46,12 @@ RSpec.describe User, type: :model do
       is_expected.to validate_length_of(:name).
           is_at_least(2).
           is_at_most(50)
+    end
+
+    it 'validate phone lenght' do
+      is_expected.to validate_length_of(:phone).
+          is_at_least(10).
+          is_at_most(20)
     end
 
     it 'validate password lenght' do

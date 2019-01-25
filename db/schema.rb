@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.string "email"
     t.string "password_digest"
     t.string "token_reset"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.boolean "deleted", default: false
     t.integer "rules", default: 1
     t.datetime "created_at", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.string "token_reset"
     t.string "avatar"
     t.string "slug"
-    t.integer "status", default: 0
+    t.integer "status", default: 1
     t.boolean "deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.string "logo"
     t.string "token_reset"
     t.string "slug"
-    t.integer "status", default: 0
+    t.integer "status", default: 1
     t.boolean "deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
     t.string "logo"
     t.string "cover"
     t.string "slug"
-    t.integer "status", default: 0
+    t.integer "status", default: 1
     t.boolean "deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -189,7 +189,6 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
 
   create_table "user_extras", force: :cascade do |t|
     t.text "bio"
-    t.string "phone"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -199,6 +198,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_010213) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "phone"
     t.string "password_digest"
     t.string "avatar"
     t.string "cover"

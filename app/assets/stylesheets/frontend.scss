@@ -830,11 +830,8 @@ body {
       }
       div.bio {
         border: 1px solid #CFD8DC;
+        padding: 10px;
         border-radius: 5px;
-
-        p {
-          padding: 10px;
-        }
       }
     }
     @media #{$smartphone} {
@@ -972,27 +969,42 @@ body {
     }
   }
   div.skills {
-    border: 1px solid #B0BEC5;
+    border: 1px solid #CFD8DC;
     border-top: transparent;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     margin-bottom: 20px;
     padding: 20px;
   }
   div.new {
-    border: 1px solid #B0BEC5;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border: 1px solid #CFD8DC;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     border-bottom: transparent;
     div.new_skill {
       padding: 10px;
       width: 200px;
       .link_add {
-        background: #42A5F5;
-        width: 70px;
-        border-radius: 2px;
+        background:#B0BEC5;
+        height: 34px;
+        width: 34px;
+        border-radius: 50%;
         padding: 1px 4px 1px;
         text-align: center;
+        @media #{$smartphone} {
+          i.icon-add {
+            position: relative;
+            top: 4px;
+            left: 1px;
+          }
+        }
+        @media #{$tablet_desktop} {
+          i.icon-add {
+            position: relative;
+            top: 6px;
+            left: 1px;
+          }
+        }
       }
     }
   }
@@ -1000,13 +1012,30 @@ body {
   div.field-skill {
     .input_skill {
       width: 100%;
-      border-radius: 5px;
-      border: none;
+      border-top-left-radius: 50px;
+      border-bottom-left-radius: 50px;
+      border-top-right-radius: 40px;
+      border-bottom-right-radius: 40px;
+      border: 1px solid #90A4AE;
       color: #607D8B;
       font-weight: bold;
       letter-spacing: 0.1em;
-      background: #CFD8DC;
-      padding: 2px 15px 2px;
+      background: white;
+      padding: 3px 15px 3px;
+      padding-left: 32px;
+    }
+    .remove-skill {
+      position: relative;
+      top: -29px;
+      left: 3px;
+      background: #EF9A9A;
+      padding: 4px 8px 5px;
+      border-radius: 50%;
+      color: white;
+      @media #{$tablet_desktop} {
+        top: -29px;
+        left: 4px;
+      }
     }
   }
 
@@ -1151,6 +1180,26 @@ body {
       }
     }
 
+  }
+  section#update_user_skill {
+    background: white;
+    min-height: 100vh;
+    div.container {
+      min-height: 100vh;
+      div.row {
+        width: 100%;
+      }
+    }
+  }
+  section#update_user_bio {
+    background: white;
+    min-height: 100vh;
+    div.container {
+      min-height: 100vh;
+      div.row {
+        width: 100%;
+      }
+    }
   }
   // custom inputs
   .custon_field {

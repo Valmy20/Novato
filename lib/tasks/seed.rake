@@ -26,6 +26,7 @@ namespace :seed do
         password: '123456',
         password_confirmation: '123456',
         email: Faker::Internet.email,
+        phone: Faker::PhoneNumber.cell_phone,
         status: 1,
         remote_avatar_url: avatar_url,
         remote_cover_url: cover_url
@@ -38,7 +39,6 @@ namespace :seed do
 
       extra = UserExtra.new
       extra.bio = Faker::Lorem.paragraph_by_chars([100, 160, 247].sample, false),
-      extra.phone = Faker::PhoneNumber.cell_phone,
       extra.user_id = user.id
 
       if extra.save

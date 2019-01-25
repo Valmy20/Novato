@@ -8,7 +8,7 @@
               <%= (image_tag 'default_cover.jpg', class:"img-fluid image_cover") if @model.cover.blank? %>
               <div>
                 <div class="edit-button">
-                    <%= link_to frontend_update_user_cover_path, class:"btn btn-warning", style:"border-radius: 5px;" do %>
+                    <%= link_to frontend_update_user_cover_path, class:"btn btn-warning", style:"border-radius: 5px; border: none; padding: 3px 5px 0px; background: #607D8B; margin-bottom: 15px" do %>
                       <div class="d-flex">
                         <span class="material-icons" style="color: white">create</span>
                       </div>
@@ -40,7 +40,7 @@
               </div>
               <div class="d-flex">
                 <span class="material-icons" style="color: #607D8B">phone</span>
-                <span style="margin-left: 5px; color: #607D8B"><%= @model.user_extra.phone unless @model.user_extra.blank?%></span>
+                <span style="margin-left: 5px; color: #607D8B"><%= @model.phone unless @model.phone.blank?%></span>
               </div>
             </div>
           </div>
@@ -55,10 +55,18 @@
         <div class="col-md-12">
           <div class="row d-flex justify-content-center">
             <div class="col-md-6 bio">
+              <%= link_to frontend_update_user_bio_path, method: :get, style:"padding: 8px 5px 0px; background: #CFD8DC;
+              border-radius: 3px;"	do %>
+                <i class="material-icons md-18" style="color: white">create</i>
+              <% end %>
               <p class="d-flex justify-content-center" style="letter-spacing: 0.2em">Bio</p>
               <p><%= @model.user_extra.bio unless @model.user_extra.blank?%></p>
             </div>
             <div class="col-md-5 skill">
+              <%= link_to frontend_update_user_skill_path, method: :get, style:"padding: 8px 5px 0px; background: #CFD8DC;
+              border-radius: 3px;"	do %>
+                <i class="material-icons md-18" style="color: white">create</i>
+              <% end %>
               <p class="d-flex justify-content-center" style="letter-spacing: 0.2em">Habilidades</p>
               <div class="row d-flex justify-content-center">
                 <% @model.skills.each do |skill| %>
