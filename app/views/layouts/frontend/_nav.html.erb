@@ -13,27 +13,50 @@
     <ul class="navbar-nav ml-auto mr-auto ul-mobile" style="padding-right: 150px">
       <li class="nav-item">
         <%= link_to root_path, class:"nav-link" do %>
-          Home
+          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
+            <span>Home</span>
+            <i class="material-icons md-32" style="color: blue; margin-left: 4px">home</i>
+          </div>
         <% end %>
       </li>
       <li class="nav-item">
         <%= link_to list_posts_path, class:"nav-link" do %>
-          Blog
+          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
+            <span>Blog</span>
+            <i class="material-icons md-32" style="color: blue; margin-left: 4px">format_align_justify</i>
+          </div>
         <% end %>
       </li>
       <li class="nav-item">
         <%= link_to search_publications_path, class:"nav-link" do %>
-          Vagas
+          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
+            <span>Vagas</span>
+            <i class="material-icons md-32" style="color: blue; margin-left: 4px">group_work</i>
+          </div>
         <% end %>
       </li>
       <li class="nav-item">
         <%= link_to new_session_employer_path, class:"nav-link" do %>
-          Empregador
+          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
+            <span>Empregador</span>
+            <i class="material-icons md-32" style="color: blue; margin-left: 4px">people</i>
+          </div>
         <% end %>
       </li>
       <li class="nav-item">
         <%= link_to new_session_institution_path, class:"nav-link" do %>
-          Instituição
+          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
+            <span>Instituição</span>
+            <i class="material-icons md-32" style="color: blue; margin-left: 4px">school</i>
+          </div>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to list_user_path, class:"nav-link" do %>
+          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
+            <span>Perfis</span>
+            <i class="material-icons md-32" style="color: blue; margin-left: 4px">people</i>
+          </div>
         <% end %>
       </li>
     </ul>

@@ -45,4 +45,9 @@ class FrontendController < ApplicationController
   def show_user
     @model = User.friendly.find(params[:id])
   end
+
+  def list_users
+    users = User.order(updated_at: :desc).limit(50)
+    @model = Kaminari.paginate_array(users).page(params[:page]).per(6)
+  end
 end

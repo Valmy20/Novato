@@ -18,7 +18,7 @@ namespace :seed do
 
   desc 'User'
   task user: :environment do
-    1.times do
+    13.times do
       avatar_url = Faker::LoremFlickr.image("200x200")
       cover_url = Faker::LoremFlickr.image("600x160")
       user = User.new(
