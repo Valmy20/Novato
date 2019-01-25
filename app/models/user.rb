@@ -61,6 +61,11 @@ class User < ApplicationRecord
     cover.recreate_versions! if cropc_x.present?
   end
 
+  def self.search(search)
+    q = "%#{search}%"
+    where('name ILIKE :search', search: q)
+  end
+
   private
 
   def password_current_verify

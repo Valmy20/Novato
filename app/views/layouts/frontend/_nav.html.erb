@@ -58,6 +58,16 @@
               Cadastrar
             <% end %>
           <% end %>
+          <div class="dropdown-item search-users">
+            <%= simple_form_for :search, url: search_user_path(:search), method: :get do |f| %>
+              <div class="d-flex">
+                <%= f.input :q, label: false, type:"text", placeholder:"search..", class:"form-control" %>
+                <%= button_tag(id:"btn-search", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin' style='color: white;'></i>"}) do %>
+                  <i class="material-icons md-18" style="color: white; padding-top: 4px;">search</i>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </li>
     </ul>

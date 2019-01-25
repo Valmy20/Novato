@@ -1,0 +1,70 @@
+<section id="show_profile_user">
+  <section id="top">
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-center">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-10">
+            <div class="d-none d-sm-block">
+              <%= (image_tag @model.cover.url(:thumb), class:"img-fluid image_cover") unless @model.cover.blank? %>
+              <%= (image_tag 'default_cover', class:"img-fluid image_cover") if @model.cover.blank? %>
+            </div>
+            <div class="d-sm-none">
+              <%= (image_tag @model.cover.url(:mobile), class:"img-fluid image_cover") unless @model.cover.blank? %>
+              <%= (image_tag 'default-cover-mobile', class:"img-fluid image_cover") if @model.cover.blank? %>
+            </div>
+        </div>
+      </div>
+    </div>
+ </section>
+
+  <div class="row div_avatar">
+    <div class="col-12 d-flex justify-content-center">
+      <div class="img">
+        <%= (image_tag @model.avatar.url(:thumb), class:"img-fluid avatar") unless @model.avatar.blank? %>
+        <%= (image_tag 'default_user', class:"img-fluid avatar") if @model.avatar.blank? %>
+      </div>
+    </div>
+  </div>
+
+  <div class="user_info">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-10">
+
+        <div class="row d-flex justify-content-center">
+          <span class="name"><%= @model.name %></span>
+        </div>
+
+        <div class="row d-flex flex-column justify-content-start" style="padding: 10px">
+          <div class="d-flex">
+            <i class="material-icons md-32" style="color: #78909C; padding-top: 1px">email</i>
+            <span style="color: #546E7A;"><%= @model.email %></span>
+          </div>
+          <div class="d-flex">
+            <i class="material-icons md-32" style="color: #78909C; padding-top: 1px">phone</i>
+            <span style="color: #546E7A;"><%= @model.user_extra.phone if @model.user_extra.present? %></span>
+          </div>
+        </div>
+
+
+        <div class="row bio_skill d-flex justify-content-center">
+          <div class="col-md-6 user_bio">
+            <p class="d-flex justify-content-center">Bio</p>
+            <div class="row d-flex justify-content-center" style="padding: 5px">
+              <p class="bio"><%= @model.user_extra.bio if @model.user_extra.present? %></p>
+            </div>
+          </div>
+
+          <div class="col-md-5 user_skills">
+            <p class="d-flex justify-content-center">Habilidades</p>
+            <div class="row d-flex justify-content-center">
+              <% @model.skills.each do |skill| %>
+                <span class="skill"><%= skill.name %></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>

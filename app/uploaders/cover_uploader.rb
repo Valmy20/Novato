@@ -13,7 +13,12 @@ class CoverUploader < CarrierWave::Uploader::Base
 
   version :thumb do
     process :crop
-    resize_to_fill(600, 160)
+    resize_to_fill(600, 230)
+  end
+
+  version :mobile do
+    process :crop
+    resize_to_fill(300, 160)
   end
 
   version :tiny do

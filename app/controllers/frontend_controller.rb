@@ -37,4 +37,12 @@ class FrontendController < ApplicationController
     id = Institution.friendly.find(params[:id])
     @model = Institution.find_by(id: id)
   end
+
+  def search_users
+    @model = User.search(params[:search][:q]).page(params[:page]).per(10)
+  end
+
+  def show_user
+    @model = User.friendly.find(params[:id])
+  end
 end
