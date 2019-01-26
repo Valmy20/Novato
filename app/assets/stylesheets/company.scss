@@ -6,12 +6,6 @@
  $tablet: "(min-width: 768px) and (max-width: 1023px)";
  $desktop: "(min-width: 1024px)";
 
- @media #{$smartphone} {
-   .ul-mobile {
-     position: relative;
-     left: 10px !important;
-   }
- }
 body#company_profile {
   .btn_custom {
     padding: 2px 20px 2px;

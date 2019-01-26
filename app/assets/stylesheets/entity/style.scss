@@ -1701,18 +1701,10 @@ nav#nav-novato {
   .right-panel {
     width: 80vw;
   }
-  .ul-mobile {
-    position: relative;
-    left: 10px;
-  }
 }
 @media #{$desktop} {
   .right-panel {
     width: 80vw;
-  }
-  .ul-mobile {
-    position: relative;
-    left: 10%;
   }
   a.usuario {
     border: 1px solid #78909C;

@@ -12,6 +12,7 @@ $smartphone: "(max-width: 767px)";
 $tablet: "(min-width: 768px) and (max-width: 1023px)";
 $desktop: "(min-width: 1024px)";
 $tablet_desktop: "(min-width: 768px)";
+$nav: "(min-width: 892px) and (max-width: 921px)";
 
 nav#nav-novato {
   .nav-link {
@@ -315,10 +316,6 @@ body#frontend {
   }
   @media #{$smartphone} {
     background: #90CAF9;
-    .ul-mobile {
-      position: relative;
-      left: 10px;
-    }
     h1.desktop {
       display: none;
     }
@@ -348,10 +345,6 @@ body#frontend {
   }
   @media #{$tablet} {
     background: #90CAF9;
-    .ul-mobile {
-      position: relative;
-      left: 10px;
-    }
     h1.desktop {
       display: none;
     }
@@ -366,10 +359,6 @@ body#frontend {
   }
   @media #{$desktop} {
     background: #90CAF9;
-    .ul-mobile {
-      position: relative;
-      left: 10%;
-    }
     h1.mobile {
       display: none;
     }
@@ -380,11 +369,6 @@ body#frontend {
       letter-spacing: 0.1em;
       border-radius: 10px;
       padding: 40px 15px 40px;
-    }
-    a.usuario {
-      border: 1px solid #78909C;
-      padding: 1px 10px 1px;
-      border-radius: 30px;
     }
     div.card_text {
       padding: 10px;

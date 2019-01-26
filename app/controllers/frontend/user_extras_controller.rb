@@ -2,6 +2,7 @@ module Frontend
   class UserExtrasController < FrontendController
     def update_user_bio
       @model = current_user
+      @model.build_user_extra if @model.user_extra.blank?
       return unless request.patch?
       return unless @model.update(set_bio)
 

@@ -10,60 +10,60 @@
     <%= link_to root_path do %>
       <%= image_tag("logo.png", class:"logo d-none d-lg-block") %>
     <% end %>
-    <ul class="navbar-nav ml-auto mr-auto ul-mobile" style="padding-right: 150px">
-      <li class="nav-item">
+    <ul class="navbar-nav ml-auto mr-auto">
+      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px">
         <%= link_to root_path, class:"nav-link" do %>
-          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
-            <span>Home</span>
-            <i class="material-icons md-32" style="color: blue; margin-left: 4px">home</i>
+          <div class="d-flex align-items-center">
+            <span style="font-size: 1.2em;" class="link_nav">Home</span>
+            <%= image_tag("nav-home", style:"margin-left: 5px; margin-right: 20px", class:"nav-icon") %>
           </div>
         <% end %>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px">
         <%= link_to list_posts_path, class:"nav-link" do %>
-          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
-            <span>Blog</span>
-            <i class="material-icons md-32" style="color: blue; margin-left: 4px">format_align_justify</i>
+          <div class="d-flex align-items-center">
+            <span style="font-size: 1.2em;" class="link_nav">Blog</span>
+            <%= image_tag("nav-blog", style:"margin-left: 5px;", class:"nav-icon") %>
           </div>
         <% end %>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px">
         <%= link_to search_publications_path, class:"nav-link" do %>
-          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
-            <span>Vagas</span>
-            <i class="material-icons md-32" style="color: blue; margin-left: 4px">group_work</i>
+          <div class="d-flex align-items-center">
+            <span style="font-size: 1.2em;" class="link_nav">Vagas</span>
+            <%= image_tag("nav-vacancies", style:"margin-left: 5px;", class:"nav-icon") %>
           </div>
         <% end %>
       </li>
-      <li class="nav-item">
-        <%= link_to new_session_employer_path, class:"nav-link" do %>
-          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
-            <span>Empregador</span>
-            <i class="material-icons md-32" style="color: blue; margin-left: 4px">people</i>
+      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px; padding-right: 10px">
+        <%= link_to new_session_employer_path, class:"nav-link", style:"margin-right: 30px" do %>
+          <div class="d-flex align-items-center">
+            <span style="font-size: 1.2em;" class="link_nav">Empregador</span>
+            <%= image_tag("nav-employer", style:"margin-left: 5px;", class:"nav-icon") %>
           </div>
         <% end %>
       </li>
-      <li class="nav-item">
-        <%= link_to new_session_institution_path, class:"nav-link" do %>
-          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
-            <span>Instituição</span>
-            <i class="material-icons md-32" style="color: blue; margin-left: 4px">school</i>
+      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px; padding-right: 10px">
+        <%= link_to new_session_institution_path, class:"nav-link", style:"margin-right: 30px" do %>
+          <div class="d-flex align-items-center">
+            <span style="font-size: 1.2em;" class="link_nav">Instituição</span>
+            <%= image_tag("nav-institution", style:"margin-left: 5px;", class:"nav-icon") %>
           </div>
         <% end %>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px">
         <%= link_to list_user_path, class:"nav-link" do %>
-          <div class="d-flex align-items-center" style="border: 1px solid red; padding: 4px">
-            <span>Perfis</span>
-            <i class="material-icons md-32" style="color: blue; margin-left: 4px">people</i>
+          <div class="d-flex align-items-center">
+            <span style="font-size: 1.2em;" class="link_nav">Perfis</span>
+            <%= image_tag("nav-group", style:"margin-left: 5px;", class:"nav-icon") %>
           </div>
         <% end %>
       </li>
-    </ul>
-    <ul class="navbar-nav" style="padding-right: 100px; margin-left: 10px;">
+
       <li class="nav-item dropdown">
-        <a class="nav-link usuario dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Usuário
+        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" style="padding: 7px 0px 0px; padding-left: 20px"
+        id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="material-icons md-36" style="color: white; background: #BBDEFB; border-radius: 2px">person</i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if current_user %>
@@ -81,16 +81,6 @@
               Cadastrar
             <% end %>
           <% end %>
-          <div class="dropdown-item search-users">
-            <%= simple_form_for :search, url: search_user_path(:search), method: :get do |f| %>
-              <div class="d-flex">
-                <%= f.input :q, label: false, type:"text", placeholder:"search..", class:"form-control" %>
-                <%= button_tag(id:"btn-search", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin' style='color: white;'></i>"}) do %>
-                  <i class="material-icons md-18" style="color: white; padding-top: 4px;">search</i>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
         </div>
       </li>
     </ul>

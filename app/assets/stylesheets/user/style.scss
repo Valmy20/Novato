@@ -1705,10 +1705,6 @@ nav#nav-novato {
     width: 80vw;
     padding-top: 60px;
   }
-  .ul-mobile {
-    position: relative;
-    left: 10px;
-  }
 }
 @media #{$desktop} {
   .menu-left-mobile {
@@ -1717,10 +1713,6 @@ nav#nav-novato {
   .right-panel {
     width: 80vw;
     padding-top: 60px;
-  }
-  .ul-mobile {
-    position: relative;
-    left: 10%;
   }
   a.usuario {
     border: 1px solid #78909C;
