@@ -1,5 +1,5 @@
 <nav id="nav-novato" class="navbar fixed-top navbar-expand-lg navbar-light" style="margin: 0px; background: white;
- border-bottom: 1px solid #90CAF9;">
+ border-bottom: 1px solid #CFD8DC;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
    style="border: none;">
@@ -10,60 +10,54 @@
     <%= link_to root_path do %>
       <%= image_tag("logo.png", class:"logo d-none d-lg-block") %>
     <% end %>
-    <ul class="navbar-nav ml-auto mr-auto">
-      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px">
+    <ul class="navbar-nav ml-auto mr-auto" style="padding-left: 10px">
+      <li class="nav-item" style="margin: 0px 2px 0px;">
         <%= link_to root_path, class:"nav-link" do %>
           <div class="d-flex align-items-center">
-            <span style="font-size: 1.2em;" class="link_nav">Home</span>
-            <%= image_tag("nav-home", style:"margin-left: 5px; margin-right: 20px", class:"nav-icon") %>
+            <i class="material-icons md-24" style="padding-top: 5px">home</i>
           </div>
         <% end %>
       </li>
-      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px">
+      <li class="nav-item" style="margin: 0px 2px 0px;">
         <%= link_to list_posts_path, class:"nav-link" do %>
           <div class="d-flex align-items-center">
-            <span style="font-size: 1.2em;" class="link_nav">Blog</span>
-            <%= image_tag("nav-blog", style:"margin-left: 5px;", class:"nav-icon") %>
+            <span style="font-size: 1.1em;" class="link_nav">Blog</span>
           </div>
         <% end %>
       </li>
-      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px">
+      <li class="nav-item" style="margin: 0px 2px 0px;">
         <%= link_to search_publications_path, class:"nav-link" do %>
           <div class="d-flex align-items-center">
-            <span style="font-size: 1.2em;" class="link_nav">Vagas</span>
-            <%= image_tag("nav-vacancies", style:"margin-left: 5px;", class:"nav-icon") %>
+            <span style="font-size: 1.1em;" class="link_nav">Vagas</span>
           </div>
         <% end %>
       </li>
-      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px; padding-right: 10px">
-        <%= link_to new_session_employer_path, class:"nav-link", style:"margin-right: 30px" do %>
+      <li class="nav-item" style="margin: 0px 2px 0px;">
+        <%= link_to new_session_employer_path, class:"nav-link" do %>
           <div class="d-flex align-items-center">
-            <span style="font-size: 1.2em;" class="link_nav">Empregador</span>
-            <%= image_tag("nav-employer", style:"margin-left: 5px;", class:"nav-icon") %>
+            <span style="font-size: 1.1em;" class="link_nav">Empregador</span>
           </div>
         <% end %>
       </li>
-      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px; padding-right: 10px">
-        <%= link_to new_session_institution_path, class:"nav-link", style:"margin-right: 30px" do %>
+      <li class="nav-item" style="margin: 0px 2px 0px;">
+        <%= link_to new_session_institution_path, class:"nav-link" do %>
           <div class="d-flex align-items-center">
-            <span style="font-size: 1.2em;" class="link_nav">Instituição</span>
-            <%= image_tag("nav-institution", style:"margin-left: 5px;", class:"nav-icon") %>
+            <span style="font-size: 1.1em;" class="link_nav">Instituição</span>
           </div>
         <% end %>
       </li>
-      <li class="nav-item" style="border: 1px solid #BBDEFB; border-radius: 5px; margin: 0px 2px 0px; padding-left: 10px">
-        <%= link_to list_user_path, class:"nav-link" do %>
+      <li class="nav-item" style="margin: 0px 2px 0px; margin-right: 25px">
+        <%= link_to list_user_all_path, class:"nav-link" do %>
           <div class="d-flex align-items-center">
-            <span style="font-size: 1.2em;" class="link_nav">Perfis</span>
-            <%= image_tag("nav-group", style:"margin-left: 5px;", class:"nav-icon") %>
+            <span style="font-size: 1.1em;" class="link_nav">Comunidade</span>
           </div>
         <% end %>
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" style="padding: 7px 0px 0px; padding-left: 20px"
+        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" style="padding: 15px 0px 5px;"
         id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="material-icons md-36" style="color: white; background: #BBDEFB; border-radius: 2px">person</i>
+          <i class="material-icons md-24" style="color: #90A4AE">person</i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if current_user %>

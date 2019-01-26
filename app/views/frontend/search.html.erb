@@ -1,8 +1,8 @@
-<section id="search-publications" style="background: #ECEFF1;">
+<section id="search-publications" style="background: #CFD8DC;">
   <div class="container-fluid">
     <% unless @model.blank? %>
       <% @model.each do |row| %>
-        <%= render partial:"frontend/shared_site/search_results", locals: { row: row } %>
+        <%= render partial:"frontend/shared_site/search_publication", locals: { row: row } %>
       <% end %>
       <div class="row d-flex justify-content-center">
         <%= paginate @model, theme: '../kaminari' %>

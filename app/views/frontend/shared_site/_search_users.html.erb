@@ -1,0 +1,32 @@
+<div class="row row-user d-flex justify-content-center">
+  <div class="col-user col-12 col-sm-11 col-md-8 col-lg-8 col-xl-6">
+    <div class="row">
+      <div class="col-4 col-md-3">
+        <%= (image_tag row.avatar.url(:thumb), class:"img-fluid img-user") unless row.avatar.blank? %>
+        <%= image_tag('default_user', class:"img-user") if row.avatar.blank? %>
+      </div>
+      <div class="col-8 col-md-9" style="padding-left: 0px">
+        <div class="row">
+          <div class="col-10 col-md-8">
+            <span class="user-name"><%= row.name %></span>
+          </div>
+          <div class="col-2 col-md-4 d-flex justify-content-end">
+            <%= link_to show_user_path(row), class:"btn btn-primary btn-profile", title:"ver perfil" do %>
+              <div class="d-flex">
+                <i class="material-icons md-32 icon" style="color: white;">person</i>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-bio">
+            <div class="bio d-none d-sm-block">
+              <% bio = row.user_extra.bio if row.user_extra.present? %>
+              <%= truncate(bio, length: 150) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

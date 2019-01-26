@@ -43,12 +43,17 @@ nav#nav-novato {
 }
 
 section#show-users {
-  background: #ECEFF1;
-  padding-top: 80px;
+  background: #CFD8DC;
   min-height: 100vh;
+  @media #{$smartphone} {
+    padding-top: 50px;
+  }
+  @media #{$tablet_desktop} {
+    padding-top: 80px;
+  }
   div.row-user {
     margin: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     div.col-user {
       background: white;
       border: 1px solid #CFD8DC;
@@ -118,6 +123,31 @@ section#show-users {
             font-size: 1em;
           }
         }
+      }
+    }
+  }
+  div.form-search-user {
+    div.input-search {
+      input {
+        border: 1px solid #B0BEC5;
+        appearance: textfield;
+        outline: none;
+        box-shadow: none;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+    }
+    div.btn-search {
+      button {
+        position: relative;
+        top: 0px;
+        border: 1px solid red;
+        height: 38px;
+        width: 37px;
+        padding-right: 10px;
+        padding-left: 9px;
+        border: none;
+        background: #64B5F6;
       }
     }
   }
@@ -227,7 +257,7 @@ section#show_profile_user {
 body#frontend {
   section#posts {
      padding-top: 15px;
-     background: #ECEFF1;
+     background: #CFD8DC;
      min-height: 100vh;
     @media #{$smartphone} {
       padding-top: 50px;
@@ -238,13 +268,7 @@ body#frontend {
         margin-bottom: 7px;
         div.div-info {
           height: 100%;
-          span.title {
-
-          }
-          i.watch {
-            padding-top: 1px;
-          }
-          p.date {
+          span.writer {
             font-size: 0.8em;
           }
         }
@@ -267,6 +291,15 @@ body#frontend {
           i.watch {
             padding-top: 1px;
           }
+          i.watch {
+            padding-top: 1px;
+          }
+          span.date {
+            font-size: 0.8em;
+          }
+          span.writer {
+            font-size: 0.9em;
+          }
         }
       }
     }
@@ -286,6 +319,12 @@ body#frontend {
           }
           i.watch {
             padding-top: 1px;
+          }
+          span.date {
+            font-size: 0.8em;
+          }
+          span.writer {
+            font-size: 0.9em;
           }
         }
       }
@@ -442,7 +481,7 @@ body#frontend {
 
   }
   section#show_publication {
-    background: #ECEFF1;
+    background: #CFD8DC;
     .social-share-button {
         padding: 2px;
         .ssb-icon {
@@ -489,7 +528,7 @@ body#frontend {
         }
       }
       @media #{$tablet} {
-        margin-top: 60px;
+        margin-top: 70px;
         .title {
           font-size: 1.8em;
           color: #546E7A;
@@ -501,7 +540,7 @@ body#frontend {
       }
 
       @media #{$desktop} {
-          margin-top: 60px;
+          margin-top: 80px;
         p.information {
           min-height: 150px;
         }
@@ -517,7 +556,7 @@ body#frontend {
     }
   }
   section#list_publication {
-    background: #ECEFF1;
+    background: #CFD8DC;
     .social-share-button {
         padding: 2px;
         .ssb-icon {

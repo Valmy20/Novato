@@ -24,7 +24,7 @@
             <% end %>
 
           </div>
-          <div class="col-2 col-md-1" style="padding: 0px">
+          <div class="col-2 col-md-1 d-flex justify-content-end" style="padding: 0px;">
             <p style="color: #B0BEC5; font-size: 0.7em" class="d-lg-none"><%= @model.created_at.strftime("%d #{helper_month_post(@model.created_at.month)} %y") %></p>
             <p style="color: #B0BEC5" class="d-none d-lg-block"><%= @model.created_at.strftime("%d #{helper_month_post(@model.created_at.month)} %y") %></p>
           </div>

@@ -38,16 +38,21 @@ class FrontendController < ApplicationController
     @model = Institution.find_by(id: id)
   end
 
-  def search_users
-    @model = User.search(params[:search][:q]).page(params[:page]).per(10)
+  def list_users
+    if params[:search].present?
+      if params[:search][:q].present?
+        @model = User.search(params[:search][:q]).page(params[:page]).per(10)
+      else
+        users = User.order(updated_at: :desc).limit(100)
+        @model = Kaminari.paginate_array(users).page(params[:page]).per(10)
+      end
+    else
+      users = User.order(updated_at: :desc).limit(100)
+      @model = Kaminari.paginate_array(users).page(params[:page]).per(10)
+    end
   end
 
   def show_user
     @model = User.friendly.find(params[:id])
-  end
-
-  def list_users
-    users = User.order(updated_at: :desc).limit(50)
-    @model = Kaminari.paginate_array(users).page(params[:page]).per(6)
   end
 end

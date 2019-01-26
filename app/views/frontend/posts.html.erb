@@ -1,36 +1,44 @@
 <section id="posts">
   <div class="container-fluid">
-    <% @model.each do |row| %>
-    <div class="post", style="padding-bottom: 2px">
-      <div class="row" style="padding-bottom: 0px">
-        <div class="col-5 col-sm-4 col-md-3 d-flex align-items-center">
-          <%= link_to show_post_path(row) do %>
-            <%= (image_tag row.thumb.url(:thumb), class:"img-fluid") unless row.thumb.blank? %>
-            <%= image_tag('default_post') if row.thumb.blank? %>
-          <% end %>
-        </div>
-
-        <div class="col-7 col-sm-8 col-md-9">
-          <div class="row flex-column div-info">
-            <div style="width: 92%">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-sm-10 col-md-9 col-lg-8">
+        <% @model.each do |row| %>
+        <div class="post", style="padding-bottom: 2px">
+          <div class="row" style="padding-bottom: 0px">
+            <div class="col-5 col-sm-4 col-md-4 d-flex align-items-center">
               <%= link_to show_post_path(row) do %>
-                <span class="title"><%= truncate(row.title, length: 65) %></span>
+                <%= (image_tag row.thumb.url(:thumb), class:"img-fluid") unless row.thumb.blank? %>
+                <%= image_tag('default_post') if row.thumb.blank? %>
               <% end %>
             </div>
-            <div class="d-flex">
-              <i class="material-icons md-18 watch d-none d-sm-block" style="color: #CFD8DC">watch_later</i>
-              <p class="date d-none d-sm-block" style="color: #B0BEC5"><%= row.created_at.strftime("%d#{helper_month_post(row.created_at.month)}%y - %Hh %M") %></p>
+
+            <div class="col-7 col-sm-8 col-md-8">
+              <div class="row flex-column div-info">
+                <div>
+                  <%= link_to show_post_path(row) do %>
+                    <span class="title"><%= truncate(row.title, length: 40) %></span>
+                  <% end %>
+                </div>
+                <div class="d-flex flex-column">
+                  <div class="d-flex" style="margin-top: 10px">
+                    <i class="material-icons md-18 watch d-none d-sm-block" style="color: #CFD8DC">watch_later</i>
+                    <span class="date d-none d-sm-block date" style="color: #B0BEC5"><%= row.created_at.strftime("%d#{helper_month_post(row.created_at.month)}%y - %Hh %M") %></span>
+                  </div>
+                  <span style="color: #B0BEC5" class="writer"><%= "por: #{who_create_post(row.postable_type, row.postable_id)}" %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row d-sm-none" style="margin: 0px; padding: 4px 4px 0px;">
+            <div class="col-12 d-flex" style="margin: 0px; padding: 0px">
+              <span style="color: #B0BEC5; font-size: 0.8em;"><%= row.created_at.strftime("%d#{helper_month_post(row.created_at.month)}%y") %></span>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row d-sm-none" style="margin: 0px; padding: 4px 4px 0px;">
-        <div class="col-12 d-flex" style="margin: 0px; padding: 0px">
-          <span style="color: #B0BEC5; font-size: 0.8em;"><%= row.created_at.strftime("%d#{helper_month_post(row.created_at.month)}%y") %></span>
-        </div>
+        <% end %>
       </div>
     </div>
-    <% end %>
+
     <div class="row d-flex justify-content-center">
       <%= paginate @model, theme: '../kaminari' %>
     </div>

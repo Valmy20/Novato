@@ -1,41 +1,33 @@
 <section id="show-users">
-  <div class="container-fluid">
-    <% @model.each do |row| %>
-      <div class="row row-user d-flex justify-content-center">
-        <div class="col-user col-12 col-sm-11 col-md-8 col-lg-8 col-xl-6">
-          <div class="row">
-            <div class="col-4 col-md-3">
-              <%= (image_tag row.avatar.url(:thumb), class:"img-fluid img-user") unless row.avatar.blank? %>
-              <%= image_tag('default_user', class:"img-user") if row.avatar.blank? %>
-            </div>
-            <div class="col-8 col-md-9" style="padding-left: 0px">
-              <div class="row">
-                <div class="col-10 col-md-8">
-                  <span class="user-name"><%= row.name %></span>
-                </div>
-                <div class="col-2 col-md-4 d-flex justify-content-end">
-                  <%= link_to show_user_path(row), class:"btn btn-primary btn-profile", title:"ver perfil" do %>
-                    <div class="d-flex">
-                      <i class="material-icons md-32 icon" style="color: white;">person</i>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 col-bio">
-                  <div class="bio d-none d-sm-block">
-                    <% bio = row.user_extra.bio if row.user_extra.present? %>
-                    <%= truncate(bio, length: 150) %>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+  <div class="row d-flex justify-content-center form-search-user">
+    <div class="col-8 col-sm-6 col-md-4 form">
+      <%= simple_form_for :search, url: list_user_path(:search), method: :get do |f| %>
+        <div class="d-flex justify-content-center form-input">
+          <div class="input-search">
+            <%= f.input :q, label: false, placeholder:"pesquisar usuário" %>
+          </div>
+          <div class="btn-search">
+            <%= button_tag(id:"btn-search", class: "btn btn-primary",
+                data: {disable_with: "<i class='fa fa-spinner fa-spin' style='color: white;'></i>"}) do %>
+              <i class="material-icons md-18" style="color: white; padding-top: 4px;">search</i>
+            <% end %>
           </div>
         </div>
-      </div>
-    <% end %>
-    <div class="row d-flex justify-content-center">
-      <%= paginate @model, theme: '../kaminari' %>
+      <% end %>
     </div>
+  </div>
+
+  <div class="container-fluid">
+    <% unless @model.blank? %>
+      <% @model.each do |row| %>
+        <%= render partial:"frontend/shared_site/search_users", locals: { row: row } %>
+      <% end %>
+      <div class="row d-flex justify-content-center">
+        <%= paginate @model, theme: '../kaminari' %>
+      </div>
+    <% else %>
+      <%= render partial:"frontend/shared_site/no_results" %>
+    <% end %>
   </div>
 </section>
