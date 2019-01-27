@@ -1,60 +1,110 @@
 <section id="screen_login_institution">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-8">
-				<div class="d-flex">
-						<%= image_tag("graduation", class:"img-fluid") %>
-						<h1 style="color: white" class="title">Ajude estudantes e recém-formados</h1>
-				</div>
-				<div style="max-width: 700px; padding: 15px;">
-						<p style="color: white"  class="d-sm-none">
-							Você desempenha um papel importante ajudando seus alunos e ex-alunos a explorar suas opções
-							de carreira e a encontrar seu primeiro emprego.
-						</p>
-						<p style="color: white"  class="d-none d-sm-block">
-							Você desempenha um papel importante ajudando seus alunos a explorar suas opções
-							de carreira e a encontrar seu primeiro emprego. Compartilhe oportunidades para seus
-							alunos conhecerem os empregadores interessados e se candidatarem a empregos e estágios.
-						</p>
-				</div>
-			</div>
-			<div class="col-md-4">
-					<div style="max-width: 400px">
-						<div class="card card-login">
-							<%= render partial: "layouts/notification/flash_messages" %>
-							<div class="card-header">Login</div>
+	<div class="row">
+		<div class="col-md-12 d-flex justify-content-center">
+			<h1 class="title" style="color: white; font-weight: bold">Instituição de ensino</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 d-flex justify-content-center">
+			<div class="card card-login" style="width: 400px">
+				<%= render partial: "layouts/notification/flash_messages" %>
+				<div class="card-header">Login: Insituição</div>
 
-							<div class="card-body">
-								<%= simple_form_for(:login, url: :sessions_institution, method: :post) do |f| %>
-									<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
-									<%= f.input :password, as: :password, label: false, class:"form-control", placeholder:"Password" %>
-									<div class="d-flex justify-content-center">
-										<%= button_tag(class: "btn", style:"width: 100%;", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Aguarde..."}) do %>
-											Login
-										<% end %>
-									</div>
-								<% end %>
-							</div>
-							<div class="d-flex justify-content-center">
-								<%= link_to new_entity_institution_path, class:"badge badge-primary", style:"padding: 7px 29px 7px; margin: 10px" do %>
-									<div class="d-flex">
-										<i class="material-icons md-18" style="color: white">person_add</i>
-										<span style="padding-top: 3px; padding-left: 4px">Criar conta</span>
-									</div>
-								<% end %>
-								<% if Rails.env.development? %>
-									<%= link_to institution_reset_password_path, class:"badge badge-secondary", style:"padding: 7px 5px 7px; margin: 10px" do %>
-										<div class="d-flex">
-											<i class="material-icons md-18" style="color: white">sentiment_dissatisfied</i>
-											<span style="padding-top: 3px; padding-left: 4px">esqueci minha senha</span>
-										</div>
-									<% end %>
-								<% end %>
-							</div>
+				<div class="card-body">
+					<%= simple_form_for(:login, url: :sessions_institution, method: :post) do |f| %>
+						<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
+						<%= f.input :password, as: :password, label: false, class:"form-control", placeholder:"Password" %>
+						<div class="d-flex justify-content-center">
+							<%= button_tag(class: "btn", style:"width: 100%;", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Aguarde..."}) do %>
+								Login
+							<% end %>
 						</div>
-					</div>
+					<% end %>
+				</div>
+				<div class="d-flex justify-content-center">
+					<%= link_to new_entity_institution_path, class:"badge badge-primary", style:"padding: 7px 29px 7px; margin: 10px" do %>
+						<div class="d-flex">
+							<i class="material-icons md-18" style="color: white">person_add</i>
+							<span style="padding-top: 3px; padding-left: 4px">Criar conta</span>
+						</div>
+					<% end %>
+					<% if Rails.env.development? %>
+						<%= link_to institution_reset_password_path, class:"badge badge-secondary", style:"padding: 7px 5px 7px; margin: 10px" do %>
+							<div class="d-flex">
+								<i class="material-icons md-18" style="color: white">sentiment_dissatisfied</i>
+								<span style="padding-top: 3px; padding-left: 4px">esqueci minha senha</span>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
+<section id="institution_info" style="min-height: 400px; background: #00B8D4; padding: 80px 10px 40px;">
+	<div class="row">
+		<div class="col-md-12 d-flex justify-content-center">
+			<h1 class="title" style="color: white; font-weight: bold; letter-spacing: 0.06em;">Divulgue vagas de estágio</h1>
+		</div>
+	</div>
+	<div class="row" style="padding: 60px 30px 1px">
+		<div class="col-sm-4 col-md-4" style="padding: 20px;">
+				<p class="info">
+					As instituições de ensino desempenham um papel importante ajudando seus alunos e ex-alunos a explorar
+					suas opções de carreira e a encontrar seu primeiro emprego.
+				</p>
+		</div>
+		<div class="col-sm-4 col-md-4" style="padding: 20px;">
+			<p class="info">
+				Crie um perfil com informações de contato, localização no maps, e uma bio
+				descrevendo a instituição.
+			</p>
+		</div>
+		<div class="col-sm-4 col-md-4" style="padding: 20px;">
+			<p class="info">
+				Insituições podem divulgar vagas de estágio, que serão vistas pelos usuários
+			</p>
+		</div>
+	</div>
+</section>
+
+<div class="d-none d-md-block" style="padding-top: 80px;">
+	<div class="row">
+		<div class="col-md-12 d-flex justify-content-center">
+			<h1 style="color: #546E7A;">Instituições de ensino parceiras</h1>
+		</div>
+	</div>
+	<div id="carousel_employer" class="d-flex justify-content-center">
+		<div style="width: 95vw; padding: 20px 20px 0px;">
+			<div class="main-content">
+				 <% @model = Institution.where(status: :approved).last(100) %>
+					<div class="owl-carousel" style="padding-right: 49px">
+						<% @model.each do |row| %>
+							<%= link_to show_profile_institution_path(row) do %>
+							<div class="item">
+								<div class="row">
+									<div class="col-md-5">
+										<%= (image_tag row.logo.url(:thumb), class:"img-fluid") unless row.logo.blank? %>
+										<%= (image_tag "default_user", class:"img-fluid") if row.logo.blank? %>
+									</div>
+									<div class="col-md-7 d-flex flex-column">
+										<span class="name"><%= truncate(row.name, length: 25) %></span>
+										<span class="contact"><%= row.institution_extra.phone if row.institution_extra.present? %></span>
+										<span class="contact"><%= row.email %></span>
+									</div>
+								</div>
+							</div>
+							<% end %>
+						<% end %>
+					</div>
+					<div class="owl-theme">
+							<div class="owl-controls">
+									<div class="custom-nav owl-nav"></div>
+							</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
 <%= render partial: "./layouts/frontend/footer" %>

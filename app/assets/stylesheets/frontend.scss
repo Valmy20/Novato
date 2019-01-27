@@ -1204,13 +1204,40 @@ body {
     }
 
   }
-  section#update_user_skill {
-    background: white;
-    min-height: 100vh;
-    div.container {
-      min-height: 100vh;
-      div.row {
-        width: 100%;
+
+  div#carousel_employer {
+    padding: 10px 10px 80px;
+    div.item {
+      background: #CFD8DC;
+      padding: 15px;
+      font-size: 1.3em;
+      @media #{$smartphone} {
+        span.name {
+          font-size: 1em;
+        }
+        span.contact {
+          font-size: 0.4em;
+        }
+      }
+      @media #{$tablet} {
+        span.name {
+          font-size: 0.8em;
+          color: #607D8B;
+        }
+        span.contact {
+          font-size: 0.6em;
+          color: #455A64;
+        }
+      }
+      @media #{$desktop} {
+        span.name {
+          font-size: 1.1em;
+          color: #607D8B;
+        }
+        span.contact {
+          font-size: 0.6em;
+          color: #455A64;
+        }
       }
     }
   }
@@ -1247,4 +1274,41 @@ body {
      padding-left:  60px;
      border-radius: 0px;
    }
+}
+
+
+
+.main-content {
+  position: relative;
+
+  .owl-theme {
+      .custom-nav {
+          position: absolute;
+          top: 7%;
+          left: 0;
+          right: 0;
+
+          .owl-prev, .owl-next {
+              position: absolute;
+              height: 100px;
+              color: inherit;
+              background: none;
+              border: none;
+              z-index: 100;
+
+              i {
+                  font-size: 2.5rem;
+                  color: #cecece;
+              }
+          }
+
+          .owl-prev {
+              left: 0;
+          }
+
+          .owl-next {
+              right: 0;
+          }
+      }
+  }
 }

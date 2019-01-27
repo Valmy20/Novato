@@ -75,16 +75,18 @@ body#company_profile {
 section#screen_login_employer {
   background: image-url('cover_employer');
   height: 100vh;
+  div.card-login {
+    box-shadow: 1px -2px 10px;
+  }
   @media #{$smartphone} {
-    padding-top: 40px;
+    padding: 40px 20px 10px;
     div.row {
       padding-top: 10px;
       h1.title {
+        font-size: 1.4em;
+        margin-top: 20px;
+        margin-bottom: 40px;
         text-align: center;
-        font-size: 2em;
-      }
-      p {
-        text-align: justify;
       }
     }
   }
@@ -94,9 +96,6 @@ section#screen_login_employer {
       h1.title {
         font-size: 2em;
       }
-      div.card-login {
-        box-shadow: 1px -2px 10px;
-      }
     }
   }
   @media #{$desktop} {
@@ -105,9 +104,41 @@ section#screen_login_employer {
       h1.title {
         font-size: 2.8em;
       }
-      div.card-login {
-        box-shadow: 1px -2px 10px;
-      }
+    }
+  }
+}
+
+section#employer_info {
+  p.info {
+    color: white;
+    font-weight: bold;
+  }
+  @media #{$smartphone} {
+    h1.title {
+      font-size: 1.8em;
+      text-align: center;
+    }
+    p.info {
+      font-size: 0.9em;
+      text-align: center;
+    }
+  }
+  @media #{$tablet} {
+    h1.title {
+      font-size: 2em;
+    }
+    p.info {
+      font-size: 1em;
+      text-align: center;
+    }
+  }
+  @media #{$desktop} {
+    h1.title {
+      font-size: 2.6em;
+    }
+    p.info {
+      font-size: 1.3em;
+      text-align: center;
     }
   }
 }
