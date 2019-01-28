@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  require 'i18n'
   has_secure_password
   has_secure_token :token_reset
   has_one :user_extra, dependent: :destroy
@@ -9,6 +10,7 @@ class User < ApplicationRecord
                 :new_password_confirmation, :skip_password, :require_user_cover
 
   mount_uploader :cover, CoverUploader
+  before_save :save_name_without_accents
 
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   mount_uploader :avatar, AvatarUploader
@@ -57,6 +59,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def save_name_without_accents
+    self.name_for_search = I18n.transliterate(name)
+  end
 
   def password_current_verify
     errors.add(:password_current, 'Password is incorrect') unless authenticate(password_current)

@@ -1,8 +1,10 @@
 class Publication < ApplicationRecord
+  require 'i18n'
   belongs_to :publicationable, polymorphic: true
 
   extend FriendlyId
   friendly_id :title, use: :slugged
+  before_save :save_title_without_accents
 
   default_scope { where(deleted: false) }
   scope :employer, ->(employer) { where(publicationable_type: 'Employer', publicationable_id: employer.id) }
@@ -18,5 +20,11 @@ class Publication < ApplicationRecord
 
   def place_pin
     location.tr('()', '') if location.present?
+  end
+
+  private
+
+  def save_title_without_accents
+    self.title_for_search = I18n.transliterate(title)
   end
 end

@@ -18,7 +18,7 @@ namespace :seed do
 
   desc 'User'
   task user: :environment do
-    13.times do
+    1.times do
       avatar_url = Faker::LoremFlickr.image("200x200")
       cover_url = Faker::LoremFlickr.image("600x160")
       user = User.new(
@@ -65,7 +65,7 @@ namespace :seed do
 
   desc 'Employer'
   task employer: :environment do
-    6.times do
+    1.times do
       logo_url = Faker::LoremFlickr.image("200x200")
       employer = Employer.new(
         name: Faker::Company.name,
@@ -97,7 +97,7 @@ namespace :seed do
 
   desc 'Institution'
   task institution: :environment do
-    6.times do
+    1.times do
       logo_url = Faker::LoremFlickr.image("200x200")
       institution = Institution.new(
         name: Faker::Educator.university,
@@ -163,7 +163,7 @@ namespace :seed do
   desc 'Posts'
   task post: :environment do
     thumb_url = Faker::LoremFlickr.image("300x220")
-    6.times do
+    1.times do
       post = Post.new(
         title: Faker::Lorem.sentence,
         remote_thumb_url: thumb_url,
@@ -191,7 +191,7 @@ namespace :seed do
 
   desc 'Publications'
   task publication: :environment do
-    9.times do
+    1.times do
       publciation = Publication.new(
         title: Faker::Job.title,
         _type: [0, 1].sample,

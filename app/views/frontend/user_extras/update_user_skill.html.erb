@@ -1,19 +1,18 @@
-<section id="update_user_skill" class="d-flex align-items-center" style="height: 100vh">
-  <div class="container d-flex align-items-center">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-10">
+<section id="update_user_skill" class="d-flex d-flex align-items-center" style="height: 100vh">
+  <div class="container d-flex justify-content-center align-items-center" style="padding: 0px">
+    <div class="row d-flex justify-content-center" style="width: 100%">
+      <div class="col-md-10 div-skills">
         <p>Adicione aqui suas habilidades</p>
         <%= simple_form_for @model, url: frontend_update_user_skill_path do |f| %>
-          <div class="new" >
+          <div class="new">
             <div class="new_skill">
               <div class="link_add">
-                <i class="material-icons icon-add" style="color: white">playlist_add</i>
-                <%= link_to_add_association "Add", f, :skills, style:"color: transparent; position: relative; left: 3px; top: -26px" %>
+                <%= link_to_add_association "Adicionar", f, :skills, style:"background: #42A5F5; padding: 5px; color: white;" %>
               </div>
             </div>
           </div>
 
-          <div class="skills">
+          <div class="skills" style="width: 100%;">
             <div class="row">
               <%= f.simple_fields_for :skills do |skill| %>
                 <div class="col-6 col-sm-4 col-md-3 col-xl-3">

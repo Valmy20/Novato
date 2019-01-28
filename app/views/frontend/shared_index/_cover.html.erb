@@ -1,13 +1,12 @@
 <section id="cover" class="d-flex justify-content-center align-items-center"%>
   <div class="row justify-content-center">
     <div style="text-align: center; padding: 20px;">
-      <h1 class="text-capa desktop">Encontre vagas de emprego e estágio em Irecê</h1>
-      <h1 class="text-capa mobile">Busque oportunidades em Irecê</h1>
+      <h1 class="text-capa">Busque oportunidades em Irecê</h1>
 
       <%= search_form_for @q, url: search_publications_path, method: :get do |f| %>
         <div class="form-search d-flex justify-content-center align-items-center">
           <div class="search">
-            <%= f.search_field :title_or_information_cont, label: false, placeholder:"buscar...", class:"form-control input-search" %>
+            <%= f.search_field :title_or_title_for_search_or_information_cont, label: false, placeholder:"buscar...", class:"form-control input-search" %>
             <%= button_tag(class: "btn btn-search", data: {disable_with: "<i class='fa fa-spinner fa-spin' style='color: white;'></i>"}) do %>
               <i class="material-icons" style="color: white">search</i>
             <% end %>
