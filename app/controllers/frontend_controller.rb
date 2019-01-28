@@ -38,18 +38,10 @@ class FrontendController < ApplicationController
     @model = Institution.find_by(id: id)
   end
 
-  def list_users
-    if params[:search].present?
-      if params[:search][:q].present?
-        @model = User.search(params[:search][:q]).page(params[:page]).per(10)
-      else
-        users = User.order(updated_at: :desc).limit(100)
-        @model = Kaminari.paginate_array(users).page(params[:page]).per(10)
-      end
-    else
-      users = User.order(updated_at: :desc).limit(100)
-      @model = Kaminari.paginate_array(users).page(params[:page]).per(10)
-    end
+  def search_user
+    @q = User.ransack(params[:q])
+    result = @q.result.includes(:skills).to_a.uniq
+    @model = Kaminari.paginate_array(result).page(params[:page]).per(10)
   end
 
   def show_user

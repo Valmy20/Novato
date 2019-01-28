@@ -127,27 +127,43 @@ section#show-users {
     }
   }
   div.form-search-user {
+    margin-bottom: 10px;
     div.input-search {
+      background: #B0BEC5;
+      padding: 10px;
       input {
         border: 1px solid #B0BEC5;
-        appearance: textfield;
+        border-radius: 3px;
+        margin-left: 5px;
         outline: none;
-        box-shadow: none;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
+        padding-left: 6px;
       }
     }
     div.btn-search {
       button {
-        position: relative;
-        top: 0px;
-        border: 1px solid red;
         height: 38px;
+        margin-left: 5px;
         width: 37px;
         padding-right: 10px;
         padding-left: 9px;
         border: none;
-        background: #64B5F6;
+        border-radius: 2px;
+        background: white;
+      }
+    }
+    @media #{$smartphone} {
+      input {
+        width: 140px;
+      }
+    }
+    @media #{$tablet} {
+      input {
+        width: 180px;
+      }
+    }
+    @media #{$desktop} {
+      input {
+        width: 210px;
       }
     }
   }

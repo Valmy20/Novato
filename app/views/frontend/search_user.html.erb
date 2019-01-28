@@ -1,16 +1,14 @@
 <section id="show-users">
-
   <div class="row d-flex justify-content-center form-search-user">
-    <div class="col-8 col-sm-6 col-md-4 form">
-      <%= simple_form_for :search, url: list_user_path(:search), method: :get do |f| %>
-        <div class="d-flex justify-content-center form-input">
-          <div class="input-search">
-            <%= f.input :q, label: false, placeholder:"pesquisar usuário" %>
-          </div>
-          <div class="btn-search">
+    <div class="col-12 col-sm-10 col-md-7 col-lg-6 col-xl-5 d-flex justify-content-center input-search">
+      <%= search_form_for @q, url: search_user_path do |f| %>
+        <div class="d-flex">
+          <%= f.search_field :name_cont, placeholder: 'por nome' %>
+          <%= f.search_field :skills_name_start, placeholder: 'por habilidade' %>
+          <div class="justify-content-center btn-search">
             <%= button_tag(id:"btn-search", class: "btn btn-primary",
-                data: {disable_with: "<i class='fa fa-spinner fa-spin' style='color: white;'></i>"}) do %>
-              <i class="material-icons md-18" style="color: white; padding-top: 4px;">search</i>
+                data: {disable_with: "<i class='fa fa-spinner fa-spin' style='color: black;'></i>"}) do %>
+              <i class="material-icons md-18" style="color: #546E7A; padding-top: 4px;">search</i>
             <% end %>
           </div>
         </div>

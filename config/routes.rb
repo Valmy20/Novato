@@ -82,9 +82,8 @@ Rails.application.routes.draw do
   get 'show_profile_employer/:id', to: 'frontend#show_profile_employer', as: :show_profile_employer
   get 'show_profile_institution/:id', to: 'frontend#show_profile_institution', as: :show_profile_institution
   get 'show_user/:id', to: 'frontend#show_user', as: :show_user
-  get 'list_users/search/:q', to: 'frontend#list_users', as: :list_user
-  get 'list_all_users', to: 'frontend#list_users', as: :list_user_all
-
+  get 'search_user', to: 'frontend#search_user', as: :search_user
+  
   # compete
   post 'compete_publication/:id', to: 'frontend/competes#apply_publication', as: :apply_publication
 
