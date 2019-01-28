@@ -1,20 +1,16 @@
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10">
-        <%= simple_form_for @model, url: frontend_update_user_cover_path do |f| %>
-          <div>
-            <%= f.input :cover, as: :file, label:'Selecione a fato' %>
-            <%= f.hidden_field :cover_cache %>
-          </div>
-          <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
-            <div class="d-flex">
-              <span class="material-icons" style="">check</span>
-              <span style="margin-left: 5px">Salvar</span>
-            </div>
-          <% end %>
-        <% end %>
+<div class="row" style="padding: 20px">
+  <div class="col-md-10">
+    <%= simple_form_for @model, url: frontend_update_user_cover_path do |f| %>
+      <div>
+        <%= f.input :cover, as: :file, label:'Selecione a fato' %>
+        <%= f.hidden_field :cover_cache %>
       </div>
-    </div>
+      <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
+        <div class="d-flex">
+          <span class="material-icons" style="">check</span>
+          <span style="margin-left: 5px">Salvar</span>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-</section>
+</div>

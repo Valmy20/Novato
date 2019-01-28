@@ -1,10 +1,10 @@
-<div class="row d-flex justify-content-center">
-  <div class="col-md-8">
+<div class="row">
+  <div class="col-md-12 d-flex justify-content-center">
     <%= simple_form_for([:frontend, @model]) do |f| %>
       <% %w[x y w h].each do |attribute| %>
         <%= f.input "crop_#{attribute}", as: :hidden %>
       <% end %>
-      <div class="d-flex justify-content-start" style="margin-bottom: 5px; padding-left: 6px;">
+      <div class="d-flex justify-content-center" style="margin-bottom: 5px">
         <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
           <div class="d-flex">
             <span class="material-icons" style="">check</span>
@@ -12,7 +12,7 @@
           </div>
         <% end %>
       </div>
-      <div class="d-flex justify-content-start" style="padding: 6px">
+      <div class="d-flex justify-content-start">
         <%= image_tag @model.avatar.url(:large), id: "user_cropbox" %>
       </div>
     <% end %>

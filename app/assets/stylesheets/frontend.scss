@@ -224,7 +224,7 @@ section#show_profile_user {
       }
       @media #{$desktop} {
         p.bio {
-          font-size: 1.2em;
+          font-size: 1em;
         }
       }
       @media #{$tablet} {
@@ -827,7 +827,7 @@ body {
 
     section#bio_skill {
       margin: 10px;
-
+      margin-bottom: 60px;
       div.skill {
         border: 1px solid #CFD8DC;
         border-radius: 5px;

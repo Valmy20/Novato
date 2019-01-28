@@ -110,7 +110,7 @@ module Frontend
       if_is_blank
       params.require(:user).permit(
         :name, :email, :phone, :password, :password_confirmation, :password_current, :new_password,
-        :new_password_confirmation, :status, :avatar, :crop_x, :crop_y, :crop_w, :crop_h, :cover
+        :new_password_confirmation, :status, :cover
       )
     end
 

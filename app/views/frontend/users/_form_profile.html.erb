@@ -1,27 +1,22 @@
 <section id="form_profile">
   <div class="container">
-    <div class="row">
+    <div class="row" style="padding-top: 20px">
       <div class="col-md-12">
         <%= simple_form_for @model, url: frontend_user_profile_path do |f| %>
-
           <div class="fields">
             <div class="name">
               <%= f.input :name, label: 'Nome' %>
             </div>
-            <%= f.input :avatar, as: :file, label: 'Foto do Perfil' %>
-            <%= f.hidden_field :avatar_cache %>
             <div class="phone">
               <%= f.input :phone, input_html: {class: 'phone'}, label: 'Telefone' %>
             </div>
           </div>
-
           <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> salvando..."}) do %>
             <div class="d-flex">
               <span class="material-icons" style="">check</span>
               <span style="margin-left: 5px">Salvar</span>
             </div>
           <% end %>
-
         <% end %>
       </div>
     </div>

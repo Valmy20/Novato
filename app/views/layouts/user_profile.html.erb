@@ -17,7 +17,7 @@
   </head>
 
   <body>
-      <div id="user_profile" class="page">
+      <div id="user_profile" class="page" style="overflow-x: hidden">
         <%= render partial: "layouts/notification/flash_messages" %>
         <%= render partial:"layouts/frontend/nav" %>
         <!-- Left Panel -->
@@ -42,11 +42,6 @@
                             <%= link_to frontend_user_path(current_user), method: "get" do %>
                               <i class="menu-icon material-icons md-18" style="color: white">person</i>
                               Perfil
-                            <% end %>
-                        </li>
-                        <li class="menu-item">
-                            <%= link_to frontend_user_profile_path, method: "get" do %>
-                              <i class="menu-icon material-icons md-18" style="color: white">create</i>Editar perfil
                             <% end %>
                         </li>
                         <li class="menu-item">

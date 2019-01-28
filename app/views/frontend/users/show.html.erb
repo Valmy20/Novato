@@ -8,9 +8,10 @@
               <%= (image_tag 'default_cover.jpg', class:"img-fluid image_cover") if @model.cover.blank? %>
               <div>
                 <div class="edit-button">
-                    <%= link_to frontend_update_user_cover_path, class:"btn btn-warning", style:"border-radius: 5px; border: none; padding: 3px 5px 0px; background: #607D8B; margin-bottom: 15px" do %>
+                    <%= link_to frontend_update_user_cover_path, class:"btn btn-warning", style:"border: none; padding: 3px 5px 0px; background: #607D8B; margin-bottom: 15px" do %>
                       <div class="d-flex">
-                        <span class="material-icons" style="color: white">create</span>
+                        <span class="material-icons" style="color: white">insert_photo</span>
+                        <span style="color: white">capa</span>
                       </div>
                     <% end %>
             		</div>
@@ -27,11 +28,16 @@
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-3 avatar">
-              <%= (image_tag @model.avatar.url(:thumb), class:"img-fluid img_avatar") unless @model.avatar.blank? %>
-              <%= (image_tag 'default_user.jpeg', class:"img-fluid img_avatar") if @model.avatar.blank? %>
+              <%= link_to frontend_update_user_avatar_path do %>
+                <%= (image_tag @model.avatar.url(:thumb), class:"img-fluid img_avatar") unless @model.avatar.blank? %>
+                <%= (image_tag 'default_user.jpeg', class:"img-fluid img_avatar") if @model.avatar.blank? %>
+              <% end %>
             </div>
-            <div class="col-md-5 personal_info">
+            <div class="col-md-5 personal_info d-flex">
               <p class="info"><%= @model.name unless @model.name.blank?%></p>
+              <%= link_to frontend_user_profile_path, method: "get" do %>
+                <i class="menu-icon material-icons md-32" style="color: #90A4AE; margin-top: 15px; margin-left: 10px">create</i>
+              <% end %>
             </div>
             <div class="col-md-4 contact_info">
               <div class="d-flex">

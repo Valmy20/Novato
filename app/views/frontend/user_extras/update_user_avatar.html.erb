@@ -1,0 +1,14 @@
+<div class="row" style="padding: 20px">
+  <div class="col-md-10">
+    <%= simple_form_for @model, url: frontend_update_user_avatar_path do |f| %>
+      <%= f.input :avatar, as: :file, label: 'Foto do Perfil' %>
+      <%= f.hidden_field :avatar_cache %>
+      <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> salvando..."}) do %>
+        <div class="d-flex">
+          <span class="material-icons" style="">check</span>
+          <span style="margin-left: 5px">Salvar</span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

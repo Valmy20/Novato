@@ -1,8 +1,8 @@
 <section id="show_profile_user">
   <section id="top">
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding: 0px">
       <div class="row d-flex justify-content-center">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-10">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-8">
             <div class="d-none d-sm-block">
               <%= (image_tag @model.cover.url(:thumb), class:"img-fluid image_cover") unless @model.cover.blank? %>
               <%= (image_tag 'default_cover', class:"img-fluid image_cover") if @model.cover.blank? %>
@@ -16,8 +16,8 @@
     </div>
  </section>
 
-  <div class="row div_avatar">
-    <div class="col-12 d-flex justify-content-center">
+  <div class="row div_avatar d-flex justify-content-center">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8 d-flex justify-content-center">
       <div class="img">
         <%= (image_tag @model.avatar.url(:thumb), class:"img-fluid avatar") unless @model.avatar.blank? %>
         <%= (image_tag 'default_user', class:"img-fluid avatar") if @model.avatar.blank? %>
@@ -25,22 +25,24 @@
     </div>
   </div>
 
-  <div class="user_info">
+  <div class="user_info" style="padding-bottom: 80px">
     <div class="row d-flex justify-content-center">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10">
+      <div class="col-12 col-sm-12 col-md-10 col-lg-8" style="padding: 5px;border: 1px solid #E3F2FD; border-radius: 7px">
 
         <div class="row d-flex justify-content-center">
           <span class="name"><%= @model.name %></span>
         </div>
 
         <div class="row d-flex flex-column justify-content-start" style="padding: 10px">
-          <div class="d-flex">
-            <i class="material-icons md-32" style="color: #78909C; padding-top: 1px">email</i>
-            <span style="color: #546E7A;"><%= @model.email %></span>
-          </div>
-          <div class="d-flex">
-            <i class="material-icons md-32" style="color: #78909C; padding-top: 1px">phone</i>
-            <span style="color: #546E7A;"><%= @model.phone if @model.phone.present? %></span>
+          <div class="col-12" style="">
+            <div class="d-flex">
+              <i class="material-icons md-32" style="color: #78909C; padding-top: 1px">email</i>
+              <span style="color: #546E7A;"><%= @model.email %></span>
+            </div>
+            <div class="d-flex">
+              <i class="material-icons md-32" style="color: #78909C; padding-top: 1px">phone</i>
+              <span style="color: #546E7A;"><%= @model.phone if @model.phone.present? %></span>
+            </div>
           </div>
         </div>
 
@@ -66,5 +68,4 @@
       </div>
     </div>
   </div>
-
 </section>
