@@ -270,6 +270,117 @@ section#show_profile_user {
   }
 }
 
+section#show_profile_employer_institution {
+  min-height: 100vh;
+  background: white;
+  section#top {
+    .image_cover {
+        background-position: 0 50%;
+        display: block !important;
+        background-size: 100% auto;
+        border-bottom: 1px solid #e1e8ed;
+        border-radius: 3px;
+        width: 100%;
+    }
+  }
+  @media #{$smartphone} {
+    padding-top: 40px;
+  }
+  @media #{$tablet_desktop} {
+    padding-top: 70px;
+  }
+  div.div_logo {
+    @media #{$smartphone} {
+      height: 25px;
+      .logo {
+        border: 3px solid white;
+        position: relative;
+        top: -60px;
+        left: 20px;
+        height: 100px;
+        width: 100px;
+      }
+    }
+    @media #{$tablet} {
+      height: 40px;
+      .logo {
+        border: 3px solid white;
+        position: relative;
+        top: -60px;
+        left: 20px;
+        height: 100px;
+        width: 100px;
+      }
+    }
+    @media #{$desktop} {
+      height: 50px;
+      .logo {
+        border: 3px solid white;
+        position: relative;
+        top: -90px;
+        left: 20px;
+        height: 150px;
+        width: 150px;
+      }
+    }
+  }
+  div.div_info {
+    padding: 15px;
+    @media #{$smartphone} {
+      span.name {
+        color: #546E7A;
+        font-weight: bold;
+        letter-spacing: 0.03em;
+        font-size: 1.3em;
+        margin-bottom: 10px;
+      }
+    }
+    @media #{$tablet_desktop} {
+      span.name {
+        color: #546E7A;
+        font-weight: bold;
+        letter-spacing: 0.03em;
+        font-size: 1.7em;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  div.about {
+    margin-top: 10px;
+    padding: 20px;
+    div.about_ {
+      @media #{$smartphone} {
+        p.about {
+          font-size: 0.9em;
+        }
+      }
+      @media #{$desktop} {
+        p.about {
+          font-size: 1em;
+        }
+      }
+      @media #{$tablet} {
+        p.about {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+  div.bottom {
+    padding-bottom: 50px;
+    div.location {
+      border: 1px solid #ECEFF1;
+      padding: 10px;
+      height: 100%;
+      margin-bottom: 50px;
+    }
+    div.carowsel-width {
+      position: inherit;
+      width: 90%;
+    }
+  }
+}
+
 body#frontend {
   section#posts {
      padding-top: 15px;
@@ -1092,100 +1203,6 @@ body {
 
   section#search-users {
     min-height: 100vh;
-  }
-  section#show_profile_employer {
-    min-height: 100vh;
-    background: white;
-    @media #{$smartphone} {
-      div.main_col {
-        margin-bottom: 20px;
-      }
-    }
-    @media #{$desktop} {
-      div.main_col {
-        border: 1px solid #B2DFDB;
-        border-radius: 10px;
-        margin-top: 90px;
-        margin-bottom: 100px;
-        padding-top: 15px;
-      }
-    }
-    section#top {
-      @media #{$smartphone} {
-        height: 200px;
-        background: #B2DFDB;
-      }
-      @media #{$tablet_desktop} {
-        height: 300px;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        background: #B2DFDB;
-      }
-    }
-    div.employer_logo{
-      @media #{$smartphone} {
-        max-height: 100px;
-        div.logo {
-          .img_logo {
-            border: 4px solid white;
-            border-radius: 50%;
-            position: relative;
-            top: -110px;
-          }
-        }
-      }
-      @media #{$tablet_desktop} {
-        max-height: 100px;
-        div.logo {
-          .img_logo {
-            border: 4px solid white;
-            border-radius: 50%;
-            position: relative;
-            top: -100px;
-          }
-        }
-      }
-    }
-    div.follow {
-      @media #{$desktop} {
-        .btn_follow {
-          position: relative;
-          top: -90px;
-          border-radius: 20px;
-        }
-      }
-    }
-    div.employer_info {
-      @media #{$smartphone} {
-        padding: 20px;
-        p.name {
-          font-size: 1.5em;
-          font-weight: bold;
-        }
-      }
-      @media #{$tablet_desktop} {
-        padding: 20px;
-        p.name {
-          font-size: 2em;
-          font-weight: bold;
-        }
-      }
-    }
-    div.about {
-      @media #{$smartphone} {
-        padding: 10px;
-        p {
-          text-align: justify;
-        }
-      }
-      @media #{$tablet_desktop} {
-        padding: 10px;
-        p {
-          text-align: justify;
-        }
-      }
-    }
-
   }
 
   div#carousel_employer {

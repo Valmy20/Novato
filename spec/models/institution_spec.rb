@@ -38,6 +38,13 @@ RSpec.describe Institution, type: :model do
     it 'allow_value email' do
       is_expected.to allow_value('institution@ifba.edu.br').for(:email)
     end
+
+    it 'validate name lenght' do
+      is_expected.to validate_length_of(:name).
+          is_at_least(2).
+          is_at_most(80)
+    end
+
     it 'validate password lenght' do
       is_expected.to validate_length_of(:password).
           is_at_least(6).

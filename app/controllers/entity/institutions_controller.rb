@@ -92,7 +92,7 @@ module Entity
       params.require(:institution).permit(
         :name, :email, :password, :password_confirmation, :password_current,
         :new_password, :new_password_confirmation, :logo, :cover, :crop_x,
-        :crop_y, :crop_w, :crop_h, :status, institution_extra_attributes: %i[about phone location]
+        :crop_y, :crop_w, :crop_h, :status, institution_extra_attributes: %i[id about phone location]
       )
     end
 

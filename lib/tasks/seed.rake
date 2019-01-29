@@ -97,7 +97,7 @@ namespace :seed do
 
   desc 'Institution'
   task institution: :environment do
-    1.times do
+    6.times do
       logo_url = Faker::LoremFlickr.image("200x200")
       institution = Institution.new(
         name: Faker::Educator.university,

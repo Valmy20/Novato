@@ -18,7 +18,7 @@ class Institution < ApplicationRecord
   default_scope { where(deleted: false) }
   enum status: %i[disapproved approved]
   validates :cover, presence: true, if: :require_institution_cover
-  validates :name, presence: true, length: { in: 2..50 }
+  validates :name, presence: true, length: { in: 2..80 }
   validates :password, :password_confirmation, presence: true, on: :create
   validates :password, :password_confirmation, length: { in: 6..20 }, allow_blank: true
   validates :email, presence: true, email: true, uniqueness: {
