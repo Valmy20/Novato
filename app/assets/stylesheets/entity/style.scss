@@ -1676,17 +1676,6 @@ header .form-inline {
 }
 // nav
 
-nav#nav-novato {
-  div.collapse {
-    a.custom-link {
-      color: #78909C !important;
-      font-weight: 700 !important;
-    }
-    a.custom-link:hover {
-      color: #42A5F5 !important;
-    }
-  }
-}
 @media #{$smartphone} {
   .right-panel {
     width: 100vw;

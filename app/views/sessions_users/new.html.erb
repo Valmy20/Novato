@@ -3,7 +3,6 @@
 	<div class="container d-flex justify-content-center align-items-center">
 		<div class="card card-login">
 			<div class="card-header">Login</div>
-
 			<div class="card-body">
 				<%= simple_form_for(:login, url: :sessions_user, method: :post) do |f| %>
 					<%= f.input :email, as: :email, label: false, class:"form-control", placeholder:"E-mail" %>
@@ -21,27 +20,8 @@
 						<i class="fa fa-facebook" style="position: relative; left: -10%;"></i>Continuar com Facebook
 					<% end %>
 				<% end %>
-
 			</div>
-
-			<div class="d-flex justify-content-center">
-				<%= link_to new_frontend_user_path, class:"badge badge-info", style:"margin: 10px" do %>
-					<div class="d-flex">
-						<i class="material-icons md-18" style="color: white">person_add</i>
-						<span style="padding-top: 3px;">Criar conta</span>
-					</div>
-				<% end %>
-				<% if Rails.env.development? %>
-					<%= link_to user_reset_password_path, class:"badge badge-secondary", style:"margin: 10px" do %>
-						<div class="d-flex">
-							<i class="material-icons md-18" style="color: white">sentiment_dissatisfied</i>
-							<span style="padding-top: 3px">esqueci minha senha</span>
-						</div>
-					<% end %>
-				<% end %>
-			</div>
-
 		</div>
 	</div>
-
 </section>
+<%= render partial: "frontend/users/shared_user/section_user_info" %>

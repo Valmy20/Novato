@@ -16,8 +16,11 @@ $nav: "(min-width: 892px) and (max-width: 921px)";
 
 nav#nav-novato {
   .nav-link {
-    color: #90CAF9 !important;
+    color: #B0BEC5 !important;
     font-weight: bold;
+  }
+  .nav-link:hover {
+    color: #607D8B !important;
   }
   div.search-users {
     div.d-flex {
@@ -837,13 +840,36 @@ body#frontend {
     }
   }
   section.background-login-user {
-    background: image-url('background-jobs2');
+    background: #916eff;
     div.card-login {
       box-shadow: 5px 1px 50px rgba(68, 68, 68, 1);
     }
   }
+  section#info-login-user {
+    background: white;
+    padding: 100px 30px 100px;
+    p.info {
+      text-align: center;
+    }
+    @media #{$smartphone} {
+      p.info {
+        font-size: 1em;
+      }
+    }
+    @media #{$tablet} {
+      p.info {
+        font-size: 1.3em;
+      }
+    }
+    @media #{$desktop} {
+      p.info {
+        letter-spacing: 0.08em;
+        font-size: 1.5em;
+      }
+    }
+  }
   section.form-create-user {
-    background: image-url('background-jobs2');
+    background: #916eff;
     div.form {
       box-shadow: 5px 1px 50px rgba(68, 68, 68, 1);
     }
@@ -1161,47 +1187,16 @@ body {
   }
 
   section#screen_login_collaborator {
-    background: image-url('blog2');
+    background: #714cfe;
     height: 100vh;
     @media #{$smartphone} {
-      padding-top: 40px;
-      div.main {
-        padding-top: 10px;
-        h1.title {
-          text-align: center;
-          font-size: 1.5em;
-          margin-top: 20px;
-          margin-bottom: 20px;
-        }
-        p {
-          text-align: justify;
-        }
-      }
+
     }
     @media #{$tablet} {
-      div.main {
-        padding-top: 100px;
-        h1.title {
-          font-size: 1.5em;
-        }
-        div.card-login {
-          box-shadow: 1px -2px 10px;
-        }
-      }
+
     }
     @media #{$desktop} {
-      div.main {
-        padding-top: 100px;
-        h1.title {
-          font-size: 2em;
-        }
-        div.card-login {
-          box-shadow: 1px -2px 10px;
-        }
-      }
-      div.info {
-        border: 10px solid black;
-      }
+      padding-top: 70px;
     }
   }
 

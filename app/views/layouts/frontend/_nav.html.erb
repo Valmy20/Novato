@@ -10,11 +10,11 @@
     <%= link_to root_path do %>
       <%= image_tag("logo.png", class:"logo d-none d-lg-block") %>
     <% end %>
-    <ul class="navbar-nav ml-auto mr-auto" style="padding-left: 10px">
+    <ul class="navbar-nav ml-auto mr-auto" style="padding-left: 10px;">
       <li class="nav-item" style="margin: 0px 2px 0px;">
         <%= link_to root_path, class:"nav-link" do %>
           <div class="d-flex align-items-center">
-            <i class="material-icons md-24" style="padding-top: 5px">home</i>
+            <i class="material-icons md-24" style="padding-top: 2px">home</i>
           </div>
         <% end %>
       </li>
@@ -55,9 +55,9 @@
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" style="padding: 15px 0px 5px;"
+        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" style="padding: 12px 0px 5px;"
         id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="material-icons md-24" style="color: #90A4AE">person</i>
+          <i class="material-icons md-24" style="color: #455A64">person</i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if current_user %>
