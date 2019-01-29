@@ -1,0 +1,21 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <%= image_tag @model.cover.url(:thumb, class:'img-fluid preview_cover') if @model.cover.present? %>
+        <%= simple_form_for @model, url: company_update_employer_cover_path do |f| %>
+          <div style="margin-top: 5px">
+            <%= f.input :cover, as: :file, label: false %>
+            <%= f.hidden_field :cover_cache %>
+          </div>
+          <%= button_tag(class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Salvando..."}) do %>
+            <div class="d-flex">
+              <span class="material-icons" style="">check</span>
+              <span style="margin-left: 5px">Salvar</span>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

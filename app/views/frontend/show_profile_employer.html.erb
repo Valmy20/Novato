@@ -1,51 +1,148 @@
-<section id="show_profile_employer">
-  <div class="row d-flex justify-content-center">
-    <div class="col-12 col-sm-10 col-md-10 main_col">
-      <section id="top">
-        <div class="container-fluid">
-          <div class="row d-flex justify-content-center">
-            <div class="col-md-12 default_cover">
+<section id="show_profile_employer_institution">
+  <section id="top">
+    <div class="container-fluid" style="padding: 0px">
+      <div class="row d-flex justify-content-center">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-8">
+            <div class="d-none d-sm-block">
+              <%= (image_tag @model.cover.url(:thumb), class:"img-fluid image_cover") unless @model.cover.blank? %>
+              <%= (image_tag 'default_cover', class:"img-fluid image_cover") if @model.cover.blank? %>
+            </div>
+            <div class="d-sm-none">
+              <%= (image_tag @model.cover.url(:mobile), class:"img-fluid image_cover") unless @model.cover.blank? %>
+              <%= (image_tag 'default-cover-mobile', class:"img-fluid image_cover") if @model.cover.blank? %>
+            </div>
+        </div>
+      </div>
+    </div>
+ </section>
+
+  <div class="row div_logo d-flex justify-content-center">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8 d-flex justify-content-start">
+      <div class="img">
+        <%= (image_tag @model.logo.url(:thumb), class:"img-fluid logo") unless @model.logo.blank? %>
+        <%= (image_tag 'default_user', class:"img-fluid logo") if @model.logo.blank? %>
+      </div>
+    </div>
+  </div>
+
+  <div class="div_info" style="padding-bottom: 80px">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-sm-12 col-md-10 col-lg-8" style="padding: 5px;border: 1px solid #E3F2FD; border-radius: 7px">
+
+        <div class="row d-flex justify-content-center" style="padding: 2px 20px 2px">
+          <span class="name"><%= @model.name %></span>
+        </div>
+
+        <div class="row d-flex flex-column justify-content-start" style="padding: 10px">
+          <div class="col-12" style="">
+            <div class="d-flex">
+              <i class="material-icons md-32" style="color: #78909C; padding-top: 1px">email</i>
+              <span style="color: #546E7A;"><%= @model.email %></span>
+            </div>
+            <div class="d-flex">
+              <i class="material-icons md-32" style="color: #78909C; padding-top: 1px">phone</i>
+              <span style="color: #546E7A;"><%= @model.employer_extra.phone if @model.employer_extra.present? %></span>
             </div>
           </div>
         </div>
-      </section>
 
-      <div class="row employer_logo">
-        <div class="col-12 logo d-flex justify-content-center">
-          <div>
-            <%= (image_tag @model.logo.url(:thumb), class:"img-fluid img_logo") unless @model.logo.blank? %>
-            <%= (image_tag 'default_user.jpeg', class:"img-fluid img_logo") if @model.logo.blank? %>
-          </div>
-        </div>
-      </div>
-
-      <div class="employer_info">
-        <div class="row">
-          <div class="col-12 d-flex justify-content-center">
-            <p class="name"><%= @model.name %></p>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="d-flex">
-                <span class="material-icons" style="color: #607D8B">phone</span>
-                <span style="margin-left: 5px; color: #607D8B"><%= @model.employer_extra.phone unless @model.employer_extra.blank? %></span>
-              </div>
-              <div class="d-flex">
-                <span class="material-icons" style="color: #607D8B">email</span>
-                <span style="margin-left: 5px; color: #607D8B"><%= @model.email %></span>
-              </div>
+        <div class="row about d-flex justify-content-center">
+          <div class="col-12 about_">
+            <p class="d-flex justify-content-center">Sobre a empresa</p>
+            <div class="row d-flex justify-content-center" style="padding: 5px">
+              <p class="about"><%= @model.employer_extra.about if @model.employer_extra.present? %></p>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="about">
-        <div class="row">
-          <div class="col-12 d-flex justify-content-center">
-            <p><%= @model.employer_extra.about unless @model.employer_extra.blank? %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-sm-12 col-md-10 col-lg-8">
+        <div class="row location">
+          <div class="col-md-4">
+            <p>Local da empresa</p>
+            <% if @model.employer_extra.location.present? %>
+              <div id="map" style="height: 200px; width: 100%; border: 2px solid #CFD8DC;"></div>
+            <% end %>
+          </div>
+          <div class="col-md-8">
+            <div class="d-none d-lg-block carowsel-width">
+              <p class="d-flex justify-content-center">Outras empresas parceiras</p>
+          		<div style="">
+          			<div class="main-content">
+          				 <% @employers = Employer.where(status: :approved).last(100) %>
+          					<div class="owl-carousel">
+          						<% @employers.each do |row| %>
+          							<%= link_to show_profile_employer_path(row) do %>
+          							<div class="" style="border: 1px solid #CFD8DC; padding: 0px; height: 200px;">
+          								<div class="row" style="margin: 20px; padding: 5px">
+          									<div class="col-12 d-flex flex-column" style="padding: 2px 0px 2px">
+                              <div class="row">
+                                <div class="col-12">
+                                  <%= (image_tag row.logo.url(:thumb), class:"img-fluid") unless row.logo.blank? %>
+                                  <%= (image_tag "default_user", class:"img-fluid") if row.logo.blank? %>
+                                </div>
+                              </div>
+                              <div class="row" style="padding: 2px 0px 2px">
+                                <div class="col-12 d-flex justify-content-center" style="padding: 1px 0px 1px">
+                                  <span style="font-size: 0.9em"><%= truncate(row.name, length: 42) %></span>
+                                </div>
+                              </div>
+                            </div>
+          								</div>
+          							</div>
+          							<% end %>
+          						<% end %>
+          					</div>
+                    <div class="owl-theme">
+        							<div class="owl-controls">
+        								<div class="custom-nav owl-nav"></div>
+        							</div>
+          					</div>
+          			</div>
+          		</div>
+          	</div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- end bottom -->
+
 </section>
+
+<script src='https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_KEY'] %>'></script>
+ <script type='text/javascript'>
+
+  function initialize() {
+
+    navigator.geolocation.getCurrentPosition(function(location) {
+      var lat = location.coords.latitude;
+      var lng = location.coords.longitude;
+
+      "<% if @model.employer_extra.location.present? %>"
+        var my_position = new google.maps.LatLng(<%= @model.employer_extra.place_pin %>);
+      "<% else %>"
+        var my_position = new google.maps.LatLng(lat,lng);
+        var input = document.getElementById('input_id');
+        input.value =  lat + ", " + lng;
+      "<% end %>"
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+          center: my_position,
+          zoom: 15
+      });
+      var marker = new google.maps.Marker({
+          position: my_position,
+          map: map
+      });
+
+    });
+
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+ </script>

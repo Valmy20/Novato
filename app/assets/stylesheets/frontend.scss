@@ -679,8 +679,12 @@ body#frontend {
         padding: 2px;
         .ssb-icon {
           background-size: 27px 27px;
+          opacity: 0.5;
           height: 27px;
           width: 27px;
+        }
+        .ssb-icon:hover {
+          opacity: 1;
         }
     }
     div.publication {

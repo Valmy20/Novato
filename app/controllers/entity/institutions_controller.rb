@@ -47,9 +47,12 @@ module Entity
       @model.require_password_current = false
       @model.require_institution_cover = true
       return unless request.patch?
-      return unless @model.update(set_params)
 
-      render :update_institution_cover
+      if @model.update(set_params)
+        redirect_to entity_institution_profile_path, notice: 'Aterações realizadas'
+      else
+        render :update_institution_cover
+      end
     end
 
     def location

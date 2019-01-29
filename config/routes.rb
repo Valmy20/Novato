@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     match 'employer_profile', to: 'employers#profile', via: %i[get patch put], as: :employer_profile
     match 'update_employer_password', to: 'employers#update_employer_password', via: %i[get patch put], as: :update_employer_password
     match 'location', to: 'employers#location', via: %i[get patch put], as: :employer_location
+    match 'update_employer_cover', to: 'employers#update_employer_cover', via: %i[get patch put], as: :update_employer_cover
   end
 
   namespace 'entity', path: 'novato' do
@@ -83,7 +84,7 @@ Rails.application.routes.draw do
   get 'show_profile_institution/:id', to: 'frontend#show_profile_institution', as: :show_profile_institution
   get 'show_user/:id', to: 'frontend#show_user', as: :show_user
   get 'search_user', to: 'frontend#search_user', as: :search_user
-  
+
   # compete
   post 'compete_publication/:id', to: 'frontend/competes#apply_publication', as: :apply_publication
 

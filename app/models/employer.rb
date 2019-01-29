@@ -5,8 +5,9 @@ class Employer < ApplicationRecord
   has_one :employer_extra, dependent: :destroy
   accepts_nested_attributes_for :employer_extra
   attr_accessor :password_current, :require_password_current, :new_password,
-                :new_password_confirmation
+                :new_password_confirmation, :require_employer_cover
 
+  mount_uploader :cover, CoverUploader
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   mount_uploader :logo, LogoUploader
   after_update :crop_logo
@@ -16,6 +17,7 @@ class Employer < ApplicationRecord
 
   default_scope { where(deleted: false) }
   enum status: %i[disapproved approved]
+  validates :cover, presence: true, if: :require_employer_cover
   validates :name, presence: true, length: { in: 2..50 }
   validates :password, :password_confirmation, presence: true, on: :create
   validates :password, :password_confirmation, length: { in: 6..20 }, allow_blank: true

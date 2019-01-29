@@ -44,6 +44,19 @@ module Company
       (redirect_to company_employer_profile_path, notice: msg) unless (render :crop if logo.present?)
     end
 
+    def update_employer_cover
+      @model = current_employer
+      @model.require_password_current = false
+      @model.require_employer_cover = true
+      return unless request.patch?
+
+      if @model.update(set_params)
+        redirect_to company_employer_profile_path, notice: 'Aterações realizadas'
+      else
+        render :update_employer_cover
+      end
+    end
+
     def reset_password
       return unless request.post?
 
@@ -110,7 +123,7 @@ module Company
       if_is_blank
       params.require(:employer).permit(
         :name, :email, :password, :password_confirmation,
-        :password_current, :new_password, :new_password_confirmation, :status,
+        :password_current, :new_password, :new_password_confirmation, :status, :cover,
         :logo, :crop_x, :crop_y, :crop_w, :crop_h, employer_extra_attributes: %i[id about phone location]
       )
     end

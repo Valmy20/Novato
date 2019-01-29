@@ -67,9 +67,9 @@
                               <% end %>
                             </li>
                             <li class="menu-icon">
-                              <i class="menu-icon material-icons md-18" style="color: white;">exit_to_app</i>
-                              <%= link_to logout_session_employer_path do %>
-                                Sair
+                              <i class="menu-icon material-icons md-18">insert_photo</i>
+                              <%= link_to company_update_employer_cover_path, method: "get" do %>
+                                <i></i>Foto de capa
                               <% end %>
                             </li>
                           </ul>
@@ -85,6 +85,12 @@
                               <% end %>
                             </li>
                           </ul>
+                      </li>
+                      <h3 class="menu-title">Mais</h3>
+                      <li class="menu-item">
+                        <%= link_to logout_session_employer_path do %>
+                          <i class="menu-icon material-icons md-18">exit_to_app</i>Sair
+                        <% end %>
                       </li>
                   </ul>
               </div><!-- /.navbar-collapse -->
