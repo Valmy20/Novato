@@ -352,6 +352,15 @@ section#show_profile_employer_institution {
     margin-top: 10px;
     padding: 20px;
     div.about_ {
+
+      p.about {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+        width: 100%;
+        max-width: 500px;
+      }
+
       @media #{$smartphone} {
         p.about {
           font-size: 0.9em;
@@ -360,11 +369,13 @@ section#show_profile_employer_institution {
       @media #{$desktop} {
         p.about {
           font-size: 1em;
+          max-width: 700px;
         }
       }
       @media #{$tablet} {
         p.about {
           font-size: 1em;
+          max-width: 600px;
         }
       }
     }
