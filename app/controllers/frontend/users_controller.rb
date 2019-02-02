@@ -66,6 +66,20 @@ module Frontend
       end
     end
 
+    def update_user_avatar
+      @model = current_user
+      return unless request.patch?
+      return unless @model.update(set_params)
+
+      avatar = params[:user][:avatar]
+      msg = 'Aterações realizadas'
+      if avatar.present?
+        redirect_to frontend_user_path(current_user), notice: msg unless render :crop
+      else
+        render :update_user_avatar
+      end
+    end
+
     def reset_password
       return unless request.post?
 
@@ -110,7 +124,7 @@ module Frontend
       if_is_blank
       params.require(:user).permit(
         :name, :email, :phone, :password, :password_confirmation, :password_current, :new_password,
-        :new_password_confirmation, :status, :cover
+        :new_password_confirmation, :status, :cover, :avatar, :crop_x, :crop_y, :crop_w, :crop_h
       )
     end
 

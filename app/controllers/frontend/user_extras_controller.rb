@@ -24,20 +24,6 @@ module Frontend
       end
     end
 
-    def update_user_avatar
-      @model = current_user
-      return unless request.patch?
-      return unless @model.update(set_avatar)
-
-      avatar = params[:user][:avatar]
-      msg = 'Aterações realizadas'
-      if avatar.present?
-        redirect_to frontend_user_path(current_user), notice: msg unless render :crop
-      else
-        render :update_user_avatar
-      end
-    end
-
     private
 
     def set_bio
@@ -50,10 +36,6 @@ module Frontend
       params.require(:user).permit(
         skills_attributes: %i[id name _destroy]
       )
-    end
-
-    def set_avatar
-      params.require(:user).permit(:avatar, :crop_x, :crop_y, :crop_w, :crop_h)
     end
   end
 end
