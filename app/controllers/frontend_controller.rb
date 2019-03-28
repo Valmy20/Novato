@@ -40,7 +40,7 @@ class FrontendController < ApplicationController
 
   def search_user
     @q = User.ransack(params[:q])
-    result = @q.result.includes(:skills).to_a.uniq
+    result = @q.result.includes(:skills).order(id: :desc).to_a.uniq
     @model = Kaminari.paginate_array(result).page(params[:page]).per(10)
   end
 

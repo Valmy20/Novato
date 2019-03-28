@@ -10,6 +10,10 @@ erd.pdf
 # Ignore bundler config.
 /.bundle
 
+# Ignore Docker files
+docker-compose.yml
+Dockerfile
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*

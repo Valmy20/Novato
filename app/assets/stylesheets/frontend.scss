@@ -239,16 +239,22 @@ section#show_profile_user {
       @media #{$smartphone} {
         p.bio {
           font-size: 0.9em;
+          padding: 10px;
+          text-align: justify;
         }
       }
       @media #{$desktop} {
         p.bio {
           font-size: 1em;
+          padding: 15px;
+          text-align: justify;
         }
       }
       @media #{$tablet} {
         p.bio {
           font-size: 1em;
+          padding: 10px;
+          text-align: justify;
         }
       }
     }
