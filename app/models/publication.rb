@@ -10,6 +10,8 @@ class Publication < ApplicationRecord
   scope :employer, ->(employer) { where(publicationable_type: 'Employer', publicationable_id: employer.id) }
   scope :institution, ->(institution) { where(publicationable_type: 'Institution', publicationable_id: institution.id) }
   scope :available_publication, -> { where(status: :approved, visibility: true) }
+  scope :filter_job_posts, -> { where(_type: :emprego) }
+  scope :filter_internship_posts, -> { where(_type: :estagio) }
   enum _type: %i[estagio emprego]
   enum status: %i[disapproved approved review]
   validates :title, length: { in: 4..100 }, presence: true

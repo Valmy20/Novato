@@ -1,12 +1,24 @@
 class FrontendController < ApplicationController
   before_action :search, only: %i[index]
 
+  before_action only: [:search] do
+    get_query('query_publication')
+  end
+
   def index
   end
 
   def search
-    @q = Publication.ransack(params[:q])
-    @model = @q.result.available_publication.order(id: :desc).page(params[:page]).per(10)
+    @q = Publication.ransack(@query)
+    if params[:search].present?
+      if params[:search][:filter] == "emprego"
+        @model = @q.result.available_publication.filter_job_posts.order(id: :desc).page(params[:page]).per(10)
+      elsif params[:search][:filter] == "estagio"
+        @model = @q.result.available_publication.filter_internship_posts.order(id: :desc).page(params[:page]).per(10)
+      end
+    else
+      @model = @q.result.available_publication.order(id: :desc).page(params[:page]).per(10)
+    end
   end
 
   def show_publication

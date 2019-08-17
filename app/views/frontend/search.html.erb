@@ -1,5 +1,16 @@
 <section id="search-publications" style="background: #CFD8DC;">
   <div class="container-fluid">
+
+    <div style="display: flex; justify-content: flex-end;">
+      <%= simple_form_for :search, url: search_publications_path, method: :get do |f| %>
+        <% options = [:emprego, :estagio] %>
+        <div style="width: 290px; display: flex;">
+          <%= f.input :filter, label: false, required: false, collection: options, prompt: 'selecione tipo de vaga' %>
+          <%= f.button :submit, "aplicar", class:"btn btn-primary", style:"height: 38px" %>
+        </div>
+      <% end %>
+    </div>
+
     <% unless @model.blank? %>
       <% @model.each do |row| %>
         <%= render partial:"frontend/shared_site/search_publication", locals: { row: row } %>

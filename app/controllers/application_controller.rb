@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: 'Algo deu erraro :('
   end
 
+  def get_query(cookie_key)
+    cookies.delete(cookie_key) if params[:clear]
+    cookies[cookie_key] = params[:q].to_json if params[:q]
+    @query = params[:q].presence || JSON.load(cookies[cookie_key])
+  end
+
   private
 
   def user_not_authorized
