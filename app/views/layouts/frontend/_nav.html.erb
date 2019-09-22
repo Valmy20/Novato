@@ -61,11 +61,11 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if current_user %>
-            <%= link_to logout_session_user_path, class:"dropdown-item" do %>
-              Sair
-            <% end %>
             <%= link_to frontend_user_path(current_user), class:"dropdown-item" do %>
               Perfil
+            <% end %>
+            <%= link_to logout_session_user_path, class:"dropdown-item" do %>
+              Sair
             <% end %>
           <% else %>
             <%= link_to new_session_user_path, class:"dropdown-item" do %>
